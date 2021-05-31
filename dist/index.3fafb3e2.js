@@ -26272,14 +26272,269 @@ try {
   _parcelHelpers.defineInteropFlag(exports);
   var _react = require("react");
   var _reactDefault = _parcelHelpers.interopDefault(_react);
-  var _hooksUseFetch = require("./hooks/useFetch");
+  var _graphsNationalAndWA = require("./graphs/NationalAndWA");
+  var _graphsNationalAndWADefault = _parcelHelpers.interopDefault(_graphsNationalAndWA);
+  var _jsxFileName = "/Users/jisukim/INFO474-Final-Project/src/App.js";
+  const App = () => {
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement("div", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 6,
+          columnNumber: 9
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 7,
+          columnNumber: 13
+        }
+      }, loading && "Loading data!"), /*#__PURE__*/_reactDefault.default.createElement("h1", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 8,
+          columnNumber: 13
+        }
+      }, "INFO 474 Final Project "), /*#__PURE__*/_reactDefault.default.createElement(_graphsNationalAndWADefault.default, {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 9,
+          columnNumber: 13
+        }
+      }))
+    );
+  };
+  _c = App;
+  exports.default = App;
+  var _c;
+  $RefreshReg$(_c, "App");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+
+},{"react":"3b2NM","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","./graphs/NationalAndWA":"7t7vI"}],"5gA8y":[function(require,module,exports) {
+"use strict";
+
+exports.interopDefault = function (a) {
+  return a && a.__esModule ? a : {
+    default: a
+  };
+};
+
+exports.defineInteropFlag = function (a) {
+  Object.defineProperty(a, '__esModule', {
+    value: true
+  });
+};
+
+exports.exportAll = function (source, dest) {
+  Object.keys(source).forEach(function (key) {
+    if (key === 'default' || key === '__esModule') {
+      return;
+    } // Skip duplicate re-exports when they have the same value.
+
+
+    if (key in dest && dest[key] === source[key]) {
+      return;
+    }
+
+    Object.defineProperty(dest, key, {
+      enumerable: true,
+      get: function () {
+        return source[key];
+      }
+    });
+  });
+  return dest;
+};
+
+exports.export = function (dest, destName, get) {
+  Object.defineProperty(dest, destName, {
+    enumerable: true,
+    get: get
+  });
+};
+},{}],"4Jj4f":[function(require,module,exports) {
+"use strict";
+var Refresh = require('react-refresh/runtime');
+function debounce(func, delay) {
+  if ("development" === 'test') {
+    return function (args) {
+      func.call(null, args);
+    };
+  } else {
+    var timeout = undefined;
+    return function (args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(function () {
+        timeout = undefined;
+        func.call(null, args);
+      }, delay);
+    };
+  }
+}
+var enqueueUpdate = debounce(function () {
+  Refresh.performReactRefresh();
+}, 30);
+// Everthing below is either adapted or copied from
+// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
+// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
+module.exports.prelude = function (module) {
+  window.$RefreshReg$ = function (type, id) {
+    Refresh.register(type, module.id + ' ' + id);
+  };
+  window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
+};
+module.exports.postlude = function (module) {
+  if (isReactRefreshBoundary(module.exports)) {
+    registerExportsForReactRefresh(module);
+    if (module.hot) {
+      module.hot.dispose(function (data) {
+        if (Refresh.hasUnrecoverableErrors()) {
+          window.location.reload();
+        }
+        data.prevExports = module.exports;
+      });
+      module.hot.accept(function (getParents) {
+        var prevExports = module.hot.data.prevExports;
+        var nextExports = module.exports;
+        // Since we just executed the code for it, it's possible
+        // that the new exports make it ineligible for being a boundary.
+        var isNoLongerABoundary = !isReactRefreshBoundary(nextExports);
+        // It can also become ineligible if its exports are incompatible
+        // with the previous exports.
+        // For example, if you add/remove/change exports, we'll want
+        // to re-execute the importing modules, and force those components
+        // to re-render. Similarly, if you convert a class component
+        // to a function, we want to invalidate the boundary.
+        var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
+        if (isNoLongerABoundary || didInvalidate) {
+          // We'll be conservative. The only case in which we won't do a full
+          // reload is if all parent modules are also refresh boundaries.
+          // In that case we'll add them to the current queue.
+          var parents = getParents();
+          if (parents.length === 0) {
+            // Looks like we bubbled to the root. Can't recover from that.
+            window.location.reload();
+            return;
+          }
+          return parents;
+        }
+        enqueueUpdate();
+      });
+    }
+  }
+};
+function isReactRefreshBoundary(exports) {
+  if (Refresh.isLikelyComponentType(exports)) {
+    return true;
+  }
+  if (exports == null || typeof exports !== 'object') {
+    // Exit if we can't iterate over exports.
+    return false;
+  }
+  var hasExports = false;
+  var areAllExportsComponents = true;
+  let isESM = ('__esModule' in exports);
+  for (var key in exports) {
+    hasExports = true;
+    if (key === '__esModule') {
+      continue;
+    }
+    var desc = Object.getOwnPropertyDescriptor(exports, key);
+    if (desc && desc.get && !isESM) {
+      // Don't invoke getters for CJS as they may have side effects.
+      return false;
+    }
+    var exportValue = exports[key];
+    if (!Refresh.isLikelyComponentType(exportValue)) {
+      areAllExportsComponents = false;
+    }
+  }
+  return hasExports && areAllExportsComponents;
+}
+function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
+  var prevSignature = getRefreshBoundarySignature(prevExports);
+  var nextSignature = getRefreshBoundarySignature(nextExports);
+  if (prevSignature.length !== nextSignature.length) {
+    return true;
+  }
+  for (var i = 0; i < nextSignature.length; i++) {
+    if (prevSignature[i] !== nextSignature[i]) {
+      return true;
+    }
+  }
+  return false;
+}
+// When this signature changes, it's unsafe to stop at this refresh boundary.
+function getRefreshBoundarySignature(exports) {
+  var signature = [];
+  signature.push(Refresh.getFamilyByType(exports));
+  if (exports == null || typeof exports !== 'object') {
+    // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return signature;
+  }
+  let isESM = ('__esModule' in exports);
+  for (var key in exports) {
+    if (key === '__esModule') {
+      continue;
+    }
+    var desc = Object.getOwnPropertyDescriptor(exports, key);
+    if (desc && desc.get && !isESM) {
+      // Don't invoke getters for CJS as they may have side effects.
+      continue;
+    }
+    var exportValue = exports[key];
+    signature.push(key);
+    signature.push(Refresh.getFamilyByType(exportValue));
+  }
+  return signature;
+}
+function registerExportsForReactRefresh(module) {
+  var exports = module.exports, id = module.id;
+  Refresh.register(exports, id + ' %exports%');
+  if (exports == null || typeof exports !== 'object') {
+    // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return;
+  }
+  let isESM = ('__esModule' in exports);
+  for (var key in exports) {
+    var desc = Object.getOwnPropertyDescriptor(exports, key);
+    if (desc && desc.get && !isESM) {
+      // Don't invoke getters for CJS as they may have side effects.
+      continue;
+    }
+    var exportValue = exports[key];
+    Refresh.register(exportValue, id + ' %exports% ' + key);
+  }
+}
+
+},{"react-refresh/runtime":"592mh"}],"7t7vI":[function(require,module,exports) {
+var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require("react");
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _hooksUseFetch = require("../hooks/useFetch");
   var _d = require("d3");
   require("d3-array");
   var _d3Scale = require("d3-scale");
-  var _jsxFileName = "/Users/jisukim/INFO474-Final-Project/src/App.js", _s = $RefreshSig$();
+  var _jsxFileName = "/Users/jisukim/INFO474-Final-Project/src/graphs/NationalAndWA.js", _s = $RefreshSig$();
   const viewHeight = 500;
   const viewWidth = 500;
-  const App = () => {
+  function NationalAndWA() {
     _s();
     const [data, loading] = _hooksUseFetch.useFetch(// change this url to main later
     "https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/LineChart_Jisu/data/Info474_FinalData.csv");
@@ -26341,59 +26596,58 @@ try {
     }
     return (
       /*#__PURE__*/_reactDefault.default.createElement("div", {
-        className: "vis",
-        __self: undefined,
+        __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 91,
+          lineNumber: 89,
           columnNumber: 9
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("p", {
-        __self: undefined,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 90,
+          columnNumber: 13
+        }
+      }, loading && "Loading data!"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 91,
+          columnNumber: 13
+        }
+      }, "National and WA line graph"), /*#__PURE__*/_reactDefault.default.createElement("br", {
+        __self: this,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 92,
           columnNumber: 13
         }
-      }, loading && "Loading data!"), /*#__PURE__*/_reactDefault.default.createElement("h1", {
-        __self: undefined,
+      }), /*#__PURE__*/_reactDefault.default.createElement("div", {
+        id: "line1",
+        __self: this,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 93,
           columnNumber: 13
         }
-      }, "INFO 474 Final Project "), /*#__PURE__*/_reactDefault.default.createElement("br", {
-        __self: undefined,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 94,
-          columnNumber: 13
-        }
-      }), /*#__PURE__*/_reactDefault.default.createElement("div", {
-        id: "line1",
-        __self: undefined,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 95,
-          columnNumber: 13
-        }
       }))
     );
-  };
-  _s(App, "Jm65JCcgUFoenM4DufkEA80vRVI=", false, function () {
+  }
+  exports.default = NationalAndWA;
+  _s(NationalAndWA, "Jm65JCcgUFoenM4DufkEA80vRVI=", false, function () {
     return [_hooksUseFetch.useFetch];
   });
-  _c = App;
-  exports.default = App;
+  _c = NationalAndWA;
   var _c;
-  $RefreshReg$(_c, "App");
+  $RefreshReg$(_c, "NationalAndWA");
   helpers.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
 
-},{"react":"3b2NM","./hooks/useFetch":"5YU3r","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","d3":"3auhl","d3-array":"7CLUA","d3-scale":"2UZ4X"}],"5YU3r":[function(require,module,exports) {
+},{"react":"3b2NM","../hooks/useFetch":"5YU3r","d3":"3auhl","d3-array":"7CLUA","d3-scale":"2UZ4X","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"5YU3r":[function(require,module,exports) {
 var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -26693,206 +26947,7 @@ var define;
   });
 });
 
-},{}],"5gA8y":[function(require,module,exports) {
-"use strict";
-
-exports.interopDefault = function (a) {
-  return a && a.__esModule ? a : {
-    default: a
-  };
-};
-
-exports.defineInteropFlag = function (a) {
-  Object.defineProperty(a, '__esModule', {
-    value: true
-  });
-};
-
-exports.exportAll = function (source, dest) {
-  Object.keys(source).forEach(function (key) {
-    if (key === 'default' || key === '__esModule') {
-      return;
-    } // Skip duplicate re-exports when they have the same value.
-
-
-    if (key in dest && dest[key] === source[key]) {
-      return;
-    }
-
-    Object.defineProperty(dest, key, {
-      enumerable: true,
-      get: function () {
-        return source[key];
-      }
-    });
-  });
-  return dest;
-};
-
-exports.export = function (dest, destName, get) {
-  Object.defineProperty(dest, destName, {
-    enumerable: true,
-    get: get
-  });
-};
-},{}],"4Jj4f":[function(require,module,exports) {
-"use strict";
-var Refresh = require('react-refresh/runtime');
-function debounce(func, delay) {
-  if ("development" === 'test') {
-    return function (args) {
-      func.call(null, args);
-    };
-  } else {
-    var timeout = undefined;
-    return function (args) {
-      clearTimeout(timeout);
-      timeout = setTimeout(function () {
-        timeout = undefined;
-        func.call(null, args);
-      }, delay);
-    };
-  }
-}
-var enqueueUpdate = debounce(function () {
-  Refresh.performReactRefresh();
-}, 30);
-// Everthing below is either adapted or copied from
-// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
-// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
-module.exports.prelude = function (module) {
-  window.$RefreshReg$ = function (type, id) {
-    Refresh.register(type, module.id + ' ' + id);
-  };
-  window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
-};
-module.exports.postlude = function (module) {
-  if (isReactRefreshBoundary(module.exports)) {
-    registerExportsForReactRefresh(module);
-    if (module.hot) {
-      module.hot.dispose(function (data) {
-        if (Refresh.hasUnrecoverableErrors()) {
-          window.location.reload();
-        }
-        data.prevExports = module.exports;
-      });
-      module.hot.accept(function (getParents) {
-        var prevExports = module.hot.data.prevExports;
-        var nextExports = module.exports;
-        // Since we just executed the code for it, it's possible
-        // that the new exports make it ineligible for being a boundary.
-        var isNoLongerABoundary = !isReactRefreshBoundary(nextExports);
-        // It can also become ineligible if its exports are incompatible
-        // with the previous exports.
-        // For example, if you add/remove/change exports, we'll want
-        // to re-execute the importing modules, and force those components
-        // to re-render. Similarly, if you convert a class component
-        // to a function, we want to invalidate the boundary.
-        var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
-        if (isNoLongerABoundary || didInvalidate) {
-          // We'll be conservative. The only case in which we won't do a full
-          // reload is if all parent modules are also refresh boundaries.
-          // In that case we'll add them to the current queue.
-          var parents = getParents();
-          if (parents.length === 0) {
-            // Looks like we bubbled to the root. Can't recover from that.
-            window.location.reload();
-            return;
-          }
-          return parents;
-        }
-        enqueueUpdate();
-      });
-    }
-  }
-};
-function isReactRefreshBoundary(exports) {
-  if (Refresh.isLikelyComponentType(exports)) {
-    return true;
-  }
-  if (exports == null || typeof exports !== 'object') {
-    // Exit if we can't iterate over exports.
-    return false;
-  }
-  var hasExports = false;
-  var areAllExportsComponents = true;
-  let isESM = ('__esModule' in exports);
-  for (var key in exports) {
-    hasExports = true;
-    if (key === '__esModule') {
-      continue;
-    }
-    var desc = Object.getOwnPropertyDescriptor(exports, key);
-    if (desc && desc.get && !isESM) {
-      // Don't invoke getters for CJS as they may have side effects.
-      return false;
-    }
-    var exportValue = exports[key];
-    if (!Refresh.isLikelyComponentType(exportValue)) {
-      areAllExportsComponents = false;
-    }
-  }
-  return hasExports && areAllExportsComponents;
-}
-function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
-  var prevSignature = getRefreshBoundarySignature(prevExports);
-  var nextSignature = getRefreshBoundarySignature(nextExports);
-  if (prevSignature.length !== nextSignature.length) {
-    return true;
-  }
-  for (var i = 0; i < nextSignature.length; i++) {
-    if (prevSignature[i] !== nextSignature[i]) {
-      return true;
-    }
-  }
-  return false;
-}
-// When this signature changes, it's unsafe to stop at this refresh boundary.
-function getRefreshBoundarySignature(exports) {
-  var signature = [];
-  signature.push(Refresh.getFamilyByType(exports));
-  if (exports == null || typeof exports !== 'object') {
-    // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return signature;
-  }
-  let isESM = ('__esModule' in exports);
-  for (var key in exports) {
-    if (key === '__esModule') {
-      continue;
-    }
-    var desc = Object.getOwnPropertyDescriptor(exports, key);
-    if (desc && desc.get && !isESM) {
-      // Don't invoke getters for CJS as they may have side effects.
-      continue;
-    }
-    var exportValue = exports[key];
-    signature.push(key);
-    signature.push(Refresh.getFamilyByType(exportValue));
-  }
-  return signature;
-}
-function registerExportsForReactRefresh(module) {
-  var exports = module.exports, id = module.id;
-  Refresh.register(exports, id + ' %exports%');
-  if (exports == null || typeof exports !== 'object') {
-    // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return;
-  }
-  let isESM = ('__esModule' in exports);
-  for (var key in exports) {
-    var desc = Object.getOwnPropertyDescriptor(exports, key);
-    if (desc && desc.get && !isESM) {
-      // Don't invoke getters for CJS as they may have side effects.
-      continue;
-    }
-    var exportValue = exports[key];
-    Refresh.register(exportValue, id + ' %exports% ' + key);
-  }
-}
-
-},{"react-refresh/runtime":"592mh"}],"3auhl":[function(require,module,exports) {
+},{}],"3auhl":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });
