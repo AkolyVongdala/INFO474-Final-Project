@@ -42841,9 +42841,9 @@ try {
   var _reactDefault = _parcelHelpers.interopDefault(_react);
   var _hooksUseFetch = require("../hooks/useFetch");
   var _d3Scale = require("d3-scale");
-  require("d3-array");
+  var _d3Array = require("d3-array");
   var _d = require("d3");
-  require('d3-collection');
+  var _d3Collection = require('d3-collection');
   var _jsxFileName = "/Users/jisukim/INFO474-Final-Project/src/visualizations/NaitonalAndWALineChart.js", _s = $RefreshSig$();
   function NationalAndWALine() {
     _s();
@@ -42855,7 +42855,12 @@ try {
         bottom: 40,
         left: 60
       }, // size
-      width = 1000 - margin.left - margin.right, height = 500 - margin.top - margin.bottom;
+      width = 1000 - margin.left - margin.right, height = 500 - margin.top - margin.bottom, tooltip = {
+        width: 100,
+        height: 100,
+        x: 10,
+        y: -30
+      };
       const svg = _d.// create the svg box for the viz
       select("#unemp-national-WA-line").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", `translate(${margin.left}, ${margin.top})`);
       data.forEach(function (d) {
@@ -42864,60 +42869,100 @@ try {
         d.Washington = +d.Washington;
         d.UR_Year = +d.UR_Year;
       });
-      console.log(data);
       // filtering 2019-2021 rate
       var filteredData = data.filter(function (d) {
         return d.UR_Year >= 2019 && d.UR_Year <= 2021;
       });
-      // List of groups that we need to use for the line chart #3
-      var groups = ["National_rate", "Washigton"];
-      // Reformat data set National unemp rate and WA unemp rate in 2019 - 2021
-      var dataMap = groups.map(function (grpName) {
-        return {
-          name: grpName,
-          values: filteredData.map(function (d) {
-            return {
-              time: +d.UR_Year,
-              value: +d[grpName]
-            };
-          })
-        };
+      // group by year and then sum the national rate
+      var avgUnempRateNational = _d3Collection.nest().key(function (d) {
+        return d.UR_Year;
+      }).rollup(function (d) {
+        return _d.sum(d, function (g) {
+          return g.National_rate;
+        });
+      }).entries(filteredData);
+      // group by year and then sum the WA rate
+      var avgUnempRateWA = _d3Collection.nest().key(function (d) {
+        return d.UR_Year;
+      }).rollup(function (d) {
+        return _d.sum(d, function (g) {
+          return g.Washington;
+        });
+      }).entries(filteredData);
+      // put national rate into array & put years into array
+      avgRateNational = [];
+      avgRateWA = [];
+      years = [];
+      avgUnempRateNational.forEach(function (row) {
+        avgRateNational.push(row.value);
+        years.push(row.key);
       });
-      var myColor = _d.scaleOrdinal().domain(groups).range(_d.schemeSet2);
-      const xScale = _d3Scale.scaleTime().domain(_d.extent(filteredData, function (d) {
-        return new Date(d.UR_Year, 0);
-      })).range([0, width]);
+      avgUnempRateWA.forEach(function (row) {
+        avgRateWA.push(row.value);
+        years.push(row.key);
+      });
+      const xScale = _d3Scale.scaleBand().// years
+      rangeRound([0, width]).padding(1).domain(years.map(function (d) {
+        return d;
+      }));
       svg.append("g").attr("transform", `translate(0, ${height})`).call(_d.axisBottom(xScale));
+      const yScale = _d3Scale.scaleLinear().// unemployment rate
+      domain([0, _d3Array.max(avgRateWA, function (d) {
+        return d;
+      })]).range([height, 0]);
+      svg.append("g").call(_d.axisLeft(yScale));
+      svg.append("path").// add the avg unemployeement National rate line to svg a
+      datum(avgUnempRateNational).attr("fill", "none").attr("stroke", "black").attr("stroke-width", 1.5).attr("d", _d.line().x(function (d) {
+        return xScale(d.key);
+      }).y(function (d) {
+        return yScale(d.value);
+      }));
+      svg.append("path").// add the avg unemployeement WA rate line to svg
+      datum(avgUnempRateWA).attr("fill", "none").attr("stroke", "red").attr("stroke-width", 1.5).attr("d", _d.line().x(function (d) {
+        return xScale(d.key);
+      }).y(function (d) {
+        return yScale(d.value);
+      }));
+      // National line label
+      svg.append("text").attr("transform", "translate(" + (width / 5 + 10) + "," + yScale(avgRateNational[0] - 3) + ")").attr("dy", ".4em").attr("text-anchor", "start").style("fill", "black").// .style("font-weight", "bold")
+      text("National");
+      // WA line label
+      svg.append("text").attr("transform", "translate(" + (width / 5 - 30) + "," + yScale(avgRateWA[0] - 2) + ")").attr("dy", ".4em").attr("text-anchor", "start").style("fill", "red").// .style("font-weight", "bold")
+      text("Washington");
+      // x-axis label
+      svg.append("text").attr("x", width / 2).attr("y", height + margin.bottom).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Year');
+      // y-axis label
+      svg.append("text").attr("x", 0).attr("y", 0).attr('transform', `translate(-40, ${height / 2}) rotate(-90)`).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Unemployment Rate (National Rate & WA)');
     }
     return (
       /*#__PURE__*/_reactDefault.default.createElement("div", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 68,
+          lineNumber: 145,
           columnNumber: 9
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 69,
+          lineNumber: 146,
           columnNumber: 13
         }
       }, loading && "Loading national rate data!"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 70,
+          lineNumber: 147,
           columnNumber: 13
         }
-      }, "hello"), /*#__PURE__*/_reactDefault.default.createElement("div", {
+      }, "Average Unemployment Rate National vs. Washington (2019-2021)"), /*#__PURE__*/_reactDefault.default.createElement("div", {
         id: "unemp-national-WA-line",
         className: "viz",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 71,
+          lineNumber: 148,
           columnNumber: 13
         }
       }))
