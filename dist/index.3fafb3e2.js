@@ -42840,7 +42840,7 @@ try {
   var _react = require("react");
   var _reactDefault = _parcelHelpers.interopDefault(_react);
   var _hooksUseFetch = require("../hooks/useFetch");
-  require("d3-scale");
+  var _d3Scale = require("d3-scale");
   require("d3-array");
   var _d = require("d3");
   require('d3-collection');
@@ -42862,44 +42862,53 @@ try {
         // parse values to int so that d3 can process them
         d.National_rate = +d.National_rate;
         d.Washington = +d.Washington;
-        d.EUR_Year = +d.EUR_Year;
+        d.UR_Year = +d.UR_Year;
       });
+      console.log(data);
+      // filtering 2019-2021 rate
+      var filteredData = data.filter(function (d) {
+        return d.UR_Year >= 2019 && d.UR_Year <= 2021;
+      });
+      // List of groups that we need to use for the line chart #3
       var groups = ["National_rate", "Washigton"];
-      if (d.EUR_Year >= 2019 && d.EUR_Year <= 2021) {
-        var dataMap = groups.map(function (grpName) {
-          return {
-            name: grpName,
-            values: data.map(function (d) {
-              return {
-                time: +d.EUR_Year,
-                value: +d[grpName]
-              };
-            })
-          };
-        });
-      }
-      console.log(dataMap);
+      // Reformat data set National unemp rate and WA unemp rate in 2019 - 2021
+      var dataMap = groups.map(function (grpName) {
+        return {
+          name: grpName,
+          values: filteredData.map(function (d) {
+            return {
+              time: +d.UR_Year,
+              value: +d[grpName]
+            };
+          })
+        };
+      });
+      var myColor = _d.scaleOrdinal().domain(groups).range(_d.schemeSet2);
+      const xScale = _d3Scale.scaleTime().domain(_d.extent(filteredData, function (d) {
+        return new Date(d.UR_Year, 0);
+      })).range([0, width]);
+      svg.append("g").attr("transform", `translate(0, ${height})`).call(_d.axisBottom(xScale));
     }
     return (
       /*#__PURE__*/_reactDefault.default.createElement("div", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 53,
+          lineNumber: 68,
           columnNumber: 9
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 54,
+          lineNumber: 69,
           columnNumber: 13
         }
       }, loading && "Loading national rate data!"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55,
+          lineNumber: 70,
           columnNumber: 13
         }
       }, "hello"), /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -42908,7 +42917,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 56,
+          lineNumber: 71,
           columnNumber: 13
         }
       }))

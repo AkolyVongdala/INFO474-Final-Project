@@ -1,6 +1,6 @@
 import React from "react";
 import { useFetch } from "../hooks/useFetch";
-import { scaleLinear, scaleBand } from "d3-scale";
+import { scaleLinear, scaleBand, scaleTime } from "d3-scale";
 import { max } from "d3-array";
 import * as d3 from "d3";
 import { nest } from 'd3-collection';
@@ -29,23 +29,38 @@ export default function NationalAndWALine() {
         data.forEach(function (d) { //parse values to int so that d3 can process them
             d.National_rate = +d.National_rate;
             d.Washington = +d.Washington;
-            d.EUR_Year = +d.EUR_Year;
+            d.UR_Year = +d.UR_Year;
         });
 
+        console.log(data)
+
+        //filtering 2019-2021 rate
+        var filteredData = data.filter(function(d) {
+            return d.UR_Year >= 2019 && d.UR_Year <= 2021;
+        })
+        // List of groups that we need to use for the line chart #3
         var groups = ["National_rate", "Washigton"];
+        
+        // Reformat data set National unemp rate and WA unemp rate in 2019 - 2021
+        var dataMap = groups.map( function(grpName){
+            return {
+                name: grpName,
+                values: filteredData.map(function(d){
+                    return {time: +d.UR_Year, value: +d[grpName]};
+                })
+            };
+        });
 
-        if(d.EUR_Year >= 2019 && d.EUR_Year <= 2021) {
-            var dataMap = groups.map( function(grpName){
-                return {
-                    name: grpName,
-                    values: data.map(function(d){
-                        return {time: +d.EUR_Year, value: +d[grpName]};
-                    })
-                };
-            });
-        } 
+        var myColor = d3.scaleOrdinal()
+        .domain(groups)
+        .range(d3.schemeSet2);
 
-        console.log(dataMap)
+        const xScale = scaleTime()
+            .domain(d3.extent(filteredData, function (d) { return new Date (d.UR_Year, 0) }))
+            .range([0, width])
+        svg.append("g")
+            .attr("transform", `translate(0, ${height})`)
+            .call(d3.axisBottom(xScale));
     }
     
     
