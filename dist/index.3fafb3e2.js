@@ -26287,16 +26287,17 @@ try {
     const parseMonth = _d.timeParse(`%b`);
     let formatData = data.map(function (d) {
       // d.Year = +d.Year;
-      // d.Month = +d.Month;
+      // d.Month = +parseMonth(d.Month);
       d.K12LESS = +d.K12LESS;
       d.ASSOCIATE = +d.ASSOCIATE;
       d.BACHELOR = +d.BACHELOR;
-      d.UR_Year = parseYear(d.UR_Year);
-      d.UR_Month = parseMonth(d.UR_Month);
+      d.UR_Year = +parseYear(d.UR_Year);
+      d.UR_Month = +parseMonth(d.UR_Month);
       d.National_rate = +d.National_rate;
       d.Washington = +d.Washington;
       return d;
     });
+    console.log(formatData);
     const margin = {
       top: 20,
       right: 20,
@@ -26306,8 +26307,8 @@ try {
     width = 1000 - margin.left - margin.right, height = 550 - margin.top - margin.bottom;
     if (loading === true) {
       // Prevents extra appending
-      const svg = _d.select("#line1").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", `translate(${margin.left}, ${margin.top})`);
-      var geoGroup = ["National_rate", "Washington"];
+      const svg = _d.select("#chart1").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", `translate(${margin.left}, ${margin.top})`);
+      var geoGroup = ["National_rate"];
       var dataReady = geoGroup.map(function (grpName) {
         // .map allows to do something for each element of the list
         return {
@@ -26337,7 +26338,7 @@ try {
         return line(d.values);
       }).attr("stroke", function (d) {
         return myColor(d.name);
-      }).style("stroke-width", 4).style("fill", "none");
+      }).style("stroke-width", 1).style("fill", "none");
     }
     return (
       /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -26345,36 +26346,36 @@ try {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 92,
+          lineNumber: 96,
           columnNumber: 9
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 93,
+          lineNumber: 97,
           columnNumber: 13
         }
       }, loading && "Loading data!"), /*#__PURE__*/_reactDefault.default.createElement("h1", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 94,
+          lineNumber: 98,
           columnNumber: 13
         }
       }, "INFO 474 Final Project "), /*#__PURE__*/_reactDefault.default.createElement("br", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 95,
+          lineNumber: 99,
           columnNumber: 13
         }
       }), /*#__PURE__*/_reactDefault.default.createElement("div", {
-        id: "line1",
+        id: "chart1",
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 96,
+          lineNumber: 100,
           columnNumber: 13
         }
       }))
