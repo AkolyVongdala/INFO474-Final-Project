@@ -26862,6 +26862,10 @@ try {
         avgRate.push(row.value);
         years.push(row.key);
       });
+      avgRate = avgRate.slice(10, 21);
+      // slice to only get data from 2010 - 2021
+      years = years.slice(10, 21);
+      avgUnempRate = avgUnempRate.slice(10, 21);
       const xScale = _d3Scale.scaleBand().// years
       rangeRound([0, width]).padding(1).domain(years.map(function (d) {
         return d;
@@ -26888,21 +26892,21 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 91,
+          lineNumber: 94,
           columnNumber: 9
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 92,
+          lineNumber: 95,
           columnNumber: 13
         }
       }, loading && "Loading national rate data!"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 93,
+          lineNumber: 96,
           columnNumber: 13
         }
       }, "Year vs. Average Unemployment Rate (National Rate)"), /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -26911,7 +26915,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 94,
+          lineNumber: 97,
           columnNumber: 13
         }
       }))

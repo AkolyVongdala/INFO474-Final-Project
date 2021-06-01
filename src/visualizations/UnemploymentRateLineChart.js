@@ -44,6 +44,9 @@ export default function UnemploymentRateLine() {
             avgRate.push(row.value);
             years.push(row.key);
         });
+        avgRate = avgRate.slice(10, 21); //slice to only get data from 2010 - 2021
+        years = years.slice(10, 21);
+        avgUnempRate = avgUnempRate.slice(10, 21);
 
         const xScale = scaleBand() //years
             .rangeRound([0, width]).padding(1)
