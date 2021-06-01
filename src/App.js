@@ -12,9 +12,9 @@ const viewWidth = 500;
 const App = () => {
     const [data, loading] = useFetch(
         //change this url to main later
-        "https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/LineChart_Jisu/data/Info474_FinalData.csv"
+        "https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv"
     );
-    const parseYear = d3.timeParse(`%Y`);
+    const parseYear = d3.timeParse(`%y`);
     const parseMonth = d3.timeParse(`%b`);
 
     let formatData = data.map(function (d) {
@@ -87,6 +87,7 @@ const App = () => {
         
         
     }
+
     return (
         <div className="vis">
             <p>{loading && "Loading data!"}</p>
