@@ -39,14 +39,14 @@ export default function NationalAndWALine() {
             return d.UR_Year >= 2019 && d.UR_Year <= 2021;
         })
 
-        // group by year and then sum the national rate
+        // group by year and then avg the national rate
         var avgUnempRateNational = nest()
         .key(function(d) { return d.UR_Year;})
         .rollup(function(d) { 
             return d3.sum(d, function(g) {return g.National_rate; });
         }).entries(filteredData);
 
-        // group by year and then sum the WA rate
+        // group by year and then avg the WA rate
         var avgUnempRateWA = nest()
         .key(function(d) { return d.UR_Year;})
         .rollup(function(d) { 

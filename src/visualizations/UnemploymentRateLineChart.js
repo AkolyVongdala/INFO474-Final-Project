@@ -94,7 +94,7 @@ export default function UnemploymentRateLine() {
         <div>
             <p>{loading && "Loading national rate data!"}</p>
             <h2>Year vs. Average Unemployment Rate (National Rate)</h2>
-            <div id="unemployment-rate-line" className="viz2"></div>
+            <div id="unemployment-rate-line" className="viz"></div>
         </div>
     );
 }
