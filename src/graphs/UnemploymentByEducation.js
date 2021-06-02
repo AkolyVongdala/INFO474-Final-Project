@@ -9,7 +9,7 @@ import { nest } from 'd3-collection';
 // https://www.frameworkish.com/html/2016/05/04/grouped-dynamic-bar-chart-d3.html
 
 // Chart #1: unemployment rate up until 2010 - 2021
-export default function UnemploymentEducation() {
+export default function UnemploymentByEducation() {
     const [data, loading] = useFetch(
         "https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv"
     );
@@ -27,7 +27,7 @@ export default function UnemploymentEducation() {
 
 
         const svg = d3 // create the svg box for the viz
-            .select('.graph')
+            .select('#unemp-rate-education')
             .append('svg')
             .attr('width', width + margin.left + margin.right)
             .attr('height', height + margin.top + margin.bottom)
@@ -155,4 +155,12 @@ export default function UnemploymentEducation() {
 
         rate.exit().transition().attr('width', 0).remove();
     }
+
+    return (
+        <div>
+            <p>{loading && "Loading unemployment and education level data!"}</p>
+            <h2>Unemployment Rates for Different Education Levels Over the Years 2001-2021</h2>
+            <div id="unemp-rate-education" className="viz"></div>
+        </div>
+    );
 }
