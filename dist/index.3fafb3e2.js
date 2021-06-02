@@ -26832,6 +26832,83 @@ try {
   function UnemploymentRateLine() {
     _s();
     const [data, loading] = _hooksUseFetch.useFetch("https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv");
+    // define state for our tooltip display status
+    const [showTooltip, setShowTooltip] = _react.useState(false);
+    // define state for tooltip position
+    const [tooltipPos, setTooltipPos] = _react.useState({
+      x: 0,
+      y: 0
+    });
+    // define state for our tooltip content
+    const [tooltipContent, setTooltipContent] = _react.useState("");
+    /*******************************************
+    * Tooltip code
+    *******************************************/
+    // first, create a container for our tooltip
+    const tooltip = /*#__PURE__*/_reactDefault.default.createElement("div", {
+      style: {
+        width: "5rem",
+        height: "5rem",
+        position: "absolute",
+        // if showtooltip is true, display the tooltip otherwise set display to none
+        display: `${showTooltip ? "inline" : "none"}`,
+        backgroundColor: "white",
+        // set left and top (which you can think of as the "x" and "y" of our tooltip div)
+        // to match the current state
+        left: `${tooltipPos.x}px`,
+        top: `${tooltipPos.y}px`
+      },
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 26,
+        columnNumber: 26
+      }
+    }, /*#__PURE__*/_reactDefault.default.createElement("span", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 40,
+        columnNumber: 13
+      }
+    }, "Year: ", tooltipContent.x), /*#__PURE__*/_reactDefault.default.createElement("br", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 41,
+        columnNumber: 13
+      }
+    }), /*#__PURE__*/_reactDefault.default.createElement("span", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 42,
+        columnNumber: 13
+      }
+    }, "Unemployment Rate: ", _d.format(".2s")(tooltipContent.y)));
+    // called when our mouse enters a circle
+    const onPointHover = e => {
+      // set new position of tooltip
+      // set the tooltip slightly to the right of our mouse for better viewability
+      // set the tooltips y position to our mouse's y position
+      setTooltipPos({
+        x: e.pageX + 30,
+        y: e.pageY
+      });
+      setShowTooltip(true);
+      // get the element our circle is hovering over
+      const circle = e.target;
+      // set our tooltip content
+      // get our new year and percentage from the circle's properties
+      setTooltipContent({
+        x: circle.getAttribute("year"),
+        y: circle.getAttribute("rate")
+      });
+    };
+    // if the mouse exits the circle, hide the tooltip
+    const onPointLeave = () => {
+      setShowTooltip(false);
+    };
     if (loading === true) {
       const margin = {
         top: 20,
@@ -26851,7 +26928,7 @@ try {
       var avgUnempRate = _d3Collection.nest().key(function (d) {
         return d.EUR_Year;
       }).rollup(function (d) {
-        return _d.sum(d, function (g) {
+        return _d.mean(d, function (g) {
           return g.National_rate;
         });
       }).entries(data);
@@ -26883,11 +26960,27 @@ try {
         return yScale(d.value);
       }));
       // adding a transparent circle
-      svg.selectAll("circle").data(avgUnempRate).enter().append("circle").attr("cx", function (d) {
+      svg.selectAll("circle").data(avgUnempRate).enter().append("circle").attr("year", function (d) {
+        return d.key;
+      }).attr("rate", function (d) {
+        return d.value;
+      }).attr("cx", function (d) {
         return xScale(d.key);
       }).attr("cy", function (d) {
         return yScale(d.value);
-      }).attr("r", 2).attr("stroke", "red").attr("fill", "red");
+      }).attr("r", 3).attr("stroke", "red").attr("fill", "red").on('mouseover', onPointHover).on('mouseout', onPointLeave);
+      // .on('mouseover', function(){
+      // d3.select(this)
+      // .transition()
+      // .duration(1000)
+      // .attr('fill', "steelblue")
+      // })
+      // .on('mouseout', function(){
+      // d3.select(this)
+      // .transition()
+      // .duration(1000)
+      // .attr('fill', "red")
+      // })
       // x-axis lable
       svg.append("text").attr("x", width / 2).attr("y", height + margin.bottom).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Year');
       // y-axis lable
@@ -26898,21 +26991,21 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 105,
+          lineNumber: 177,
           columnNumber: 9
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 106,
+          lineNumber: 178,
           columnNumber: 13
         }
       }, loading && "Loading national rate data!"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 107,
+          lineNumber: 179,
           columnNumber: 13
         }
       }, "Year vs. Average Unemployment Rate (National Rate)"), /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -26921,14 +27014,14 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 108,
+          lineNumber: 180,
           columnNumber: 13
         }
-      }))
+      }, tooltip))
     );
   }
   exports.default = UnemploymentRateLine;
-  _s(UnemploymentRateLine, "Jm65JCcgUFoenM4DufkEA80vRVI=", false, function () {
+  _s(UnemploymentRateLine, "5e2U15RFIH3+WNgI1IL0k6jaBoc=", false, function () {
     return [_hooksUseFetch.useFetch];
   });
   _c = UnemploymentRateLine;
