@@ -4,6 +4,7 @@ import { scaleLinear, scaleBand } from "d3-scale";
 import { max } from "d3-array";
 import * as d3 from "d3";
 import { nest } from 'd3-collection';
+import { schemeBrBG } from "d3";
 
 // Chart #1: unemployment rate up until 2010 - 2021
 export default function UnemploymentRateLine() {
@@ -69,7 +70,17 @@ export default function UnemploymentRateLine() {
             .attr("d", d3.line()
                 .x(function(d) { return xScale(d.key) })
                 .y(function(d) { return yScale(d.value) })
-            )
+            );
+        
+        // adding a transparent circle 
+        svg.selectAll("circle")
+            .data(avgUnempRate)
+            .enter().append("circle")
+            .attr("cx", function(d) {return xScale(d.key)})
+            .attr("cy", function(d) {return yScale(d.value)})
+            .attr("r", 2)
+            .attr("stroke", "red")
+            .attr("fill", "red");
 
         // x-axis lable
         svg.append("text")
