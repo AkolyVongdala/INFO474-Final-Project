@@ -1,96 +1,151 @@
- import React from "react";
+import React from "react";
 import { useFetch } from "../hooks/useFetch";
-import { text, timeYear } from "d3";
+import { scaleLinear, scaleBand, scaleTime } from "d3-scale";
+import { max } from "d3-array";
 import * as d3 from "d3";
-import { max } from "d3-array"
-import { scaleLinear, scaleTime } from "d3-scale"
+import { nest } from 'd3-collection';
 
-
-const viewHeight = 500;
-const viewWidth = 500;
-
-export default function NationalAndWA() {
+//Line Chart #3
+export default function NationalAndWALine() {
     const [data, loading] = useFetch(
-        //change this url to main later
-        "https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/LineChart_Jisu/data/Info474_FinalData.csv"
+        "https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv"
     );
-    const parseYear = d3.timeParse(`%Y`);
-    const parseMonth = d3.timeParse(`%b`);
 
-    let formatData = data.map(function (d) {
-        //d.Year = +d.Year;
-        //d.Month = +d.Month;
-        d.K12LESS = +d.K12LESS;
-        d.ASSOCIATE = +d.ASSOCIATE;
-        d.BACHELOR = +d.BACHELOR;
-        d.UR_Year = parseYear(d.UR_Year);
-        d.UR_Month = parseMonth(d.UR_Month);
-        d.National_rate = +d.National_rate;
-        d.Washington = +d.Washington;
 
-        return d;
-    });
-    
-    const margin = { top: 20, right: 20, bottom: 50, left: 65 }, //size
-        width = 1000 - margin.left - margin.right,
-        height = 550 - margin.top - margin.bottom;
-    
-    if (loading === true) { // Prevents extra appending
-        const svg = d3
-            .select("#line1")
+    if (loading === true) {
+        const margin = { top: 20, right: 20, bottom: 40, left: 60 }, //size
+            width = 1000 - margin.left - margin.right,
+            height = 500 - margin.top - margin.bottom,
+            tooltip = { width: 100, height: 100, x: 10, y: -30 };
+
+
+        const svg = d3 // create the svg box for the viz
+            .select("#unemp-national-WA-line")
             .append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
             .attr("transform", `translate(${margin.left}, ${margin.top})`);
-        var geoGroup = ["National_rate", "Washington"];
 
-        var dataReady = geoGroup.map( function(grpName) { // .map allows to do something for each element of the list
-            return {
-              name: grpName,
-              values: data.map(function(d) {
-                return {time: d.UR_Year, value: +d[grpName]};
-              })
-            };
+
+        data.forEach(function (d) { //parse values to int so that d3 can process them
+            d.National_rate = +d.National_rate;
+            d.Washington = +d.Washington;
+            d.UR_Year = +d.UR_Year;
         });
 
-        var myColor = d3.scaleOrdinal()
-        .domain(geoGroup)
-        .range(d3.schemeSet2);
+        //filtering 2019-2021 rate
+        var filteredData = data.filter(function(d) {
+            return d.UR_Year >= 2019 && d.UR_Year <= 2021;
+        })
 
-        const xScale = scaleTime() 
-            .domain([d3.min(formatData, d => d.UR_Year), d3.max(formatData, d => d.UR_Year)]).nice()
-            .range([0, width])
-            svg.append("g")
+        // group by year and then sum the national rate
+        var avgUnempRateNational = nest()
+        .key(function(d) { return d.UR_Year;})
+        .rollup(function(d) { 
+            return d3.sum(d, function(g) {return g.National_rate; });
+        }).entries(filteredData);
+
+        // group by year and then sum the WA rate
+        var avgUnempRateWA = nest()
+        .key(function(d) { return d.UR_Year;})
+        .rollup(function(d) { 
+            return d3.sum(d, function(g) {return g.Washington; });
+        }).entries(filteredData);
+
+        // put national rate into array & put years into array
+        avgRateNational = [];
+        avgRateWA = [];
+        years = [];
+
+        avgUnempRateNational.forEach(function (row) {
+            avgRateNational.push(row.value);
+            years.push(row.key);
+        });
+
+        avgUnempRateWA.forEach(function (row) {
+            avgRateWA.push(row.value);
+            years.push(row.key);
+        });
+
+        const xScale = scaleBand() //years
+            .rangeRound([0, width]).padding(1)
+            .domain(years.map(function(d) { return d; }));
+        svg.append("g")
             .attr("transform", `translate(0, ${height})`)
-            .call(d3.axisBottom(xScale)); 
+            .call(d3.axisBottom(xScale));
 
-        const yScale = scaleLinear() 
-            .domain([0, 25])
-            .range([height, 0]);
-            svg.append("g")
+        const yScale = scaleLinear() //unemployment rate
+            .domain([0, max(avgRateWA, function(d) { return d; })])
+            .range([ height, 0 ]);
+        svg.append("g")
             .call(d3.axisLeft(yScale));
 
-        // Add the lines
-        var line = d3.line()
-            .x(function(d) { return xScale(+d.time) })
-            .y(function(d) { return yScale(+d.value) })
-            svg.selectAll("myLines")
-            .data(dataReady)
-            .enter()
-            .append("path")
-            .attr("id", function(d){ return d.name })
-            .attr("d", function(d){ return line(d.values) } )
-            .attr("stroke", function(d){ return myColor(d.name) })
-            .style("stroke-width", 4)
-            .style("fill", "none");
+
+         svg.append("path") // add the avg unemployeement National rate line to svg a
+        .datum(avgUnempRateNational)
+        .attr("fill", "none")
+        .attr("stroke", "black")
+        .attr("stroke-width", 1.5)
+        .attr("d", d3.line()
+            .x(function(d) { return xScale(d.key) })
+            .y(function(d) { return yScale(d.value) })
+        )
+
+        svg.append("path") // add the avg unemployeement WA rate line to svg
+        .datum(avgUnempRateWA)
+        .attr("fill", "none")
+        .attr("stroke", "red")
+        .attr("stroke-width", 1.5)
+        .attr("d", d3.line()
+            .x(function(d) { return xScale(d.key) })
+            .y(function(d) { return yScale(d.value) })
+        )
+
+        //National line label
+        svg.append("text")
+		.attr("transform", "translate(" + (width/5 + 10) + "," + yScale(avgRateNational[0] - 3) + ")")
+		.attr("dy", ".4em")
+		.attr("text-anchor", "start")
+		.style("fill", "black")
+        //.style("font-weight", "bold")
+		.text("National");
+
+        //WA line label
+        svg.append("text")
+        .attr("transform", "translate(" + (width/5 - 30) + "," + yScale(avgRateWA[0] - 2) + ")")
+        .attr("dy", ".4em")
+        .attr("text-anchor", "start")
+        .style("fill", "red")
+        //.style("font-weight", "bold")
+        .text("Washington");  
+
+        // x-axis label
+        svg.append("text")
+        .attr("x", width / 2)
+        .attr("y", height + margin.bottom)
+        .attr('fill', '#000')
+        .style('font-size', '20px')
+        .style('text-anchor', 'middle')
+        .text('Year');
+
+        // y-axis label
+        svg.append("text")
+            .attr("x", 0)
+            .attr("y", 0)
+            .attr('transform', `translate(-40, ${height/2}) rotate(-90)`)
+            .attr('fill', '#000')
+            .style('font-size', '20px')
+            .style('text-anchor', 'middle')
+            .text('Unemployment Rate (National Rate & WA)');
     }
+    
+    
     return (
         <div>
-            <p>{loading && "Loading data!"}</p>
-            <h2>National and WA line graph</h2>
-            <br></br>
-            <div id= "line1"></div>
+            <p>{loading && "Loading national rate data!"}</p>
+            <h2>Average Unemployment Rate National vs. Washington (2019-2021)</h2>
+            <div id="unemp-national-WA-line" className="viz"></div>
         </div>
-    );   
-} 
+    );
+}
