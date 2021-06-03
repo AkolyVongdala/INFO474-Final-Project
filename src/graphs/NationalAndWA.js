@@ -43,7 +43,7 @@ export default function NationalAndWALine() {
         var avgUnempRateNational = nest()
         .key(function(d) { return d.UR_Year;})
         .rollup(function(d) { 
-            return d3.sum(d, function(g) {return g.National_rate; });
+            return d3.mean(d, function(g) {return g.National_rate; });
         }).entries(filteredData);
 
         // group by year and then sum the WA rate

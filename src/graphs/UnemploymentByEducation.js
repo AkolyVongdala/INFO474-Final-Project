@@ -15,15 +15,16 @@ export default function UnemploymentByEducation() {
     );
 
     var level = 'Less_than_a_high_school_diploma';
-    var group = 'Year';
+    const edu_levels = ['Less_than_a_high_school_diploma', 'High_school_graduates_no_college',
+                        'Some_college_or_associate_degree', 'Bachelor_s_degree_and_higher']
 
     if (loading === true) {
         const margin = { top: 20, right: 20, bottom: 40, left: 60 }, //size
             width = 1000 - margin.left - margin.right,
             height = 500 - margin.top - margin.bottom;
 
-        var x = d3.scale.linear().range([0, width]);
-        var y0 = d3.scale.ordinal().rangeBands([0, height], .1);
+        var x = d3.scale.ordinal().rangeRoundBands([0, width], .05)
+        var y = d3.scale.linear().range([height, 0]);
 
 
         const svg = d3 // create the svg box for the viz
@@ -32,22 +33,84 @@ export default function UnemploymentByEducation() {
             .attr('width', width + margin.left + margin.right)
             .attr('height', height + margin.top + margin.bottom)
             .append('g')
-            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+            .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
         data.forEach(function (d) { //parse values to int so that d3 can process them
             d.EUR_Year = +d.EUR_Year;
-            d.EUR_Month = +d.EUR_Month;
             d.Less_than_a_high_school_diploma = +d.Less_than_a_high_school_diploma;
             d.High_school_graduates_no_college = +d.High_school_graduates_no_college;
             d.Some_college_or_associate_degree = +d.Some_college_or_associate_degree;
             d.Bachelor_s_degree_and_higher = +d.Bachelor_s_degree_and_higher;
         });
-        
-        var edu_levels = ['Less_than_a_high_school_diploma', 'High_school_graduates_no_college',
-                          'Some_college_or_associate_degree', 'Bachelor_s_degree_and_higher']
-        var time_groups = ['Year', 'Month']
 
-        d3.select('.edu_categories').selectAll('.checkbox')
+        var avgLTAHSD = nest()
+            .key(function(d) { return d.EUR_Year; })
+            .rollup(function(d) {
+                return d3.mean(d, function(g) { return g.Less_than_a_high_school_diploma; });
+            }).entries(data);
+
+        var avgHSGNC  = nest()
+        .key(function(d) { return d.EUR_Year; })
+        .rollup(function(d) {
+            return d3.mean(d, function(g) { return g.High_school_graduates_no_college; });
+        }).entries(data);
+
+        var avgSCOAD  = nest()
+        .key(function(d) { return d.EUR_Year; })
+        .rollup(function(d) {
+            return d3.mean(d, function(g) { return g.Some_college_or_associate_degree; });
+        }).entries(data);
+
+        var avgBDAH  = nest()
+        .key(function(d) { return d.EUR_Year; })
+        .rollup(function(d) {
+            return d3.mean(d, function(g) { return g.Bachelor_s_degree_and_higher; });
+        }).entries(data);
+
+        years = [];
+        avgL = [];
+        avgH = [];
+        avgS = [];
+        avgB = [];
+
+        avgLTAHSD.forEach(function (row) {
+            avgL.push(row.value);
+            years.push(row.key);
+        });
+
+        avgHSGNC.forEach(function (row) {
+            avgH.push(row.value);
+            years.push(row.key);
+        });
+
+        avgSCOAD.forEach(function (row) {
+            avgS.push(row.value);
+            years.push(row.key);
+        });
+
+        avgBDAH.forEach(function (row) {
+            avgB.push(row.value);
+            years.push(row.key);
+        });
+
+
+        // stuck after this
+
+        
+        const xScale = scaleBand() //years
+            .rangeRound([0, width]).padding(1)
+            .domain(years.map(function(d) { return d; }));
+        svg.append("g")
+            .attr("transform", `translate(0, ${height})`)
+            .call(d3.axisBottom(xScale));
+
+        const yScale = scaleLinear() //unemployment rate for current level
+            .domain([0, max(level, function(d) { return d; })])
+            .range([ height, 0 ]);
+        svg.append("g")
+            .call(d3.axisLeft(yScale));
+
+        d3.select('.categories').selectAll('.checkbox')
             .data(edu_levels)
             .enter()
             .append('div')
@@ -57,39 +120,17 @@ export default function UnemploymentByEducation() {
                 return checkbox;
             });
 
-        d3.select('.g_categories').selectAll('.checkbox')
-            .data(time_groups)
-            .enter()
-            .append('div')
-            .attr('class', 'checkbox')
-            .append('label').html(function(group, index) {
-                var checkbox = '<input id="' + group + '" type="checkbox" class="category">';
-                return checkbox;
-            });
+        function updateLevel(selectedLevel) {
+            level = selectedLevel;
+        }
 
-        d3.select('.edu_categories').selectAll('.category').on('change', function() {
-            var x = d3.select('.edu_categories').selectAll('.category:checked');
+        d3.select('.categories').selectAll('.category').on('change', function() {
+            var x = d3.select('.categories').selectAll('.category:checked');
             var edu_levels = x[0].map(function(category) {
                 return category.edu;
             });
             updateLevel(edu_levels);
         });
-    
-        d3.select('.g_categories').selectAll('.category').on('change', function() {
-            var x = d3.select('.g_categories').selectAll('.category:checked');
-            var time_groups = x[0].map(function(category) {
-                return category.group;
-            });
-            updateGroup(time_groups);
-        });
-    
-        function updateLevel(selectedLevel) {
-            level = selectedLevel;
-        }
-    
-        function updateGroup(selectedGroup) {
-            group = selectedGroup;
-        }
     
         x.domain([0, d3.max(data, function(d) {
             if (level === 'Less_than_a_high_school_diploma') {
@@ -103,31 +144,19 @@ export default function UnemploymentByEducation() {
             }
         })]);
     
-        y0.domain(data.map(function(d) {
-            if (group === 'Year') {
-                return d.EUR_Year;
-            } else {
-                return d.EUR_Month;
-            }
+        y.domain(data.map(function(d) {
+            return d.EUR_Year;
         }));
-
-        function getLevel() {
-            if (level === "Year") {
-                return d.EUR_Year;
-            } else {
-                return d.EUR_Month;
-            }
-        }
 
         var time_frame = svg.selectAll('.' + level).data(data);
         time_frame.enter()
             .append('g')
             .attr('class', 'time')
             .attr('transform', function(d) {
-                return 'translate(0, ' + y0(getLevel()) + ')';
+                return 'translate(0, ' + y(getLevel()) + ')';
             });
         
-        function getGroup() {
+        function getLevel() {
             if (level === 'Less_than_a_high_school_diploma') {
                 return d.Less_than_a_high_school_diploma;
             } else if (level === 'High_school_graduates_no_college') {
