@@ -10,7 +10,7 @@ const viewWidth = 500;
 const App = () => {
     return (
         <div>
-            <h1>INFO 474 Final Project </h1>
+            <h1>Covid-19: The Bug that Paralyzed our World</h1>
 
             <UnemploymentRateLine />
             <NationalAndWALine />
