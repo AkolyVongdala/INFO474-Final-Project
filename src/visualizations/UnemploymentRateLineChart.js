@@ -1,15 +1,69 @@
-import React from "react";
+import React, {useState} from "react";
 import { useFetch } from "../hooks/useFetch";
 import { scaleLinear, scaleBand } from "d3-scale";
 import { max } from "d3-array";
 import * as d3 from "d3";
 import { nest } from 'd3-collection';
+import { schemeBrBG } from "d3";
 
 // Chart #1: unemployment rate up until 2010 - 2021
 export default function UnemploymentRateLine() {
     const [data, loading] = useFetch(
         "https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv"
     );
+
+    // define state for our tooltip display status
+    const [showTooltip, setShowTooltip] = useState(false);
+    // define state for tooltip position
+    const [tooltipPos, setTooltipPos] = useState({x: 0, y: 0});
+    // define state for our tooltip content
+    const [tooltipContent, setTooltipContent] = useState("");
+
+    /*******************************************
+     * Tooltip code
+     *******************************************/
+        // first, create a container for our tooltip
+        const tooltip = (<div style={{
+            width: "5rem",
+            height: "5rem",
+            position: "absolute",
+            // if showtooltip is true, display the tooltip otherwise set display to none
+            display: `${showTooltip ? "inline" : "none"}`,
+            backgroundColor: "white",
+            // set left and top (which you can think of as the "x" and "y" of our tooltip div)
+            // to match the current state
+            left: `${tooltipPos.x}px`,
+            top: `${tooltipPos.y}px`
+            }}>
+            
+            {/* set the attack and defense to match the current state */}
+            <span>Year: {tooltipContent.x}</span>
+            <br />
+            <span>Unemployment Rate: {d3.format(".2s")(tooltipContent.y)}</span>
+        </div>)
+
+        // called when our mouse enters a circle
+        const onPointHover = (e) => {
+            // set new position of tooltip
+            // set the tooltip slightly to the right of our mouse for better viewability
+            // set the tooltips y position to our mouse's y position
+            setTooltipPos({ x: e.pageX + 30, y: e.pageY });
+            setShowTooltip(true);
+
+            // get the element our circle is hovering over
+            const circle = e.target;
+            // set our tooltip content
+            // get our new year and percentage from the circle's properties
+            setTooltipContent({
+                x: circle.getAttribute("year"),
+                y: circle.getAttribute("rate")
+            });
+        }
+
+        // if the mouse exits the circle, hide the tooltip
+        const onPointLeave = () => {
+            setShowTooltip(false);
+        }
 
     if (loading === true) {
         const margin = { top: 20, right: 20, bottom: 40, left: 60 }, //size
@@ -34,7 +88,7 @@ export default function UnemploymentRateLine() {
         var avgUnempRate = nest()
         .key(function(d) { return d.EUR_Year;})
         .rollup(function(d) { 
-            return d3.sum(d, function(g) {return g.National_rate; });
+            return d3.mean(d, function(g) {return g.National_rate; });
         }).entries(data);
 
         // put national rate into array & put years into array
@@ -69,7 +123,33 @@ export default function UnemploymentRateLine() {
             .attr("d", d3.line()
                 .x(function(d) { return xScale(d.key) })
                 .y(function(d) { return yScale(d.value) })
-            )
+            );
+        
+        // adding a transparent circle 
+        svg.selectAll("circle")
+            .data(avgUnempRate)
+            .enter().append("circle")
+            .attr("year", function(d){ return d.key})
+            .attr("rate", function(d){ return d.value})
+            .attr("cx", function(d) {return xScale(d.key)})
+            .attr("cy", function(d) {return yScale(d.value)})
+            .attr("r", 3)
+            .attr("stroke", "red")
+            .attr("fill", "red")
+                .on('mouseover', onPointHover)
+                .on('mouseout', onPointLeave)
+                // .on('mouseover', function(){
+                //     d3.select(this)
+                //     .transition()
+                //     .duration(1000)
+                //     .attr('fill', "steelblue")
+                // })
+                // .on('mouseout', function(){
+                //     d3.select(this)
+                //     .transition()
+                //     .duration(1000)
+                //     .attr('fill', "red")
+                // })
 
         // x-axis lable
         svg.append("text")
@@ -89,12 +169,19 @@ export default function UnemploymentRateLine() {
             .style('font-size', '20px')
             .style('text-anchor', 'middle')
             .text('Unemployment Rate (National Rate)');  
+        
     }
+
+
     return (
         <div>
             <p>{loading && "Loading national rate data!"}</p>
             <h2>Year vs. Average Unemployment Rate (National Rate)</h2>
-            <div id="unemployment-rate-line" className="viz"></div>
+            <div id="unemployment-rate-line" className="viz">
+                {/* Make sure to include tooltip here!!! */}
+                {tooltip}
+                {/* add styling to center svg */}
+            </div>
         </div>
     );
 }
