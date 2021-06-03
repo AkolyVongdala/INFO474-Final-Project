@@ -26272,9 +26272,10 @@ try {
   _parcelHelpers.defineInteropFlag(exports);
   var _react = require("react");
   var _reactDefault = _parcelHelpers.interopDefault(_react);
-  require("./hooks/useFetch");
   var _visualizationsUnemploymentRateLineChart = require("./visualizations/UnemploymentRateLineChart");
   var _visualizationsUnemploymentRateLineChartDefault = _parcelHelpers.interopDefault(_visualizationsUnemploymentRateLineChart);
+  var _visualizationsUnemploymentByEducation = require("./visualizations/UnemploymentByEducation");
+  var _visualizationsUnemploymentByEducationDefault = _parcelHelpers.interopDefault(_visualizationsUnemploymentByEducation);
   var _jsxFileName = "C:\\Users\\Kayla\\Documents\\School\\4th_Year\\INFO_474\\INFO474-Final-Project\\src\\App.js";
   const viewHeight = 500;
   const viewWidth = 500;
@@ -26301,6 +26302,13 @@ try {
           lineNumber: 14,
           columnNumber: 13
         }
+      }), /*#__PURE__*/_reactDefault.default.createElement(_visualizationsUnemploymentByEducationDefault.default, {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 15,
+          columnNumber: 13
+        }
       }))
     );
   };
@@ -26314,307 +26322,7 @@ try {
   window.$RefreshSig$ = prevRefreshSig;
 }
 
-},{"react":"3b2NM","./hooks/useFetch":"5YU3r","./visualizations/UnemploymentRateLineChart":"2rVmB","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"5YU3r":[function(require,module,exports) {
-var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-helpers.prelude(module);
-try {
-  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
-  _parcelHelpers.defineInteropFlag(exports);
-  _parcelHelpers.export(exports, "useFetch", function () {
-    return useFetch;
-  });
-  var _d3Fetch = require("d3-fetch");
-  var _react = require("react");
-  var _s = $RefreshSig$();
-  const useFetch = url => {
-    _s();
-    const [data, setData] = _react.useState([]);
-    const [loading, setLoading] = _react.useState(true);
-    async function fetchUrl() {
-      const response = await _d3Fetch.csv(url);
-      setData(response);
-      setLoading(false);
-    }
-    _react.useEffect(() => {
-      fetchUrl();
-    }, []);
-    return [data, loading];
-  };
-  _s(useFetch, "YP7e7Smzxlgf2d3MqLcgRZjo83U=");
-  helpers.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-
-},{"d3-fetch":"3eyo6","react":"3b2NM","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"3eyo6":[function(require,module,exports) {
-var define;
-// https://d3js.org/d3-fetch/ v2.0.0 Copyright 2020 Mike Bostock
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-dsv')) : typeof define === 'function' && define.amd ? define(['exports', 'd3-dsv'], factory) : (global = global || self, factory(global.d3 = global.d3 || ({}), global.d3));
-})(this, function (exports, d3Dsv) {
-  "use strict";
-  function responseBlob(response) {
-    if (!response.ok) throw new Error(response.status + " " + response.statusText);
-    return response.blob();
-  }
-  function blob(input, init) {
-    return fetch(input, init).then(responseBlob);
-  }
-  function responseArrayBuffer(response) {
-    if (!response.ok) throw new Error(response.status + " " + response.statusText);
-    return response.arrayBuffer();
-  }
-  function buffer(input, init) {
-    return fetch(input, init).then(responseArrayBuffer);
-  }
-  function responseText(response) {
-    if (!response.ok) throw new Error(response.status + " " + response.statusText);
-    return response.text();
-  }
-  function text(input, init) {
-    return fetch(input, init).then(responseText);
-  }
-  function dsvParse(parse) {
-    return function (input, init, row) {
-      if (arguments.length === 2 && typeof init === "function") (row = init, init = undefined);
-      return text(input, init).then(function (response) {
-        return parse(response, row);
-      });
-    };
-  }
-  function dsv(delimiter, input, init, row) {
-    if (arguments.length === 3 && typeof init === "function") (row = init, init = undefined);
-    var format = d3Dsv.dsvFormat(delimiter);
-    return text(input, init).then(function (response) {
-      return format.parse(response, row);
-    });
-  }
-  var csv = dsvParse(d3Dsv.csvParse);
-  var tsv = dsvParse(d3Dsv.tsvParse);
-  function image(input, init) {
-    return new Promise(function (resolve, reject) {
-      var image = new Image();
-      for (var key in init) image[key] = init[key];
-      image.onerror = reject;
-      image.onload = function () {
-        resolve(image);
-      };
-      image.src = input;
-    });
-  }
-  function responseJson(response) {
-    if (!response.ok) throw new Error(response.status + " " + response.statusText);
-    if (response.status === 204 || response.status === 205) return;
-    return response.json();
-  }
-  function json(input, init) {
-    return fetch(input, init).then(responseJson);
-  }
-  function parser(type) {
-    return (input, init) => text(input, init).then(text => new DOMParser().parseFromString(text, type));
-  }
-  var xml = parser("application/xml");
-  var html = parser("text/html");
-  var svg = parser("image/svg+xml");
-  exports.blob = blob;
-  exports.buffer = buffer;
-  exports.csv = csv;
-  exports.dsv = dsv;
-  exports.html = html;
-  exports.image = image;
-  exports.json = json;
-  exports.svg = svg;
-  exports.text = text;
-  exports.tsv = tsv;
-  exports.xml = xml;
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-});
-
-},{"d3-dsv":"6T2lj"}],"6T2lj":[function(require,module,exports) {
-var define;
-// https://d3js.org/d3-dsv/ v2.0.0 Copyright 2020 Mike Bostock
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) : typeof define === 'function' && define.amd ? define(['exports'], factory) : (global = global || self, factory(global.d3 = global.d3 || ({})));
-})(this, function (exports) {
-  "use strict";
-  var EOL = {}, EOF = {}, QUOTE = 34, NEWLINE = 10, RETURN = 13;
-  function objectConverter(columns) {
-    return new Function("d", "return {" + columns.map(function (name, i) {
-      return JSON.stringify(name) + ": d[" + i + "] || \"\"";
-    }).join(",") + "}");
-  }
-  function customConverter(columns, f) {
-    var object = objectConverter(columns);
-    return function (row, i) {
-      return f(object(row), i, columns);
-    };
-  }
-  // Compute unique columns in order of discovery.
-  function inferColumns(rows) {
-    var columnSet = Object.create(null), columns = [];
-    rows.forEach(function (row) {
-      for (var column in row) {
-        if (!((column in columnSet))) {
-          columns.push(columnSet[column] = column);
-        }
-      }
-    });
-    return columns;
-  }
-  function pad(value, width) {
-    var s = value + "", length = s.length;
-    return length < width ? new Array(width - length + 1).join(0) + s : s;
-  }
-  function formatYear(year) {
-    return year < 0 ? "-" + pad(-year, 6) : year > 9999 ? "+" + pad(year, 6) : pad(year, 4);
-  }
-  function formatDate(date) {
-    var hours = date.getUTCHours(), minutes = date.getUTCMinutes(), seconds = date.getUTCSeconds(), milliseconds = date.getUTCMilliseconds();
-    return isNaN(date) ? "Invalid Date" : formatYear(date.getUTCFullYear()) + "-" + pad(date.getUTCMonth() + 1, 2) + "-" + pad(date.getUTCDate(), 2) + (milliseconds ? "T" + pad(hours, 2) + ":" + pad(minutes, 2) + ":" + pad(seconds, 2) + "." + pad(milliseconds, 3) + "Z" : seconds ? "T" + pad(hours, 2) + ":" + pad(minutes, 2) + ":" + pad(seconds, 2) + "Z" : minutes || hours ? "T" + pad(hours, 2) + ":" + pad(minutes, 2) + "Z" : "");
-  }
-  function dsv(delimiter) {
-    var reFormat = new RegExp("[\"" + delimiter + "\n\r]"), DELIMITER = delimiter.charCodeAt(0);
-    function parse(text, f) {
-      var convert, columns, rows = parseRows(text, function (row, i) {
-        if (convert) return convert(row, i - 1);
-        (columns = row, convert = f ? customConverter(row, f) : objectConverter(row));
-      });
-      rows.columns = columns || [];
-      return rows;
-    }
-    function parseRows(text, f) {
-      var rows = [], // output rows
-      N = text.length, I = 0, // current character index
-      n = 0, // current line number
-      t, // current token
-      eof = N <= 0, // current token followed by EOF?
-      eol = false;
-      // current token followed by EOL?
-      // Strip the trailing newline.
-      if (text.charCodeAt(N - 1) === NEWLINE) --N;
-      if (text.charCodeAt(N - 1) === RETURN) --N;
-      function token() {
-        if (eof) return EOF;
-        if (eol) return (eol = false, EOL);
-        // Unescape quotes.
-        var i, j = I, c;
-        if (text.charCodeAt(j) === QUOTE) {
-          while (I++ < N && text.charCodeAt(I) !== QUOTE || text.charCodeAt(++I) === QUOTE) ;
-          if ((i = I) >= N) eof = true; else if ((c = text.charCodeAt(I++)) === NEWLINE) eol = true; else if (c === RETURN) {
-            eol = true;
-            if (text.charCodeAt(I) === NEWLINE) ++I;
-          }
-          return text.slice(j + 1, i - 1).replace(/""/g, "\"");
-        }
-        // Find next delimiter or newline.
-        while (I < N) {
-          if ((c = text.charCodeAt(i = I++)) === NEWLINE) eol = true; else if (c === RETURN) {
-            eol = true;
-            if (text.charCodeAt(I) === NEWLINE) ++I;
-          } else if (c !== DELIMITER) continue;
-          return text.slice(j, i);
-        }
-        // Return last token before EOF.
-        return (eof = true, text.slice(j, N));
-      }
-      while ((t = token()) !== EOF) {
-        var row = [];
-        while (t !== EOL && t !== EOF) (row.push(t), t = token());
-        if (f && (row = f(row, n++)) == null) continue;
-        rows.push(row);
-      }
-      return rows;
-    }
-    function preformatBody(rows, columns) {
-      return rows.map(function (row) {
-        return columns.map(function (column) {
-          return formatValue(row[column]);
-        }).join(delimiter);
-      });
-    }
-    function format(rows, columns) {
-      if (columns == null) columns = inferColumns(rows);
-      return [columns.map(formatValue).join(delimiter)].concat(preformatBody(rows, columns)).join("\n");
-    }
-    function formatBody(rows, columns) {
-      if (columns == null) columns = inferColumns(rows);
-      return preformatBody(rows, columns).join("\n");
-    }
-    function formatRows(rows) {
-      return rows.map(formatRow).join("\n");
-    }
-    function formatRow(row) {
-      return row.map(formatValue).join(delimiter);
-    }
-    function formatValue(value) {
-      return value == null ? "" : value instanceof Date ? formatDate(value) : reFormat.test(value += "") ? "\"" + value.replace(/"/g, "\"\"") + "\"" : value;
-    }
-    return {
-      parse: parse,
-      parseRows: parseRows,
-      format: format,
-      formatBody: formatBody,
-      formatRows: formatRows,
-      formatRow: formatRow,
-      formatValue: formatValue
-    };
-  }
-  var csv = dsv(",");
-  var csvParse = csv.parse;
-  var csvParseRows = csv.parseRows;
-  var csvFormat = csv.format;
-  var csvFormatBody = csv.formatBody;
-  var csvFormatRows = csv.formatRows;
-  var csvFormatRow = csv.formatRow;
-  var csvFormatValue = csv.formatValue;
-  var tsv = dsv("\t");
-  var tsvParse = tsv.parse;
-  var tsvParseRows = tsv.parseRows;
-  var tsvFormat = tsv.format;
-  var tsvFormatBody = tsv.formatBody;
-  var tsvFormatRows = tsv.formatRows;
-  var tsvFormatRow = tsv.formatRow;
-  var tsvFormatValue = tsv.formatValue;
-  function autoType(object) {
-    for (var key in object) {
-      var value = object[key].trim(), number, m;
-      if (!value) value = null; else if (value === "true") value = true; else if (value === "false") value = false; else if (value === "NaN") value = NaN; else if (!isNaN(number = +value)) value = number; else if (m = value.match(/^([-+]\d{2})?\d{4}(-\d{2}(-\d{2})?)?(T\d{2}:\d{2}(:\d{2}(\.\d{3})?)?(Z|[-+]\d{2}:\d{2})?)?$/)) {
-        if (fixtz && !!m[4] && !m[7]) value = value.replace(/-/g, "/").replace(/T/, " ");
-        value = new Date(value);
-      } else continue;
-      object[key] = value;
-    }
-    return object;
-  }
-  // https://github.com/d3/d3-dsv/issues/45
-  const fixtz = new Date("2019-01-01T00:00").getHours() || new Date("2019-07-01T00:00").getHours();
-  exports.autoType = autoType;
-  exports.csvFormat = csvFormat;
-  exports.csvFormatBody = csvFormatBody;
-  exports.csvFormatRow = csvFormatRow;
-  exports.csvFormatRows = csvFormatRows;
-  exports.csvFormatValue = csvFormatValue;
-  exports.csvParse = csvParse;
-  exports.csvParseRows = csvParseRows;
-  exports.dsvFormat = dsv;
-  exports.tsvFormat = tsvFormat;
-  exports.tsvFormatBody = tsvFormatBody;
-  exports.tsvFormatRow = tsvFormatRow;
-  exports.tsvFormatRows = tsvFormatRows;
-  exports.tsvFormatValue = tsvFormatValue;
-  exports.tsvParse = tsvParse;
-  exports.tsvParseRows = tsvParseRows;
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
-});
-
-},{}],"5gA8y":[function(require,module,exports) {
+},{"react":"3b2NM","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","./visualizations/UnemploymentRateLineChart":"2rVmB","./visualizations/UnemploymentByEducation":"7DkA0"}],"5gA8y":[function(require,module,exports) {
 "use strict";
 
 exports.interopDefault = function (a) {
@@ -26934,7 +26642,307 @@ try {
   window.$RefreshSig$ = prevRefreshSig;
 }
 
-},{"react":"3b2NM","../hooks/useFetch":"5YU3r","d3-scale":"2UZ4X","d3-array":"7CLUA","d3":"3auhl","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","d3-collection":"3Ea9u"}],"2UZ4X":[function(require,module,exports) {
+},{"react":"3b2NM","../hooks/useFetch":"5YU3r","d3-scale":"2UZ4X","d3-array":"7CLUA","d3":"3auhl","d3-collection":"3Ea9u","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"5YU3r":[function(require,module,exports) {
+var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  _parcelHelpers.export(exports, "useFetch", function () {
+    return useFetch;
+  });
+  var _d3Fetch = require("d3-fetch");
+  var _react = require("react");
+  var _s = $RefreshSig$();
+  const useFetch = url => {
+    _s();
+    const [data, setData] = _react.useState([]);
+    const [loading, setLoading] = _react.useState(true);
+    async function fetchUrl() {
+      const response = await _d3Fetch.csv(url);
+      setData(response);
+      setLoading(false);
+    }
+    _react.useEffect(() => {
+      fetchUrl();
+    }, []);
+    return [data, loading];
+  };
+  _s(useFetch, "YP7e7Smzxlgf2d3MqLcgRZjo83U=");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+
+},{"d3-fetch":"3eyo6","react":"3b2NM","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"3eyo6":[function(require,module,exports) {
+var define;
+// https://d3js.org/d3-fetch/ v2.0.0 Copyright 2020 Mike Bostock
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-dsv')) : typeof define === 'function' && define.amd ? define(['exports', 'd3-dsv'], factory) : (global = global || self, factory(global.d3 = global.d3 || ({}), global.d3));
+})(this, function (exports, d3Dsv) {
+  "use strict";
+  function responseBlob(response) {
+    if (!response.ok) throw new Error(response.status + " " + response.statusText);
+    return response.blob();
+  }
+  function blob(input, init) {
+    return fetch(input, init).then(responseBlob);
+  }
+  function responseArrayBuffer(response) {
+    if (!response.ok) throw new Error(response.status + " " + response.statusText);
+    return response.arrayBuffer();
+  }
+  function buffer(input, init) {
+    return fetch(input, init).then(responseArrayBuffer);
+  }
+  function responseText(response) {
+    if (!response.ok) throw new Error(response.status + " " + response.statusText);
+    return response.text();
+  }
+  function text(input, init) {
+    return fetch(input, init).then(responseText);
+  }
+  function dsvParse(parse) {
+    return function (input, init, row) {
+      if (arguments.length === 2 && typeof init === "function") (row = init, init = undefined);
+      return text(input, init).then(function (response) {
+        return parse(response, row);
+      });
+    };
+  }
+  function dsv(delimiter, input, init, row) {
+    if (arguments.length === 3 && typeof init === "function") (row = init, init = undefined);
+    var format = d3Dsv.dsvFormat(delimiter);
+    return text(input, init).then(function (response) {
+      return format.parse(response, row);
+    });
+  }
+  var csv = dsvParse(d3Dsv.csvParse);
+  var tsv = dsvParse(d3Dsv.tsvParse);
+  function image(input, init) {
+    return new Promise(function (resolve, reject) {
+      var image = new Image();
+      for (var key in init) image[key] = init[key];
+      image.onerror = reject;
+      image.onload = function () {
+        resolve(image);
+      };
+      image.src = input;
+    });
+  }
+  function responseJson(response) {
+    if (!response.ok) throw new Error(response.status + " " + response.statusText);
+    if (response.status === 204 || response.status === 205) return;
+    return response.json();
+  }
+  function json(input, init) {
+    return fetch(input, init).then(responseJson);
+  }
+  function parser(type) {
+    return (input, init) => text(input, init).then(text => new DOMParser().parseFromString(text, type));
+  }
+  var xml = parser("application/xml");
+  var html = parser("text/html");
+  var svg = parser("image/svg+xml");
+  exports.blob = blob;
+  exports.buffer = buffer;
+  exports.csv = csv;
+  exports.dsv = dsv;
+  exports.html = html;
+  exports.image = image;
+  exports.json = json;
+  exports.svg = svg;
+  exports.text = text;
+  exports.tsv = tsv;
+  exports.xml = xml;
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+});
+
+},{"d3-dsv":"6T2lj"}],"6T2lj":[function(require,module,exports) {
+var define;
+// https://d3js.org/d3-dsv/ v2.0.0 Copyright 2020 Mike Bostock
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) : typeof define === 'function' && define.amd ? define(['exports'], factory) : (global = global || self, factory(global.d3 = global.d3 || ({})));
+})(this, function (exports) {
+  "use strict";
+  var EOL = {}, EOF = {}, QUOTE = 34, NEWLINE = 10, RETURN = 13;
+  function objectConverter(columns) {
+    return new Function("d", "return {" + columns.map(function (name, i) {
+      return JSON.stringify(name) + ": d[" + i + "] || \"\"";
+    }).join(",") + "}");
+  }
+  function customConverter(columns, f) {
+    var object = objectConverter(columns);
+    return function (row, i) {
+      return f(object(row), i, columns);
+    };
+  }
+  // Compute unique columns in order of discovery.
+  function inferColumns(rows) {
+    var columnSet = Object.create(null), columns = [];
+    rows.forEach(function (row) {
+      for (var column in row) {
+        if (!((column in columnSet))) {
+          columns.push(columnSet[column] = column);
+        }
+      }
+    });
+    return columns;
+  }
+  function pad(value, width) {
+    var s = value + "", length = s.length;
+    return length < width ? new Array(width - length + 1).join(0) + s : s;
+  }
+  function formatYear(year) {
+    return year < 0 ? "-" + pad(-year, 6) : year > 9999 ? "+" + pad(year, 6) : pad(year, 4);
+  }
+  function formatDate(date) {
+    var hours = date.getUTCHours(), minutes = date.getUTCMinutes(), seconds = date.getUTCSeconds(), milliseconds = date.getUTCMilliseconds();
+    return isNaN(date) ? "Invalid Date" : formatYear(date.getUTCFullYear()) + "-" + pad(date.getUTCMonth() + 1, 2) + "-" + pad(date.getUTCDate(), 2) + (milliseconds ? "T" + pad(hours, 2) + ":" + pad(minutes, 2) + ":" + pad(seconds, 2) + "." + pad(milliseconds, 3) + "Z" : seconds ? "T" + pad(hours, 2) + ":" + pad(minutes, 2) + ":" + pad(seconds, 2) + "Z" : minutes || hours ? "T" + pad(hours, 2) + ":" + pad(minutes, 2) + "Z" : "");
+  }
+  function dsv(delimiter) {
+    var reFormat = new RegExp("[\"" + delimiter + "\n\r]"), DELIMITER = delimiter.charCodeAt(0);
+    function parse(text, f) {
+      var convert, columns, rows = parseRows(text, function (row, i) {
+        if (convert) return convert(row, i - 1);
+        (columns = row, convert = f ? customConverter(row, f) : objectConverter(row));
+      });
+      rows.columns = columns || [];
+      return rows;
+    }
+    function parseRows(text, f) {
+      var rows = [], // output rows
+      N = text.length, I = 0, // current character index
+      n = 0, // current line number
+      t, // current token
+      eof = N <= 0, // current token followed by EOF?
+      eol = false;
+      // current token followed by EOL?
+      // Strip the trailing newline.
+      if (text.charCodeAt(N - 1) === NEWLINE) --N;
+      if (text.charCodeAt(N - 1) === RETURN) --N;
+      function token() {
+        if (eof) return EOF;
+        if (eol) return (eol = false, EOL);
+        // Unescape quotes.
+        var i, j = I, c;
+        if (text.charCodeAt(j) === QUOTE) {
+          while (I++ < N && text.charCodeAt(I) !== QUOTE || text.charCodeAt(++I) === QUOTE) ;
+          if ((i = I) >= N) eof = true; else if ((c = text.charCodeAt(I++)) === NEWLINE) eol = true; else if (c === RETURN) {
+            eol = true;
+            if (text.charCodeAt(I) === NEWLINE) ++I;
+          }
+          return text.slice(j + 1, i - 1).replace(/""/g, "\"");
+        }
+        // Find next delimiter or newline.
+        while (I < N) {
+          if ((c = text.charCodeAt(i = I++)) === NEWLINE) eol = true; else if (c === RETURN) {
+            eol = true;
+            if (text.charCodeAt(I) === NEWLINE) ++I;
+          } else if (c !== DELIMITER) continue;
+          return text.slice(j, i);
+        }
+        // Return last token before EOF.
+        return (eof = true, text.slice(j, N));
+      }
+      while ((t = token()) !== EOF) {
+        var row = [];
+        while (t !== EOL && t !== EOF) (row.push(t), t = token());
+        if (f && (row = f(row, n++)) == null) continue;
+        rows.push(row);
+      }
+      return rows;
+    }
+    function preformatBody(rows, columns) {
+      return rows.map(function (row) {
+        return columns.map(function (column) {
+          return formatValue(row[column]);
+        }).join(delimiter);
+      });
+    }
+    function format(rows, columns) {
+      if (columns == null) columns = inferColumns(rows);
+      return [columns.map(formatValue).join(delimiter)].concat(preformatBody(rows, columns)).join("\n");
+    }
+    function formatBody(rows, columns) {
+      if (columns == null) columns = inferColumns(rows);
+      return preformatBody(rows, columns).join("\n");
+    }
+    function formatRows(rows) {
+      return rows.map(formatRow).join("\n");
+    }
+    function formatRow(row) {
+      return row.map(formatValue).join(delimiter);
+    }
+    function formatValue(value) {
+      return value == null ? "" : value instanceof Date ? formatDate(value) : reFormat.test(value += "") ? "\"" + value.replace(/"/g, "\"\"") + "\"" : value;
+    }
+    return {
+      parse: parse,
+      parseRows: parseRows,
+      format: format,
+      formatBody: formatBody,
+      formatRows: formatRows,
+      formatRow: formatRow,
+      formatValue: formatValue
+    };
+  }
+  var csv = dsv(",");
+  var csvParse = csv.parse;
+  var csvParseRows = csv.parseRows;
+  var csvFormat = csv.format;
+  var csvFormatBody = csv.formatBody;
+  var csvFormatRows = csv.formatRows;
+  var csvFormatRow = csv.formatRow;
+  var csvFormatValue = csv.formatValue;
+  var tsv = dsv("\t");
+  var tsvParse = tsv.parse;
+  var tsvParseRows = tsv.parseRows;
+  var tsvFormat = tsv.format;
+  var tsvFormatBody = tsv.formatBody;
+  var tsvFormatRows = tsv.formatRows;
+  var tsvFormatRow = tsv.formatRow;
+  var tsvFormatValue = tsv.formatValue;
+  function autoType(object) {
+    for (var key in object) {
+      var value = object[key].trim(), number, m;
+      if (!value) value = null; else if (value === "true") value = true; else if (value === "false") value = false; else if (value === "NaN") value = NaN; else if (!isNaN(number = +value)) value = number; else if (m = value.match(/^([-+]\d{2})?\d{4}(-\d{2}(-\d{2})?)?(T\d{2}:\d{2}(:\d{2}(\.\d{3})?)?(Z|[-+]\d{2}:\d{2})?)?$/)) {
+        if (fixtz && !!m[4] && !m[7]) value = value.replace(/-/g, "/").replace(/T/, " ");
+        value = new Date(value);
+      } else continue;
+      object[key] = value;
+    }
+    return object;
+  }
+  // https://github.com/d3/d3-dsv/issues/45
+  const fixtz = new Date("2019-01-01T00:00").getHours() || new Date("2019-07-01T00:00").getHours();
+  exports.autoType = autoType;
+  exports.csvFormat = csvFormat;
+  exports.csvFormatBody = csvFormatBody;
+  exports.csvFormatRow = csvFormatRow;
+  exports.csvFormatRows = csvFormatRows;
+  exports.csvFormatValue = csvFormatValue;
+  exports.csvParse = csvParse;
+  exports.csvParseRows = csvParseRows;
+  exports.dsvFormat = dsv;
+  exports.tsvFormat = tsvFormat;
+  exports.tsvFormatBody = tsvFormatBody;
+  exports.tsvFormatRow = tsvFormatRow;
+  exports.tsvFormatRows = tsvFormatRows;
+  exports.tsvFormatValue = tsvFormatValue;
+  exports.tsvParse = tsvParse;
+  exports.tsvParseRows = tsvParseRows;
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+});
+
+},{}],"2UZ4X":[function(require,module,exports) {
 var define;
 // https://d3js.org/d3-scale/ v3.3.0 Copyright 2021 Mike Bostock
 (function (global, factory) {
@@ -42820,6 +42828,200 @@ var define;
   });
 });
 
-},{}]},["1j6wU","3Imd1","5rkFb"], "5rkFb", "parcelRequiref024")
+},{}],"7DkA0":[function(require,module,exports) {
+var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require("react");
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _hooksUseFetch = require("../hooks/useFetch");
+  var _d3Scale = require("d3-scale");
+  require("d3-array");
+  var _d = require("d3");
+  var _d3Collection = require('d3-collection');
+  var _jsxFileName = "C:\\Users\\Kayla\\Documents\\School\\4th_Year\\INFO_474\\INFO474-Final-Project\\src\\visualizations\\UnemploymentByEducation.js", _s = $RefreshSig$();
+  function UnemploymentByEducation() {
+    _s();
+    const [data, loading] = _hooksUseFetch.useFetch("https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv");
+    var level = ['Less_than_a_high_school_diploma'];
+    const edu_levels = ['Less_than_a_high_school_diploma', 'High_school_graduates_no_college', 'Some_college_or_associate_degree', 'Bachelor_s_degree_and_higher'];
+    if (loading === true) {
+      const margin = {
+        top: 20,
+        right: 20,
+        bottom: 40,
+        left: 60
+      }, // size
+      width = 1000 - margin.left - margin.right, height = 500 - margin.top - margin.bottom;
+      var x = _d.scaleBand().rangeRound([0, width], .05);
+      var y = _d.scaleLinear().range([height, 0]);
+      const svg = _d.// create the svg box for the viz
+      select('#unemp-rate-education').append('svg').attr('width', width + margin.left + margin.right).attr('height', height + margin.top + margin.bottom).append('g').attr("transform", `translate(${margin.left}, ${margin.top})`);
+      data.forEach(function (d) {
+        // parse values to int so that d3 can process them
+        d.EUR_Year = +d.EUR_Year;
+        d.Less_than_a_high_school_diploma = +d.Less_than_a_high_school_diploma;
+        d.High_school_graduates_no_college = +d.High_school_graduates_no_college;
+        d.Some_college_or_associate_degree = +d.Some_college_or_associate_degree;
+        d.Bachelor_s_degree_and_higher = +d.Bachelor_s_degree_and_higher;
+      });
+      var avgLTAHSD = _d3Collection.nest().key(function (d) {
+        return d.EUR_Year;
+      }).rollup(function (d) {
+        return _d.mean(d, function (g) {
+          return g.Less_than_a_high_school_diploma;
+        });
+      }).entries(data);
+      var avgHSGNC = _d3Collection.nest().key(function (d) {
+        return d.EUR_Year;
+      }).rollup(function (d) {
+        return _d.mean(d, function (g) {
+          return g.High_school_graduates_no_college;
+        });
+      }).entries(data);
+      var avgSCOAD = _d3Collection.nest().key(function (d) {
+        return d.EUR_Year;
+      }).rollup(function (d) {
+        return _d.mean(d, function (g) {
+          return g.Some_college_or_associate_degree;
+        });
+      }).entries(data);
+      var avgBDAH = _d3Collection.nest().key(function (d) {
+        return d.EUR_Year;
+      }).rollup(function (d) {
+        return _d.mean(d, function (g) {
+          return g.Bachelor_s_degree_and_higher;
+        });
+      }).entries(data);
+      years = [];
+      avgL = [];
+      avgH = [];
+      avgS = [];
+      avgB = [];
+      avgLTAHSD.forEach(function (row) {
+        avgL.push(row.value);
+        years.push(row.key);
+      });
+      avgHSGNC.forEach(function (row) {
+        avgH.push(row.value);
+        years.push(row.key);
+      });
+      avgSCOAD.forEach(function (row) {
+        avgS.push(row.value);
+        years.push(row.key);
+      });
+      avgBDAH.forEach(function (row) {
+        avgB.push(row.value);
+        years.push(row.key);
+      });
+      // stuck after this
+      const xScale = _d3Scale.scaleBand().// years
+      rangeRound([0, width]).padding(1).domain(years.map(function (d) {
+        return d;
+      }));
+      svg.append("g").attr("transform", `translate(0, ${height})`).call(_d.axisBottom(xScale));
+      const yScale = _d3Scale.scaleLinear().// unemployment rate for current level
+      domain([0, 16]).range([height, 0]);
+      svg.append("g").call(_d.axisLeft(yScale));
+      let count = 0;
+      _d.select('.categories').selectAll('.checkbox').data(edu_levels).enter().append('div').attr('class', 'checkbox').append('label').html(function () {
+        var checkbox = '<input id="' + edu_levels[count] + '" type="checkbox" class="category">';
+        var label = edu_levels[count];
+        count++;
+        return checkbox + label;
+      });
+      function updateLevel(selectedLevel) {
+        level = [];
+        level = selectedLevel;
+      }
+      _d.select('.categories').selectAll('.category').on('change', function () {
+        var x = _d.select('.categories').selectAll('.category:checked');
+        // all the checkboxes that are checked
+        let checked = Object.values(x)[0][0];
+        let ids = [];
+        for (let id of checked) {
+          ids.push(id);
+        }
+        updateLevel(ids);
+      });
+      // x.domain([0, d3.max(data, function(d) {
+      // if (level === 'Less_than_a_high_school_diploma') {
+      // return d.Less_than_a_high_school_diploma;
+      // } else if (level === 'High_school_graduates_no_college') {
+      // return d.High_school_graduates_no_college;
+      // } else if (level === 'Some_college_or_associate_degree') {
+      // return d.Some_college_or_associate_degree;
+      // } else {
+      // return d.Bachelor_s_degree_and_higher;
+      // }
+      // })]);
+      // y.domain(data.map(function(d) {
+      // return d.EUR_Year;
+      // }));
+      var time_frame = svg.selectAll('.year').data(data);
+      time_frame.enter().append('g').attr('class', 'year').attr('transform', function (d) {
+        return 'translate(0, ' + y(d.year) + ')';
+      });
+    }
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement("div", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 192,
+          columnNumber: 9
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 193,
+          columnNumber: 13
+        }
+      }, loading && "Loading unemployment and education level data!"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 194,
+          columnNumber: 13
+        }
+      }, "Unemployment Rates for Different Education Levels Over the Years 2001-2021"), /*#__PURE__*/_reactDefault.default.createElement("div", {
+        className: "categories",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 195,
+          columnNumber: 13
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("div", {
+        id: "unemp-rate-education",
+        className: "viz",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 196,
+          columnNumber: 13
+        }
+      }))
+    );
+  }
+  exports.default = UnemploymentByEducation;
+  _s(UnemploymentByEducation, "Jm65JCcgUFoenM4DufkEA80vRVI=", false, function () {
+    return [_hooksUseFetch.useFetch];
+  });
+  _c = UnemploymentByEducation;
+  var _c;
+  $RefreshReg$(_c, "UnemploymentByEducation");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+
+},{"react":"3b2NM","../hooks/useFetch":"5YU3r","d3-scale":"2UZ4X","d3-array":"7CLUA","d3":"3auhl","d3-collection":"3Ea9u","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}]},["1j6wU","3Imd1","5rkFb"], "5rkFb", "parcelRequiref024")
 
 //# sourceMappingURL=index.3fafb3e2.js.map
