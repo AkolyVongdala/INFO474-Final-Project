@@ -1,7 +1,6 @@
 import React from "react";
 import { useFetch } from "../hooks/useFetch";
 import { scaleLinear, scaleBand } from "d3-scale";
-import { max } from "d3-array";
 import * as d3 from "d3";
 import { nest } from 'd3-collection';
 
