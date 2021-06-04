@@ -5,12 +5,11 @@ import { max } from "d3-array";
 import * as d3 from "d3";
 import { nest } from 'd3-collection';
 
-//Line Chart #3
+//Line Chart #3: unemployment rate National vs. Washington 2019 - 2021
 export default function NationalAndWALine() {
     const [data, loading] = useFetch(
         "https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv"
     );
-
 
     if (loading === true) {
         const margin = { top: 20, right: 20, bottom: 40, left: 60 }, //size
@@ -40,14 +39,14 @@ export default function NationalAndWALine() {
         })
 
         // group by year and then avg the national rate
-        var avgUnempRateNational = nest()
+        let avgUnempRateNational = nest()
         .key(function(d) { return d.UR_Year;})
         .rollup(function(d) { 
             return d3.sum(d, function(g) {return g.National_rate; });
         }).entries(filteredData);
 
         // group by year and then avg the WA rate
-        var avgUnempRateWA = nest()
+        let avgUnempRateWA = nest()
         .key(function(d) { return d.UR_Year;})
         .rollup(function(d) { 
             return d3.sum(d, function(g) {return g.Washington; });
@@ -83,51 +82,106 @@ export default function NationalAndWALine() {
 
 
          svg.append("path") // add the avg unemployeement National rate line to svg a
-        .datum(avgUnempRateNational)
-        .attr("fill", "none")
-        .attr("stroke", "black")
-        .attr("stroke-width", 1.5)
-        .attr("d", d3.line()
-            .x(function(d) { return xScale(d.key) })
-            .y(function(d) { return yScale(d.value) })
-        )
+            .datum(avgUnempRateNational)
+            .attr("fill", "none")
+            .attr("stroke", "black")
+            .attr("stroke-width", 1.5)
+            .attr("d", d3.line()
+                .x(function(d) { return xScale(d.key) })
+                .y(function(d) { return yScale(d.value) })
+            )
 
         svg.append("path") // add the avg unemployeement WA rate line to svg
-        .datum(avgUnempRateWA)
-        .attr("fill", "none")
-        .attr("stroke", "red")
-        .attr("stroke-width", 1.5)
-        .attr("d", d3.line()
-            .x(function(d) { return xScale(d.key) })
-            .y(function(d) { return yScale(d.value) })
-        )
+            .datum(avgUnempRateWA)
+            .attr("fill", "none")
+            .attr("stroke", "red")
+            .attr("stroke-width", 1.5)
+            .attr("d", d3.line()
+                .x(function(d) { return xScale(d.key) })
+                .y(function(d) { return yScale(d.value) })
+            )
+     // create a tooltip
+    var Tooltip = d3.select("#unemp-national-WA-line")
+      .append("div")
+      .style("opacity", 0)
+      .attr("class", "tooltip")
+      .style("background-color", "white")
+      .style("border", "solid")
+      .style("border-width", "2px")
+      .style("border-radius", "5px")
+      .style("padding", "5px")
+
+      // Three function that change the tooltip when user hover / move / leave a cell
+      var mouseover = function(d) {
+        Tooltip
+          .style("opacity", 1)
+      }
+      var mousemove = function(d) {
+        Tooltip
+          .html("Exact value: " + d.value)
+          .style("left", (d3.mouse(this)[0]+70) + "px")
+          .style("top", (d3.mouse(this)[1]) + "px")
+        .transition()
+          .duration(200) // ms
+          .style("opacity", .9) // started as 0!
+      }
+
+      var mouseleave = function(d) {
+        Tooltip
+          .style("opacity", 0)
+      } 
+
+        // Add dots for National Unemployment rate
+        svg.append('g')
+            .selectAll("circle")
+            .data(avgUnempRateNational)
+            .enter()
+            .append("circle")
+            .attr("cx", function (d) { return xScale(d.key); } )
+            .attr("cy", function (d) { return yScale(d.value); } )
+            .attr("r", 4)
+            .style("fill", "Black")
+            .on("mouseover", mouseover)
+            .on("mousemove", mousemove)
+            .on("mouseleave", mouseleave);
+
+        // Add dots for Washington Unemployment rate
+        svg.append('g')
+            .selectAll("circle")
+            .data(avgUnempRateWA)
+            .enter()
+            .append("circle")
+            .attr("cx", function (d) { return xScale(d.key); } )
+            .attr("cy", function (d) { return yScale(d.value); } )
+            .attr("r", 4)
+            .style("fill", "red");
 
         //National line label
         svg.append("text")
-		.attr("transform", "translate(" + (width/5 + 10) + "," + yScale(avgRateNational[0] - 3) + ")")
-		.attr("dy", ".4em")
-		.attr("text-anchor", "start")
-		.style("fill", "black")
-        //.style("font-weight", "bold")
-		.text("National");
+            .attr("transform", "translate(" + (width/5 + 10) + "," + yScale(avgRateNational[0] - 3) + ")")
+            .attr("dy", ".4em")
+            .attr("text-anchor", "start")
+            .style("fill", "black")
+            //.style("font-weight", "bold")
+            .text("National");
 
         //WA line label
         svg.append("text")
-        .attr("transform", "translate(" + (width/5 - 30) + "," + yScale(avgRateWA[0] - 2) + ")")
-        .attr("dy", ".4em")
-        .attr("text-anchor", "start")
-        .style("fill", "red")
-        //.style("font-weight", "bold")
-        .text("Washington");  
+            .attr("transform", "translate(" + (width/5 - 30) + "," + yScale(avgRateWA[0] - 2) + ")")
+            .attr("dy", ".4em")
+            .attr("text-anchor", "start")
+            .style("fill", "red")
+            //.style("font-weight", "bold")
+            .text("Washington");  
 
         // x-axis label
         svg.append("text")
-        .attr("x", width / 2)
-        .attr("y", height + margin.bottom)
-        .attr('fill', '#000')
-        .style('font-size', '20px')
-        .style('text-anchor', 'middle')
-        .text('Year');
+            .attr("x", width / 2)
+            .attr("y", height + margin.bottom)
+            .attr('fill', '#000')
+            .style('font-size', '20px')
+            .style('text-anchor', 'middle')
+            .text('Year');
 
         // y-axis label
         svg.append("text")
@@ -145,7 +199,8 @@ export default function NationalAndWALine() {
         <div>
             <p>{loading && "Loading national rate data!"}</p>
             <h2>Average Unemployment Rate National vs. Washington (2019-2021)</h2>
-            <div id="unemp-national-WA-line" className="viz"></div>
+            <div id="unemp-national-WA-line" className="viz">
+            </div>
         </div>
     );
 }
