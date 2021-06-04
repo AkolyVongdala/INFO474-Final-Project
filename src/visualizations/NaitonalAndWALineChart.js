@@ -76,7 +76,7 @@ export default function NationalAndWALine() {
 
         const yScale = scaleLinear() //unemployment rate
             .domain([0, max(avgRateWA, function(d) { return d; })])
-            .range([ height, 0 ]);
+            .range([ height , 0 ]);
         svg.append("g")
             .call(d3.axisLeft(yScale));
 
@@ -100,39 +100,9 @@ export default function NationalAndWALine() {
                 .x(function(d) { return xScale(d.key) })
                 .y(function(d) { return yScale(d.value) })
             )
-     // create a tooltip
-    var Tooltip = d3.select("#unemp-national-WA-line")
-      .append("div")
-      .style("opacity", 0)
-      .attr("class", "tooltip")
-      .style("background-color", "white")
-      .style("border", "solid")
-      .style("border-width", "2px")
-      .style("border-radius", "5px")
-      .style("padding", "5px")
-
-      // Three function that change the tooltip when user hover / move / leave a cell
-      var mouseover = function(d) {
-        Tooltip
-          .style("opacity", 1)
-      }
-      var mousemove = function(d) {
-        Tooltip
-          .html("Exact value: " + d.value)
-          .style("left", (d3.mouse(this)[0]+70) + "px")
-          .style("top", (d3.mouse(this)[1]) + "px")
-        .transition()
-          .duration(200) // ms
-          .style("opacity", .9) // started as 0!
-      }
-
-      var mouseleave = function(d) {
-        Tooltip
-          .style("opacity", 0)
-      } 
 
         // Add dots for National Unemployment rate
-        svg.append('g')
+        var National_circle = svg.append('g')
             .selectAll("circle")
             .data(avgUnempRateNational)
             .enter()
@@ -141,9 +111,8 @@ export default function NationalAndWALine() {
             .attr("cy", function (d) { return yScale(d.value); } )
             .attr("r", 4)
             .style("fill", "Black")
-            .on("mouseover", mouseover)
-            .on("mousemove", mousemove)
-            .on("mouseleave", mouseleave);
+            .append("svg:title")
+            .text(function(d) { return " Year: " + d.key + " Rate: " + d.value; });
 
         // Add dots for Washington Unemployment rate
         svg.append('g')
@@ -154,7 +123,9 @@ export default function NationalAndWALine() {
             .attr("cx", function (d) { return xScale(d.key); } )
             .attr("cy", function (d) { return yScale(d.value); } )
             .attr("r", 4)
-            .style("fill", "red");
+            .style("fill", "red")
+            .append("svg:title")
+            .text(function(d) { return " Year: " + d.key + " Rate: " + d.value; });
 
         //National line label
         svg.append("text")

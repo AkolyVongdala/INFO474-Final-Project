@@ -43022,31 +43022,22 @@ try {
       }).y(function (d) {
         return yScale(d.value);
       }));
-      // create a tooltip
-      var Tooltip = _d.select("#unemp-national-WA-line").append("div").style("opacity", 0).attr("class", "tooltip").style("background-color", "white").style("border", "solid").style("border-width", "2px").style("border-radius", "5px").style("padding", "5px");
-      // Three function that change the tooltip when user hover / move / leave a cell
-      var mouseover = function (d) {
-        Tooltip.style("opacity", 1);
-      };
-      var mousemove = function (d) {
-        Tooltip.html("Exact value: " + d.value).style("left", _d.mouse(this)[0] + 70 + "px").style("top", _d.mouse(this)[1] + "px").transition().duration(200).// ms
-        style("opacity", .9);
-      };
-      var mouseleave = function (d) {
-        Tooltip.style("opacity", 0);
-      };
       // Add dots for National Unemployment rate
-      svg.append('g').selectAll("circle").data(avgUnempRateNational).enter().append("circle").attr("cx", function (d) {
+      var National_circle = svg.append('g').selectAll("circle").data(avgUnempRateNational).enter().append("circle").attr("cx", function (d) {
         return xScale(d.key);
       }).attr("cy", function (d) {
         return yScale(d.value);
-      }).attr("r", 4).style("fill", "Black").on("mouseover", mouseover).on("mousemove", mousemove).on("mouseleave", mouseleave);
+      }).attr("r", 4).style("fill", "Black").append("svg:title").text(function (d) {
+        return " Year: " + d.key + " Rate: " + d.value;
+      });
       // Add dots for Washington Unemployment rate
       svg.append('g').selectAll("circle").data(avgUnempRateWA).enter().append("circle").attr("cx", function (d) {
         return xScale(d.key);
       }).attr("cy", function (d) {
         return yScale(d.value);
-      }).attr("r", 4).style("fill", "red");
+      }).attr("r", 4).style("fill", "red").append("svg:title").text(function (d) {
+        return " Year: " + d.key + " Rate: " + d.value;
+      });
       // National line label
       svg.append("text").attr("transform", "translate(" + (width / 5 + 10) + "," + yScale(avgRateNational[0] - 3) + ")").attr("dy", ".4em").attr("text-anchor", "start").style("fill", "black").// .style("font-weight", "bold")
       text("National");
@@ -43063,21 +43054,21 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 199,
+          lineNumber: 170,
           columnNumber: 9
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 200,
+          lineNumber: 171,
           columnNumber: 13
         }
       }, loading && "Loading national rate data!"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 201,
+          lineNumber: 172,
           columnNumber: 13
         }
       }, "Average Unemployment Rate National vs. Washington (2019-2021)"), /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -43086,7 +43077,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 202,
+          lineNumber: 173,
           columnNumber: 13
         }
       }))
