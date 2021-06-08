@@ -43038,37 +43038,54 @@ try {
       }).attr("r", 4).style("fill", "red").append("svg:title").text(function (d) {
         return " Year: " + d.key + " Rate: " + d.value;
       });
-      // National line label
-      svg.append("text").attr("transform", "translate(" + (width / 5 + 10) + "," + yScale(avgRateNational[0] - 3) + ")").attr("dy", ".4em").attr("text-anchor", "start").style("fill", "black").// .style("font-weight", "bold")
-      text("National");
-      // WA line label
-      svg.append("text").attr("transform", "translate(" + (width / 5 - 30) + "," + yScale(avgRateWA[0] - 2) + ")").attr("dy", ".4em").attr("text-anchor", "start").style("fill", "red").// .style("font-weight", "bold")
-      text("Washington");
+      /*//National line label
+      svg.append("text")
+      .attr("transform", "translate(" + (width/5 + 10) + "," + yScale(avgRateNational[0] - 3) + ")")
+      .attr("dy", ".4em")
+      .attr("text-anchor", "start")
+      .style("fill", "black")
+      //.style("font-weight", "bold")
+      .text("National");
+      
+      //WA line label
+      svg.append("text")
+      .attr("transform", "translate(" + (width/5 - 30) + "," + yScale(avgRateWA[0] - 2) + ")")
+      .attr("dy", ".4em")
+      .attr("text-anchor", "start")
+      .style("fill", "red")
+      //.style("font-weight", "bold")
+      .text("Washington");*/
       // x-axis label
       svg.append("text").attr("x", width / 2).attr("y", height + margin.bottom).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Year');
       // y-axis label
       svg.append("text").attr("x", 0).attr("y", 0).attr('transform', `translate(-40, ${height / 2}) rotate(-90)`).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Unemployment Rate (National Rate & WA)');
+      // WA legend
+      svg.append("circle").attr("cx", width / 2 + 300).attr("cy", 130).attr("r", 6).style("fill", "red");
+      svg.append("text").attr("x", (width + 20) / 2 + 300).attr("y", 130).text("Washington").style("font-size", "15px").attr("alignment-baseline", "middle");
+      // National legend
+      svg.append("circle").attr("cx", width / 2 + 300).attr("cy", 160).attr("r", 6).style("fill", "black");
+      svg.append("text").attr("x", (width + 20) / 2 + 300).attr("y", 160).text("National").style("font-size", "15px").attr("alignment-baseline", "middle");
     }
     return (
       /*#__PURE__*/_reactDefault.default.createElement("div", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 170,
+          lineNumber: 198,
           columnNumber: 9
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 171,
+          lineNumber: 199,
           columnNumber: 13
         }
       }, loading && "Loading national rate data!"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 172,
+          lineNumber: 200,
           columnNumber: 13
         }
       }, "Average Unemployment Rate National vs. Washington (2019-2021)"), /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -43077,7 +43094,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 173,
+          lineNumber: 201,
           columnNumber: 13
         }
       }))

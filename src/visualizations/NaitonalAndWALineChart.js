@@ -127,7 +127,7 @@ export default function NationalAndWALine() {
             .append("svg:title")
             .text(function(d) { return " Year: " + d.key + " Rate: " + d.value; });
 
-        //National line label
+/*         //National line label
         svg.append("text")
             .attr("transform", "translate(" + (width/5 + 10) + "," + yScale(avgRateNational[0] - 3) + ")")
             .attr("dy", ".4em")
@@ -143,7 +143,7 @@ export default function NationalAndWALine() {
             .attr("text-anchor", "start")
             .style("fill", "red")
             //.style("font-weight", "bold")
-            .text("Washington");  
+            .text("Washington");   */
 
         // x-axis label
         svg.append("text")
@@ -163,6 +163,34 @@ export default function NationalAndWALine() {
             .style('font-size', '20px')
             .style('text-anchor', 'middle')
             .text('Unemployment Rate (National Rate & WA)');
+        
+        // WA legend
+        svg.append("circle")
+            .attr("cx", width / 2 + 300)
+            .attr("cy",130)
+            .attr("r", 6)
+            .style("fill", "red")
+            
+        svg.append("text")
+            .attr("x", (width + 20) / 2 + 300)
+            .attr("y", 130)
+            .text("Washington")
+            .style("font-size", "15px")
+            .attr("alignment-baseline","middle")
+
+        // National legend
+        svg.append("circle")
+            .attr("cx", width / 2 + 300)
+            .attr("cy",160)
+            .attr("r", 6)
+            .style("fill", "black")
+            
+        svg.append("text")
+            .attr("x", (width + 20) / 2 + 300)
+            .attr("y", 160)
+            .text("National")
+            .style("font-size", "15px")
+            .attr("alignment-baseline","middle")
     }
     
     
