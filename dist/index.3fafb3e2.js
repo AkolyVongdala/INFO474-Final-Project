@@ -42968,10 +42968,30 @@ try {
         d.Washington = +d.Washington;
         d.UR_Year = +d.UR_Year;
       });
+      // before 2019 rate
+      var before2019 = data.filter(function (d) {
+        return d.UR_Year >= 2011 && d.UR_Year <= 2019;
+      });
       // filtering 2019-2021 rate
       var filteredData = data.filter(function (d) {
         return d.UR_Year >= 2019 && d.UR_Year <= 2021;
       });
+      // group by year and then avg the national rate (before 2019)
+      let avgBefore2019RateNational = _d3Collection.nest().key(function (d) {
+        return d.UR_Year;
+      }).rollup(function (d) {
+        return _d.sum(d, function (g) {
+          return g.National_rate;
+        });
+      }).entries(before2019);
+      // group by year and then avg the WA rate (before 2019)
+      let avgBefore2019RateWA = _d3Collection.nest().key(function (d) {
+        return d.UR_Year;
+      }).rollup(function (d) {
+        return _d.sum(d, function (g) {
+          return g.Washington;
+        });
+      }).entries(before2019);
       // group by year and then avg the national rate
       let avgUnempRateNational = _d3Collection.nest().key(function (d) {
         return d.UR_Year;
@@ -42988,10 +43008,21 @@ try {
           return g.Washington;
         });
       }).entries(filteredData);
+      years = [];
+      // put national rate into array & put years into array (before 2019)
+      avgRateNational2019 = [];
+      avgRateWA2019 = [];
+      avgBefore2019RateNational.forEach(function (row) {
+        avgRateNational2019.push(row.value);
+        years.push(row.key);
+      });
+      avgBefore2019RateWA.forEach(function (row) {
+        avgRateWA2019.push(row.value);
+        years.push(row.key);
+      });
       // put national rate into array & put years into array
       avgRateNational = [];
       avgRateWA = [];
-      years = [];
       avgUnempRateNational.forEach(function (row) {
         avgRateNational.push(row.value);
         years.push(row.key);
@@ -43006,11 +43037,23 @@ try {
       }));
       svg.append("g").attr("transform", `translate(0, ${height})`).call(_d.axisBottom(xScale));
       const yScale = _d3Scale.scaleLinear().// unemployment rate
-      domain([0, _d3Array.max(avgRateWA, function (d) {
+      domain([0, _d3Array.max(avgRateNational2019, function (d) {
         return d;
       })]).range([height, 0]);
       svg.append("g").call(_d.axisLeft(yScale));
-      svg.append("path").// add the avg unemployeement National rate line to svg a
+      svg.append("path").// add the avg unemployeement National rate line to svg (before 2019)
+      datum(avgBefore2019RateNational).attr("fill", "none").attr("stroke", "#d3d3d3").attr("stroke-width", 1.5).attr("d", _d.line().x(function (d) {
+        return xScale(d.key);
+      }).y(function (d) {
+        return yScale(d.value);
+      })).style("stroke-dasharray", "3, 3");
+      svg.append("path").// add the avg unemployeement WA rate line to svg (before 2019)
+      datum(avgBefore2019RateWA).attr("fill", "none").attr("stroke", "#FFCCCB").attr("stroke-width", 1.5).attr("d", _d.line().x(function (d) {
+        return xScale(d.key);
+      }).y(function (d) {
+        return yScale(d.value);
+      })).style("stroke-dasharray", "3, 3");
+      svg.append("path").// add the avg unemployeement National rate line to svg
       datum(avgUnempRateNational).attr("fill", "none").attr("stroke", "black").attr("stroke-width", 1.5).attr("d", _d.line().x(function (d) {
         return xScale(d.key);
       }).y(function (d) {
@@ -43060,32 +43103,32 @@ try {
       // y-axis label
       svg.append("text").attr("x", 0).attr("y", 0).attr('transform', `translate(-40, ${height / 2}) rotate(-90)`).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Unemployment Rate (National Rate & WA)');
       // WA legend
-      svg.append("circle").attr("cx", width / 2 + 300).attr("cy", 130).attr("r", 6).style("fill", "red");
-      svg.append("text").attr("x", (width + 20) / 2 + 300).attr("y", 130).text("Washington").style("font-size", "15px").attr("alignment-baseline", "middle");
+      svg.append("circle").attr("cx", width / 2 + 400).attr("cy", 130).attr("r", 6).style("fill", "red");
+      svg.append("text").attr("x", (width + 20) / 2 + 400).attr("y", 130).text("Washington").style("font-size", "15px").attr("alignment-baseline", "middle");
       // National legend
-      svg.append("circle").attr("cx", width / 2 + 300).attr("cy", 160).attr("r", 6).style("fill", "black");
-      svg.append("text").attr("x", (width + 20) / 2 + 300).attr("y", 160).text("National").style("font-size", "15px").attr("alignment-baseline", "middle");
+      svg.append("circle").attr("cx", width / 2 + 400).attr("cy", 160).attr("r", 6).style("fill", "black");
+      svg.append("text").attr("x", (width + 20) / 2 + 400).attr("y", 160).text("National").style("font-size", "15px").attr("alignment-baseline", "middle");
     }
     return (
       /*#__PURE__*/_reactDefault.default.createElement("div", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 198,
+          lineNumber: 253,
           columnNumber: 9
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 199,
+          lineNumber: 254,
           columnNumber: 13
         }
       }, loading && "Loading national rate data!"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 200,
+          lineNumber: 255,
           columnNumber: 13
         }
       }, "Average Unemployment Rate National vs. Washington (2019-2021)"), /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -43094,7 +43137,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 201,
+          lineNumber: 256,
           columnNumber: 13
         }
       }))
