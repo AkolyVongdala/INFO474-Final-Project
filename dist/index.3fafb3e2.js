@@ -1054,7 +1054,7 @@ try {
   var _reactDomDefault = _parcelHelpers.interopDefault(_reactDom);
   var _App = require("./App");
   var _AppDefault = _parcelHelpers.interopDefault(_App);
-  var _jsxFileName = "/Users/jisukim/INFO474-Final-Project/src/index.js";
+  var _jsxFileName = "/Users/akolyvongdala/Desktop/INFO474-Final-Project/src/index.js";
   _reactDomDefault.default.render(/*#__PURE__*/_reactDefault.default.createElement(_AppDefault.default, {
     __self: undefined,
     __source: {
@@ -26277,37 +26277,35 @@ try {
   var _visualizationsUnemploymentRateLineChartDefault = _parcelHelpers.interopDefault(_visualizationsUnemploymentRateLineChart);
   var _visualizationsNaitonalAndWALineChart = require("./visualizations/NaitonalAndWALineChart");
   var _visualizationsNaitonalAndWALineChartDefault = _parcelHelpers.interopDefault(_visualizationsNaitonalAndWALineChart);
-  var _jsxFileName = "/Users/jisukim/INFO474-Final-Project/src/App.js";
-  const viewHeight = 500;
-  const viewWidth = 500;
+  var _jsxFileName = "/Users/akolyvongdala/Desktop/INFO474-Final-Project/src/App.js";
   const App = () => {
     return (
       /*#__PURE__*/_reactDefault.default.createElement("div", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 12,
+          lineNumber: 8,
           columnNumber: 9
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("h1", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 13,
+          lineNumber: 9,
           columnNumber: 13
         }
-      }, "INFO 474 Final Project "), /*#__PURE__*/_reactDefault.default.createElement(_visualizationsUnemploymentRateLineChartDefault.default, {
+      }, "Covid-19: The Bug that Paralyzed our World"), /*#__PURE__*/_reactDefault.default.createElement(_visualizationsUnemploymentRateLineChartDefault.default, {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 15,
+          lineNumber: 11,
           columnNumber: 13
         }
       }), /*#__PURE__*/_reactDefault.default.createElement(_visualizationsNaitonalAndWALineChartDefault.default, {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 16,
+          lineNumber: 12,
           columnNumber: 13
         }
       }))
@@ -26837,10 +26835,87 @@ try {
   var _d3Array = require("d3-array");
   var _d = require("d3");
   var _d3Collection = require('d3-collection');
-  var _jsxFileName = "/Users/jisukim/INFO474-Final-Project/src/visualizations/UnemploymentRateLineChart.js", _s = $RefreshSig$();
+  var _jsxFileName = "/Users/akolyvongdala/Desktop/INFO474-Final-Project/src/visualizations/UnemploymentRateLineChart.js", _s = $RefreshSig$();
   function UnemploymentRateLine() {
     _s();
     const [data, loading] = _hooksUseFetch.useFetch("https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv");
+    // define state for our tooltip display status
+    const [showTooltip, setShowTooltip] = _react.useState(false);
+    // define state for tooltip position
+    const [tooltipPos, setTooltipPos] = _react.useState({
+      x: 0,
+      y: 0
+    });
+    // define state for our tooltip content
+    const [tooltipContent, setTooltipContent] = _react.useState("");
+    /*******************************************
+    * Tooltip code
+    *******************************************/
+    // first, create a container for our tooltip
+    const tooltip = /*#__PURE__*/_reactDefault.default.createElement("div", {
+      style: {
+        width: "5rem",
+        height: "5rem",
+        position: "absolute",
+        // if showtooltip is true, display the tooltip otherwise set display to none
+        display: `${showTooltip ? "inline" : "none"}`,
+        backgroundColor: "white",
+        // set left and top (which you can think of as the "x" and "y" of our tooltip div)
+        // to match the current state
+        left: `${tooltipPos.x}px`,
+        top: `${tooltipPos.y}px`
+      },
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 26,
+        columnNumber: 26
+      }
+    }, /*#__PURE__*/_reactDefault.default.createElement("span", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 40,
+        columnNumber: 13
+      }
+    }, "Year: ", tooltipContent.x), /*#__PURE__*/_reactDefault.default.createElement("br", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 41,
+        columnNumber: 13
+      }
+    }), /*#__PURE__*/_reactDefault.default.createElement("span", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 42,
+        columnNumber: 13
+      }
+    }, "Unemployment Rate: ", _d.format(".2s")(tooltipContent.y)));
+    // called when our mouse enters a circle
+    const onPointHover = e => {
+      // set new position of tooltip
+      // set the tooltip slightly to the right of our mouse for better viewability
+      // set the tooltips y position to our mouse's y position
+      setTooltipPos({
+        x: e.pageX + 30,
+        y: e.pageY
+      });
+      setShowTooltip(true);
+      // get the element our circle is hovering over
+      const circle = e.target;
+      // set our tooltip content
+      // get our new year and percentage from the circle's properties
+      setTooltipContent({
+        x: circle.getAttribute("year"),
+        y: circle.getAttribute("rate")
+      });
+    };
+    // if the mouse exits the circle, hide the tooltip
+    const onPointLeave = () => {
+      setShowTooltip(false);
+    };
     if (loading === true) {
       const margin = {
         top: 20,
@@ -26860,7 +26935,7 @@ try {
       var avgUnempRate = _d3Collection.nest().key(function (d) {
         return d.EUR_Year;
       }).rollup(function (d) {
-        return _d.sum(d, function (g) {
+        return _d.mean(d, function (g) {
           return g.National_rate;
         });
       }).entries(data);
@@ -26891,6 +26966,28 @@ try {
       }).y(function (d) {
         return yScale(d.value);
       }));
+      // adding a transparent circle
+      svg.selectAll("circle").data(avgUnempRate).enter().append("circle").attr("year", function (d) {
+        return d.key;
+      }).attr("rate", function (d) {
+        return d.value;
+      }).attr("cx", function (d) {
+        return xScale(d.key);
+      }).attr("cy", function (d) {
+        return yScale(d.value);
+      }).attr("r", 3).attr("stroke", "red").attr("fill", "red").on('mouseover', onPointHover).on('mouseout', onPointLeave);
+      // .on('mouseover', function(){
+      // d3.select(this)
+      // .transition()
+      // .duration(1000)
+      // .attr('fill', "steelblue")
+      // })
+      // .on('mouseout', function(){
+      // d3.select(this)
+      // .transition()
+      // .duration(1000)
+      // .attr('fill', "red")
+      // })
       // x-axis lable
       svg.append("text").attr("x", width / 2).attr("y", height + margin.bottom).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Year');
       // y-axis lable
@@ -26901,37 +26998,37 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 94,
+          lineNumber: 177,
           columnNumber: 9
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 95,
+          lineNumber: 178,
           columnNumber: 13
         }
       }, loading && "Loading national rate data!"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 96,
+          lineNumber: 179,
           columnNumber: 13
         }
       }, "Year vs. Average Unemployment Rate (National Rate)"), /*#__PURE__*/_reactDefault.default.createElement("div", {
         id: "unemployment-rate-line",
-        className: "viz2",
+        className: "viz",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 97,
+          lineNumber: 180,
           columnNumber: 13
         }
-      }))
+      }, tooltip))
     );
   }
   exports.default = UnemploymentRateLine;
-  _s(UnemploymentRateLine, "Jm65JCcgUFoenM4DufkEA80vRVI=", false, function () {
+  _s(UnemploymentRateLine, "5e2U15RFIH3+WNgI1IL0k6jaBoc=", false, function () {
     return [_hooksUseFetch.useFetch];
   });
   _c = UnemploymentRateLine;
@@ -42844,7 +42941,7 @@ try {
   var _d3Array = require("d3-array");
   var _d = require("d3");
   var _d3Collection = require('d3-collection');
-  var _jsxFileName = "/Users/jisukim/INFO474-Final-Project/src/visualizations/NaitonalAndWALineChart.js", _s = $RefreshSig$();
+  var _jsxFileName = "/Users/akolyvongdala/Desktop/INFO474-Final-Project/src/visualizations/NaitonalAndWALineChart.js", _s = $RefreshSig$();
   function NationalAndWALine() {
     _s();
     const [data, loading] = _hooksUseFetch.useFetch("https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv");
@@ -42873,7 +42970,7 @@ try {
       var filteredData = data.filter(function (d) {
         return d.UR_Year >= 2019 && d.UR_Year <= 2021;
       });
-      // group by year and then sum the national rate
+      // group by year and then avg the national rate
       var avgUnempRateNational = _d3Collection.nest().key(function (d) {
         return d.UR_Year;
       }).rollup(function (d) {
@@ -42881,7 +42978,7 @@ try {
           return g.National_rate;
         });
       }).entries(filteredData);
-      // group by year and then sum the WA rate
+      // group by year and then avg the WA rate
       var avgUnempRateWA = _d3Collection.nest().key(function (d) {
         return d.UR_Year;
       }).rollup(function (d) {
