@@ -26294,18 +26294,96 @@ try {
           lineNumber: 9,
           columnNumber: 13
         }
-      }, "Covid-19: The Bug that Paralyzed our World"), /*#__PURE__*/_reactDefault.default.createElement(_visualizationsUnemploymentRateLineChartDefault.default, {
+      }, "Covid-19: The Bug that Paralyzed our World"), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        className: "author",
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 11,
+          lineNumber: 10,
           columnNumber: 13
         }
-      }), /*#__PURE__*/_reactDefault.default.createElement(_visualizationsNaitonalAndWALineChartDefault.default, {
+      }, "University of Washington, INFO 474 Final Project ", /*#__PURE__*/_reactDefault.default.createElement("br", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 10,
+          columnNumber: 84
+        }
+      }), "By Alex Honeycutt, Jisu Kim, Kayla Lee, Rayna Tilley, and Akoly Vongdala"), /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 12,
+          columnNumber: 13
+        }
+      }, "On January 21st, 2020, the first confirmed case of Covid -19 was found in the United States. Less than two months later on March 11th, 2020, the Covid-19 outbreak was declared a pandemic by the World Health Organization (WHO). Shortly after, the United States declared a state of emergency and multiple states started to enact stay-at-home orders. This resulted in most, if not all, non-essential businesses to shut down for an unknown period of time. After weeks, and eventually months of waiting, businesses had to start laying off and firing employees to ensure their survival in the long term. This resulted in one of the biggest unemployment spikes our country has seen in the past two decades. What we hope to show in our article is how educational disparities have affected unemployment rates both nationally, and within Washington state as the Covid-19 pandemic first hit, and how people with different levels of education have recovered."), /*#__PURE__*/_reactDefault.default.createElement(_visualizationsUnemploymentRateLineChartDefault.default, {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 13,
+          columnNumber: 13
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 14,
+          columnNumber: 13
+        }
+      }, "In the years leading up to the Covid-19 pandemic, unemployment rates were steadily decreasing across all education levels until they started to level off around January 1st, 2018. Those with a lower level of education tended to have a higher level of unemployment than those with a higher level of education. Between January 1st, 2019 and January 1st, 2020, people with less than a highschool diploma of education had an average unemployment rate of 5.41%. People with a highschool education, but no college education had a 3.67% average unemployment rate. Those with some college education or an associates degree had an average unemployment rate of 3.01%. Finally, people with a bachelor's degree or higher had an average unemployment rate of 2.10%. Even before the Covid-19 pandemic, we could see the disparities between those with a relatively high level of education and those who weren’t able to achieve that higher level. What the Covid-19 pandemic showed us is how large that disparity becomes when a lot of the businesses have to shut down, as well as how difficult it is for the different groups to recover from these events."), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 16,
+          columnNumber: 13
+        }
+      }, "Post-Covid Unemployment: Economic Turmoil at it’s Finest"), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 17,
+          columnNumber: 13
+        }
+      }, "When Covid-19 started to hit the U.S., many businesses were forced to close their doors and lay off workers to prevent the company from going under. This caused a massive spike in unemployment across the country that affected almost everyone. The unemployment rate for people with less than a highschool diploma of education peaked at 21%, about 3.9 times higher than the average unemployment rate before the pandemic started. The people who had a highschool education, but no college education had their unemployment rates peak at about 17.3%, which was about 4.7 times higher than the average rate before the pandemic. Those that had some college education or an associates degree had their unemployment rate peak at 15%, about 5 times higher than the average rate before the pandemic. Finally, those with a bachelor's degree or higher, their unemployment rate peaked at 8.4%, also about 4 times higher than their average unemployment rate before the pandemic. What we find from these statistics is that people in the middle, those with a highschool education, but no college education and those with some college education or an associates degree were hit the hardest by the pandemic in terms of unemployment. People in the less than a highschool diploma of education and bachelor's degree or higher groups were affected the least by unemployment, but the increase was still substantial. As for why this trend occurred, we are unsure, and recommend further research to be done into why the two middle groups had a higher increase in their unemployment rates. As for the overall conclusion, we can safely say that no one group was safe from the effects of Covid-19 on unemployment."), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 19,
+          columnNumber: 13
+        }
+      }, "Education in the U.S:"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 21,
+          columnNumber: 13
+        }
+      }, "Pre and Post Covid Unemployment Rates:"), /*#__PURE__*/_reactDefault.default.createElement(_visualizationsNaitonalAndWALineChartDefault.default, {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 23,
+          columnNumber: 13
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 25,
+          columnNumber: 13
+        }
+      }, "The Long Road Ahead, and The Decisions we Need to Make"), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 26,
+          columnNumber: 13
+        }
+      }, "COVID-19's global impact, both in terms of lives lost and economic ruin, is expected to leave a devastating impact for years to come. The best path forward is to ensure that we learn from the lessons that were acquired during this crisis so that we can better prepare for the next one. And given the continuous history of economic and educational inequality that continues to produce unequal outcomes affecting practically every element of life in the United States, the negative socio-economic impact of COVID-19 outlined in this report should come as no surprise. We must work tirelessly to address the long-standing inequality in economic, educational, and health outcomes if we are to shield those who are most vulnerable from experiencing the same needlessly heavy burden during the next economic or public health crisis."), /*#__PURE__*/_reactDefault.default.createElement("br", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 27,
           columnNumber: 13
         }
       }))
@@ -26321,206 +26399,7 @@ try {
   window.$RefreshSig$ = prevRefreshSig;
 }
 
-},{"react":"3b2NM","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","./hooks/useFetch":"5YU3r","./visualizations/UnemploymentRateLineChart":"2rVmB","./visualizations/NaitonalAndWALineChart":"5VnMN"}],"5gA8y":[function(require,module,exports) {
-"use strict";
-
-exports.interopDefault = function (a) {
-  return a && a.__esModule ? a : {
-    default: a
-  };
-};
-
-exports.defineInteropFlag = function (a) {
-  Object.defineProperty(a, '__esModule', {
-    value: true
-  });
-};
-
-exports.exportAll = function (source, dest) {
-  Object.keys(source).forEach(function (key) {
-    if (key === 'default' || key === '__esModule') {
-      return;
-    } // Skip duplicate re-exports when they have the same value.
-
-
-    if (key in dest && dest[key] === source[key]) {
-      return;
-    }
-
-    Object.defineProperty(dest, key, {
-      enumerable: true,
-      get: function () {
-        return source[key];
-      }
-    });
-  });
-  return dest;
-};
-
-exports.export = function (dest, destName, get) {
-  Object.defineProperty(dest, destName, {
-    enumerable: true,
-    get: get
-  });
-};
-},{}],"4Jj4f":[function(require,module,exports) {
-"use strict";
-var Refresh = require('react-refresh/runtime');
-function debounce(func, delay) {
-  if ("development" === 'test') {
-    return function (args) {
-      func.call(null, args);
-    };
-  } else {
-    var timeout = undefined;
-    return function (args) {
-      clearTimeout(timeout);
-      timeout = setTimeout(function () {
-        timeout = undefined;
-        func.call(null, args);
-      }, delay);
-    };
-  }
-}
-var enqueueUpdate = debounce(function () {
-  Refresh.performReactRefresh();
-}, 30);
-// Everthing below is either adapted or copied from
-// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
-// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
-module.exports.prelude = function (module) {
-  window.$RefreshReg$ = function (type, id) {
-    Refresh.register(type, module.id + ' ' + id);
-  };
-  window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
-};
-module.exports.postlude = function (module) {
-  if (isReactRefreshBoundary(module.exports)) {
-    registerExportsForReactRefresh(module);
-    if (module.hot) {
-      module.hot.dispose(function (data) {
-        if (Refresh.hasUnrecoverableErrors()) {
-          window.location.reload();
-        }
-        data.prevExports = module.exports;
-      });
-      module.hot.accept(function (getParents) {
-        var prevExports = module.hot.data.prevExports;
-        var nextExports = module.exports;
-        // Since we just executed the code for it, it's possible
-        // that the new exports make it ineligible for being a boundary.
-        var isNoLongerABoundary = !isReactRefreshBoundary(nextExports);
-        // It can also become ineligible if its exports are incompatible
-        // with the previous exports.
-        // For example, if you add/remove/change exports, we'll want
-        // to re-execute the importing modules, and force those components
-        // to re-render. Similarly, if you convert a class component
-        // to a function, we want to invalidate the boundary.
-        var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
-        if (isNoLongerABoundary || didInvalidate) {
-          // We'll be conservative. The only case in which we won't do a full
-          // reload is if all parent modules are also refresh boundaries.
-          // In that case we'll add them to the current queue.
-          var parents = getParents();
-          if (parents.length === 0) {
-            // Looks like we bubbled to the root. Can't recover from that.
-            window.location.reload();
-            return;
-          }
-          return parents;
-        }
-        enqueueUpdate();
-      });
-    }
-  }
-};
-function isReactRefreshBoundary(exports) {
-  if (Refresh.isLikelyComponentType(exports)) {
-    return true;
-  }
-  if (exports == null || typeof exports !== 'object') {
-    // Exit if we can't iterate over exports.
-    return false;
-  }
-  var hasExports = false;
-  var areAllExportsComponents = true;
-  let isESM = ('__esModule' in exports);
-  for (var key in exports) {
-    hasExports = true;
-    if (key === '__esModule') {
-      continue;
-    }
-    var desc = Object.getOwnPropertyDescriptor(exports, key);
-    if (desc && desc.get && !isESM) {
-      // Don't invoke getters for CJS as they may have side effects.
-      return false;
-    }
-    var exportValue = exports[key];
-    if (!Refresh.isLikelyComponentType(exportValue)) {
-      areAllExportsComponents = false;
-    }
-  }
-  return hasExports && areAllExportsComponents;
-}
-function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
-  var prevSignature = getRefreshBoundarySignature(prevExports);
-  var nextSignature = getRefreshBoundarySignature(nextExports);
-  if (prevSignature.length !== nextSignature.length) {
-    return true;
-  }
-  for (var i = 0; i < nextSignature.length; i++) {
-    if (prevSignature[i] !== nextSignature[i]) {
-      return true;
-    }
-  }
-  return false;
-}
-// When this signature changes, it's unsafe to stop at this refresh boundary.
-function getRefreshBoundarySignature(exports) {
-  var signature = [];
-  signature.push(Refresh.getFamilyByType(exports));
-  if (exports == null || typeof exports !== 'object') {
-    // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return signature;
-  }
-  let isESM = ('__esModule' in exports);
-  for (var key in exports) {
-    if (key === '__esModule') {
-      continue;
-    }
-    var desc = Object.getOwnPropertyDescriptor(exports, key);
-    if (desc && desc.get && !isESM) {
-      // Don't invoke getters for CJS as they may have side effects.
-      continue;
-    }
-    var exportValue = exports[key];
-    signature.push(key);
-    signature.push(Refresh.getFamilyByType(exportValue));
-  }
-  return signature;
-}
-function registerExportsForReactRefresh(module) {
-  var exports = module.exports, id = module.id;
-  Refresh.register(exports, id + ' %exports%');
-  if (exports == null || typeof exports !== 'object') {
-    // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return;
-  }
-  let isESM = ('__esModule' in exports);
-  for (var key in exports) {
-    var desc = Object.getOwnPropertyDescriptor(exports, key);
-    if (desc && desc.get && !isESM) {
-      // Don't invoke getters for CJS as they may have side effects.
-      continue;
-    }
-    var exportValue = exports[key];
-    Refresh.register(exportValue, id + ' %exports% ' + key);
-  }
-}
-
-},{"react-refresh/runtime":"592mh"}],"5YU3r":[function(require,module,exports) {
+},{"react":"3b2NM","./hooks/useFetch":"5YU3r","./visualizations/UnemploymentRateLineChart":"2rVmB","./visualizations/NaitonalAndWALineChart":"5VnMN","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"5YU3r":[function(require,module,exports) {
 var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -26820,7 +26699,206 @@ var define;
   });
 });
 
-},{}],"2rVmB":[function(require,module,exports) {
+},{}],"5gA8y":[function(require,module,exports) {
+"use strict";
+
+exports.interopDefault = function (a) {
+  return a && a.__esModule ? a : {
+    default: a
+  };
+};
+
+exports.defineInteropFlag = function (a) {
+  Object.defineProperty(a, '__esModule', {
+    value: true
+  });
+};
+
+exports.exportAll = function (source, dest) {
+  Object.keys(source).forEach(function (key) {
+    if (key === 'default' || key === '__esModule') {
+      return;
+    } // Skip duplicate re-exports when they have the same value.
+
+
+    if (key in dest && dest[key] === source[key]) {
+      return;
+    }
+
+    Object.defineProperty(dest, key, {
+      enumerable: true,
+      get: function () {
+        return source[key];
+      }
+    });
+  });
+  return dest;
+};
+
+exports.export = function (dest, destName, get) {
+  Object.defineProperty(dest, destName, {
+    enumerable: true,
+    get: get
+  });
+};
+},{}],"4Jj4f":[function(require,module,exports) {
+"use strict";
+var Refresh = require('react-refresh/runtime');
+function debounce(func, delay) {
+  if ("development" === 'test') {
+    return function (args) {
+      func.call(null, args);
+    };
+  } else {
+    var timeout = undefined;
+    return function (args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(function () {
+        timeout = undefined;
+        func.call(null, args);
+      }, delay);
+    };
+  }
+}
+var enqueueUpdate = debounce(function () {
+  Refresh.performReactRefresh();
+}, 30);
+// Everthing below is either adapted or copied from
+// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
+// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
+module.exports.prelude = function (module) {
+  window.$RefreshReg$ = function (type, id) {
+    Refresh.register(type, module.id + ' ' + id);
+  };
+  window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
+};
+module.exports.postlude = function (module) {
+  if (isReactRefreshBoundary(module.exports)) {
+    registerExportsForReactRefresh(module);
+    if (module.hot) {
+      module.hot.dispose(function (data) {
+        if (Refresh.hasUnrecoverableErrors()) {
+          window.location.reload();
+        }
+        data.prevExports = module.exports;
+      });
+      module.hot.accept(function (getParents) {
+        var prevExports = module.hot.data.prevExports;
+        var nextExports = module.exports;
+        // Since we just executed the code for it, it's possible
+        // that the new exports make it ineligible for being a boundary.
+        var isNoLongerABoundary = !isReactRefreshBoundary(nextExports);
+        // It can also become ineligible if its exports are incompatible
+        // with the previous exports.
+        // For example, if you add/remove/change exports, we'll want
+        // to re-execute the importing modules, and force those components
+        // to re-render. Similarly, if you convert a class component
+        // to a function, we want to invalidate the boundary.
+        var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
+        if (isNoLongerABoundary || didInvalidate) {
+          // We'll be conservative. The only case in which we won't do a full
+          // reload is if all parent modules are also refresh boundaries.
+          // In that case we'll add them to the current queue.
+          var parents = getParents();
+          if (parents.length === 0) {
+            // Looks like we bubbled to the root. Can't recover from that.
+            window.location.reload();
+            return;
+          }
+          return parents;
+        }
+        enqueueUpdate();
+      });
+    }
+  }
+};
+function isReactRefreshBoundary(exports) {
+  if (Refresh.isLikelyComponentType(exports)) {
+    return true;
+  }
+  if (exports == null || typeof exports !== 'object') {
+    // Exit if we can't iterate over exports.
+    return false;
+  }
+  var hasExports = false;
+  var areAllExportsComponents = true;
+  let isESM = ('__esModule' in exports);
+  for (var key in exports) {
+    hasExports = true;
+    if (key === '__esModule') {
+      continue;
+    }
+    var desc = Object.getOwnPropertyDescriptor(exports, key);
+    if (desc && desc.get && !isESM) {
+      // Don't invoke getters for CJS as they may have side effects.
+      return false;
+    }
+    var exportValue = exports[key];
+    if (!Refresh.isLikelyComponentType(exportValue)) {
+      areAllExportsComponents = false;
+    }
+  }
+  return hasExports && areAllExportsComponents;
+}
+function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
+  var prevSignature = getRefreshBoundarySignature(prevExports);
+  var nextSignature = getRefreshBoundarySignature(nextExports);
+  if (prevSignature.length !== nextSignature.length) {
+    return true;
+  }
+  for (var i = 0; i < nextSignature.length; i++) {
+    if (prevSignature[i] !== nextSignature[i]) {
+      return true;
+    }
+  }
+  return false;
+}
+// When this signature changes, it's unsafe to stop at this refresh boundary.
+function getRefreshBoundarySignature(exports) {
+  var signature = [];
+  signature.push(Refresh.getFamilyByType(exports));
+  if (exports == null || typeof exports !== 'object') {
+    // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return signature;
+  }
+  let isESM = ('__esModule' in exports);
+  for (var key in exports) {
+    if (key === '__esModule') {
+      continue;
+    }
+    var desc = Object.getOwnPropertyDescriptor(exports, key);
+    if (desc && desc.get && !isESM) {
+      // Don't invoke getters for CJS as they may have side effects.
+      continue;
+    }
+    var exportValue = exports[key];
+    signature.push(key);
+    signature.push(Refresh.getFamilyByType(exportValue));
+  }
+  return signature;
+}
+function registerExportsForReactRefresh(module) {
+  var exports = module.exports, id = module.id;
+  Refresh.register(exports, id + ' %exports%');
+  if (exports == null || typeof exports !== 'object') {
+    // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return;
+  }
+  let isESM = ('__esModule' in exports);
+  for (var key in exports) {
+    var desc = Object.getOwnPropertyDescriptor(exports, key);
+    if (desc && desc.get && !isESM) {
+      // Don't invoke getters for CJS as they may have side effects.
+      continue;
+    }
+    var exportValue = exports[key];
+    Refresh.register(exportValue, id + ' %exports% ' + key);
+  }
+}
+
+},{"react-refresh/runtime":"592mh"}],"2rVmB":[function(require,module,exports) {
 var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27015,7 +27093,7 @@ try {
           lineNumber: 179,
           columnNumber: 13
         }
-      }, "Year vs. Average Unemployment Rate (National Rate)"), /*#__PURE__*/_reactDefault.default.createElement("div", {
+      }, "Pre-Covid Unemployment Rates: A Sign of Good Things to Come?"), /*#__PURE__*/_reactDefault.default.createElement("div", {
         id: "unemployment-rate-line",
         className: "viz",
         __self: this,
@@ -42971,11 +43049,7 @@ try {
         return d.UR_Year >= 2019 && d.UR_Year <= 2021;
       });
       // group by year and then avg the national rate
-<<<<<<< HEAD
-      var avgUnempRateNational = _d3Collection.nest().key(function (d) {
-=======
       let avgUnempRateNational = _d3Collection.nest().key(function (d) {
->>>>>>> 5dc0c7d66b7a543cf72a37e22115d6a0c7b73f24
         return d.UR_Year;
       }).rollup(function (d) {
         return _d.sum(d, function (g) {
@@ -42983,11 +43057,7 @@ try {
         });
       }).entries(filteredData);
       // group by year and then avg the WA rate
-<<<<<<< HEAD
-      var avgUnempRateWA = _d3Collection.nest().key(function (d) {
-=======
       let avgUnempRateWA = _d3Collection.nest().key(function (d) {
->>>>>>> 5dc0c7d66b7a543cf72a37e22115d6a0c7b73f24
         return d.UR_Year;
       }).rollup(function (d) {
         return _d.sum(d, function (g) {
