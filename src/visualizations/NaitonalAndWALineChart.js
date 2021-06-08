@@ -46,28 +46,28 @@ export default function NationalAndWALine() {
         let avgBefore2019RateNational = nest()
         .key(function(d) { return d.UR_Year;})
         .rollup(function(d) { 
-            return d3.sum(d, function(g) {return g.National_rate; });
+            return d3.mean(d, function(g) {return g.National_rate; });
         }).entries(before2019);
 
         // group by year and then avg the WA rate (before 2019)
         let avgBefore2019RateWA = nest()
         .key(function(d) { return d.UR_Year;})
         .rollup(function(d) { 
-            return d3.sum(d, function(g) {return g.Washington; });
+            return d3.mean(d, function(g) {return g.Washington; });
         }).entries(before2019);
 
         // group by year and then avg the national rate
         let avgUnempRateNational = nest()
         .key(function(d) { return d.UR_Year;})
         .rollup(function(d) { 
-            return d3.sum(d, function(g) {return g.National_rate; });
+            return d3.mean(d, function(g) {return g.National_rate; });
         }).entries(filteredData);
 
         // group by year and then avg the WA rate
         let avgUnempRateWA = nest()
         .key(function(d) { return d.UR_Year;})
         .rollup(function(d) { 
-            return d3.sum(d, function(g) {return g.Washington; });
+            return d3.mean(d, function(g) {return g.Washington; });
         }).entries(filteredData);
 
         years = [];

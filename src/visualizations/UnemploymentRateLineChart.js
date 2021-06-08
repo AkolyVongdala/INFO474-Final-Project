@@ -177,6 +177,7 @@ export default function UnemploymentRateLine() {
         <div>
             <p>{loading && "Loading national rate data!"}</p>
             <h2>Pre-Covid Unemployment Rates: A Sign of Good Things to Come?</h2>
+            <p>Hover function enable</p>
             <div id="unemployment-rate-line" className="viz" >
                 {/* Make sure to include tooltip here!!! */}
                 {tooltip}
