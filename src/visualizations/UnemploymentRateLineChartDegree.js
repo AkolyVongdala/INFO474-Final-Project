@@ -18,24 +18,11 @@ export default function UnemploymentRateDegreeLine() {
         "https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/DegreeLineChart_Jisu2/data/Info474_FinalData.csv"
     );
 
-    const timeParse = d3.timeParse(`%b-%y`);
-
-    let formatData = data.map(function (d) { //parse values to int so that d3 can process them
-        d.Month = timeParse(d.Month);
-        d.K12LESS = +d.K12LESS;
-        d.HIGHSCHOOL = +d.HIGHSCHOOL;
-        d.ASSOCIATE = +d.ASSOCIATE;
-        d.BACHELOR = +d.BACHELOR;
-
-        // defining constants like height, width, and margin 
-        const margin = { top: 20, right: 20, bottom: 50, left: 65 }, //size
-        width = 1000 - margin.left - margin.right,
-        height = 550 - margin.top - margin.bottom;
-
-        return d;
-    });
-
     if (loading === true) { // Prevents extra appending
+        const margin = { top: 20, right: 20, bottom: 40, left: 60 }, //size
+        width = 800 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
+
 
         const svg = d3 // create the svg box for the viz and appending it to line-chart div
             .select("#unemployment-rate-degree-line")
@@ -44,6 +31,18 @@ export default function UnemploymentRateDegreeLine() {
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
             .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+        const timeParse = d3.timeParse(`%b-%y`);
+
+        let formatData = data.map(function (d) { //parse values to int so that d3 can process them
+            d.Month = timeParse(d.Month);
+            d.K12LESS = +d.K12LESS;
+            d.HIGHSCHOOL = +d.HIGHSCHOOL;
+            d.ASSOCIATE = +d.ASSOCIATE;
+            d.BACHELOR = +d.BACHELOR;
+    
+            return d;
+        });
     
         // List of groups (here I have one group per column)
         var allGroup = ["K12LESS", "HIGHSCHOOL", "ASSOCIATE", "BACHELOR"];
@@ -138,7 +137,7 @@ export default function UnemploymentRateDegreeLine() {
             d3.select("#BACHELOR").transition().style("opacity", currentOpacity == 1 ? 0:1)
         });
     
-        // x-axis lable : Year
+        // x-axis label : Year
         svg.append("text")
             .attr("x", width / 2)
             .attr("y", height + margin.bottom)
@@ -147,11 +146,11 @@ export default function UnemploymentRateDegreeLine() {
             .style('text-anchor', 'middle')
             .text('Year');
     
-        // y-axis lable : Year
+        // y-axis label : Unemployment Rate
         svg.append("text")
             .attr("x", 0)
             .attr("y", 0)
-            .attr('transform', `translate(-50, ${height/2}) rotate(-90)`)
+            .attr('transform', `translate(-40, ${height/2}) rotate(-90)`)
             .attr('fill', '#000')
             .style('font-size', '20px')
             .style('text-anchor', 'middle')

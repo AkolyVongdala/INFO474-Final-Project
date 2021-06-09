@@ -9,7 +9,7 @@ import { schemeBrBG } from "d3";
 // Chart #1: unemployment rate up until 2010 - 2021
 export default function UnemploymentRateLine() {
     const [data, loading] = useFetch(
-        "https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv"
+        "https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/DegreeLineChart_Jisu2/data/Info474_FinalData.csv"
     );
 
     // define state for our tooltip display status
@@ -151,7 +151,7 @@ export default function UnemploymentRateLine() {
                 //     .attr('fill', "red")
                 // })
 
-        // x-axis lable
+        // x-axis label : Year 
         svg.append("text")
         .attr("x", width / 2)
         .attr("y", height + margin.bottom)
@@ -160,7 +160,7 @@ export default function UnemploymentRateLine() {
         .style('text-anchor', 'middle')
         .text('Year');
 
-        // y-axis lable
+        // y-axis label : Unemployment Rate (National Rate)
         svg.append("text")
             .attr("x", 0)
             .attr("y", 0)

@@ -26925,7 +26925,7 @@ try {
   var _jsxFileName = "/Users/jisukim/INFO474-Final-Project/src/visualizations/UnemploymentRateLineChart.js", _s = $RefreshSig$();
   function UnemploymentRateLine() {
     _s();
-    const [data, loading] = _hooksUseFetch.useFetch("https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv");
+    const [data, loading] = _hooksUseFetch.useFetch("https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/DegreeLineChart_Jisu2/data/Info474_FinalData.csv");
     // define state for our tooltip display status
     const [showTooltip, setShowTooltip] = _react.useState(false);
     // define state for tooltip position
@@ -27075,9 +27075,9 @@ try {
       // .duration(1000)
       // .attr('fill', "red")
       // })
-      // x-axis lable
+      // x-axis label : Year
       svg.append("text").attr("x", width / 2).attr("y", height + margin.bottom).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Year');
-      // y-axis lable
+      // y-axis label : Unemployment Rate (National Rate)
       svg.append("text").attr("x", 0).attr("y", 0).attr('transform', `translate(-40, ${height / 2}) rotate(-90)`).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Unemployment Rate (National Rate)');
     }
     return (
@@ -43038,7 +43038,7 @@ try {
   var _jsxFileName = "/Users/jisukim/INFO474-Final-Project/src/visualizations/NaitonalAndWALineChart.js", _s = $RefreshSig$();
   function NationalAndWALine() {
     _s();
-    const [data, loading] = _hooksUseFetch.useFetch("https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv");
+    const [data, loading] = _hooksUseFetch.useFetch("https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/DegreeLineChart_Jisu2/data/Info474_FinalData.csv");
     if (loading === true) {
       const margin = {
         top: 20,
@@ -43046,12 +43046,7 @@ try {
         bottom: 40,
         left: 60
       }, // size
-      width = 1000 - margin.left - margin.right, height = 500 - margin.top - margin.bottom, tooltip = {
-        width: 100,
-        height: 100,
-        x: 10,
-        y: -30
-      };
+      width = 800 - margin.left - margin.right, height = 500 - margin.top - margin.bottom;
       const svg = _d.// create the svg box for the viz
       select("#unemp-national-WA-line").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", `translate(${margin.left}, ${margin.top})`);
       data.forEach(function (d) {
@@ -43190,37 +43185,37 @@ try {
       .style("fill", "red")
       //.style("font-weight", "bold")
       .text("Washington");*/
-      // x-axis label
+      // x-axis label : Year
       svg.append("text").attr("x", width / 2).attr("y", height + margin.bottom).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Year');
-      // y-axis label
+      // y-axis label : Unemployment Rate (National Rate & WA)
       svg.append("text").attr("x", 0).attr("y", 0).attr('transform', `translate(-40, ${height / 2}) rotate(-90)`).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Unemployment Rate (National Rate & WA)');
       // WA legend
-      svg.append("circle").attr("cx", width / 2 + 400).attr("cy", 130).attr("r", 6).style("fill", "red");
-      svg.append("text").attr("x", (width + 20) / 2 + 400).attr("y", 130).text("Washington").style("font-size", "15px").attr("alignment-baseline", "middle");
+      svg.append("circle").attr("cx", width / 2 + 100).attr("cy", 130).attr("r", 6).style("fill", "red");
+      svg.append("text").attr("x", (width + 20) / 2 + 100).attr("y", 130).text("Washington").style("font-size", "15px").attr("alignment-baseline", "middle");
       // National legend
-      svg.append("circle").attr("cx", width / 2 + 400).attr("cy", 160).attr("r", 6).style("fill", "black");
-      svg.append("text").attr("x", (width + 20) / 2 + 400).attr("y", 160).text("National").style("font-size", "15px").attr("alignment-baseline", "middle");
+      svg.append("circle").attr("cx", width / 2 + 100).attr("cy", 160).attr("r", 6).style("fill", "black");
+      svg.append("text").attr("x", (width + 20) / 2 + 100).attr("y", 160).text("National").style("font-size", "15px").attr("alignment-baseline", "middle");
     }
     return (
       /*#__PURE__*/_reactDefault.default.createElement("div", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 253,
+          lineNumber: 252,
           columnNumber: 9
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 254,
+          lineNumber: 253,
           columnNumber: 13
         }
       }, loading && "Loading national rate data!"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 255,
+          lineNumber: 254,
           columnNumber: 13
         }
       }, "Average Unemployment Rate National vs. Washington (2019-2021)"), /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -43229,7 +43224,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 256,
+          lineNumber: 255,
           columnNumber: 13
         }
       }))
@@ -43267,28 +43262,27 @@ try {
     _s();
     // ** after mergeing data with main must change this to main! **
     const [data, loading] = _hooksUseFetch.useFetch("https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/DegreeLineChart_Jisu2/data/Info474_FinalData.csv");
-    const timeParse = _d.timeParse(`%b-%y`);
-    let formatData = data.map(function (d) {
-      // parse values to int so that d3 can process them
-      d.Month = timeParse(d.Month);
-      d.K12LESS = +d.K12LESS;
-      d.HIGHSCHOOL = +d.HIGHSCHOOL;
-      d.ASSOCIATE = +d.ASSOCIATE;
-      d.BACHELOR = +d.BACHELOR;
-      // defining constants like height, width, and margin
+    if (loading === true) {
+      // Prevents extra appending
       const margin = {
         top: 20,
         right: 20,
-        bottom: 50,
-        left: 65
+        bottom: 40,
+        left: 60
       }, // size
-      width = 1000 - margin.left - margin.right, height = 550 - margin.top - margin.bottom;
-      return d;
-    });
-    if (loading === true) {
-      // Prevents extra appending
+      width = 800 - margin.left - margin.right, height = 500 - margin.top - margin.bottom;
       const svg = _d.// create the svg box for the viz and appending it to line-chart div
       select("#unemployment-rate-degree-line").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", `translate(${margin.left}, ${margin.top})`);
+      const timeParse = _d.timeParse(`%b-%y`);
+      let formatData = data.map(function (d) {
+        // parse values to int so that d3 can process them
+        d.Month = timeParse(d.Month);
+        d.K12LESS = +d.K12LESS;
+        d.HIGHSCHOOL = +d.HIGHSCHOOL;
+        d.ASSOCIATE = +d.ASSOCIATE;
+        d.BACHELOR = +d.BACHELOR;
+        return d;
+      });
       // List of groups (here I have one group per column)
       var allGroup = ["K12LESS", "HIGHSCHOOL", "ASSOCIATE", "BACHELOR"];
       // Reformat the data: we need an array of arrays of {x, y} tuples
@@ -43366,31 +43360,31 @@ try {
         // Change the opacity: from 0 to 1 or from 1 to 0
         _d.select("#BACHELOR").transition().style("opacity", currentOpacity == 1 ? 0 : 1);
       });
-      // x-axis lable : Year
+      // x-axis label : Year
       svg.append("text").attr("x", width / 2).attr("y", height + margin.bottom).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Year');
-      // y-axis lable : Year
-      svg.append("text").attr("x", 0).attr("y", 0).attr('transform', `translate(-50, ${height / 2}) rotate(-90)`).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Unemployment Rate');
+      // y-axis label : Unemployment Rate
+      svg.append("text").attr("x", 0).attr("y", 0).attr('transform', `translate(-40, ${height / 2}) rotate(-90)`).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Unemployment Rate');
     }
     return (
       /*#__PURE__*/_reactDefault.default.createElement("div", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 165,
+          lineNumber: 164,
           columnNumber: 9
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 166,
+          lineNumber: 165,
           columnNumber: 13
         }
       }, loading && "Loading national rate data!"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 167,
+          lineNumber: 166,
           columnNumber: 13
         }
       }, "Unemployment Rates by Degrees"), /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -43399,7 +43393,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 168,
+          lineNumber: 167,
           columnNumber: 13
         }
       }))

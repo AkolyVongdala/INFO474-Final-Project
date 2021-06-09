@@ -8,14 +8,13 @@ import { nest } from 'd3-collection';
 //Line Chart #3: unemployment rate National vs. Washington 2019 - 2021
 export default function NationalAndWALine() {
     const [data, loading] = useFetch(
-        "https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv"
+        "https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/DegreeLineChart_Jisu2/data/Info474_FinalData.csv"
     );
 
     if (loading === true) {
         const margin = { top: 20, right: 20, bottom: 40, left: 60 }, //size
             width = 800 - margin.left - margin.right,
-            height = 500 - margin.top - margin.bottom,
-            tooltip = { width: 100, height: 100, x: 10, y: -30 };
+            height = 500 - margin.top - margin.bottom;
 
 
         const svg = d3 // create the svg box for the viz
@@ -200,7 +199,7 @@ export default function NationalAndWALine() {
             //.style("font-weight", "bold")
             .text("Washington");   */
 
-        // x-axis label
+        // x-axis label : Year
         svg.append("text")
             .attr("x", width / 2)
             .attr("y", height + margin.bottom)
@@ -209,7 +208,7 @@ export default function NationalAndWALine() {
             .style('text-anchor', 'middle')
             .text('Year');
 
-        // y-axis label
+        // y-axis label : Unemployment Rate (National Rate & WA)
         svg.append("text")
             .attr("x", 0)
             .attr("y", 0)
