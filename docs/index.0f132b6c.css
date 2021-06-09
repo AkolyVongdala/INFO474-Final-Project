@@ -16,6 +16,11 @@ body {
   margin: 0%;
 } */
 
+/* #root {
+  margin: 0 auto;
+  max-width: 50em;
+} */
+
 .author {
   color: #326891;
   font-weight: 500;
