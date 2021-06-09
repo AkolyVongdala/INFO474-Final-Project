@@ -26277,6 +26277,8 @@ try {
   var _visualizationsUnemploymentRateLineChartDefault = _parcelHelpers.interopDefault(_visualizationsUnemploymentRateLineChart);
   var _visualizationsNaitonalAndWALineChart = require("./visualizations/NaitonalAndWALineChart");
   var _visualizationsNaitonalAndWALineChartDefault = _parcelHelpers.interopDefault(_visualizationsNaitonalAndWALineChart);
+  var _visualizationsUnemploymentRateLineChartDegree = require("./visualizations/UnemploymentRateLineChartDegree");
+  var _visualizationsUnemploymentRateLineChartDegreeDefault = _parcelHelpers.interopDefault(_visualizationsUnemploymentRateLineChartDegree);
   var _jsxFileName = "/Users/akolyvongdala/Desktop/INFO474-Final-Project/src/App.js";
   const App = () => {
     return (
@@ -26284,14 +26286,14 @@ try {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 8,
+          lineNumber: 9,
           columnNumber: 9
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("h1", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 9,
+          lineNumber: 10,
           columnNumber: 13
         }
       }, "Covid-19: The Bug that Paralyzed our World"), /*#__PURE__*/_reactDefault.default.createElement("p", {
@@ -26299,91 +26301,127 @@ try {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 10,
+          lineNumber: 11,
           columnNumber: 13
         }
       }, "University of Washington, INFO 474 Final Project ", /*#__PURE__*/_reactDefault.default.createElement("br", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 10,
+          lineNumber: 11,
           columnNumber: 84
         }
       }), "By Alex Honeycutt, Jisu Kim, Kayla Lee, Rayna Tilley, and Akoly Vongdala"), /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 12,
+          lineNumber: 13,
           columnNumber: 13
         }
       }, "On January 21st, 2020, the first confirmed case of Covid -19 was found in the United States. Less than two months later on March 11th, 2020, the Covid-19 outbreak was declared a pandemic by the World Health Organization (WHO). Shortly after, the United States declared a state of emergency and multiple states started to enact stay-at-home orders. This resulted in most, if not all, non-essential businesses to shut down for an unknown period of time. After weeks, and eventually months of waiting, businesses had to start laying off and firing employees to ensure their survival in the long term. This resulted in one of the biggest unemployment spikes our country has seen in the past two decades. What we hope to show in our article is how educational disparities have affected unemployment rates both nationally, and within Washington state as the Covid-19 pandemic first hit, and how people with different levels of education have recovered."), /*#__PURE__*/_reactDefault.default.createElement(_visualizationsUnemploymentRateLineChartDefault.default, {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 13,
+          lineNumber: 14,
           columnNumber: 13
         }
       }), /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 14,
+          lineNumber: 15,
           columnNumber: 13
         }
       }, "In the years leading up to the Covid-19 pandemic, unemployment rates were steadily decreasing across all education levels until they started to level off around January 1st, 2018. Those with a lower level of education tended to have a higher level of unemployment than those with a higher level of education. Between January 1st, 2019 and January 1st, 2020, people with less than a highschool diploma of education had an average unemployment rate of 5.41%. People with a highschool education, but no college education had a 3.67% average unemployment rate. Those with some college education or an associates degree had an average unemployment rate of 3.01%. Finally, people with a bachelor's degree or higher had an average unemployment rate of 2.10%. Even before the Covid-19 pandemic, we could see the disparities between those with a relatively high level of education and those who weren’t able to achieve that higher level. What the Covid-19 pandemic showed us is how large that disparity becomes when a lot of the businesses have to shut down, as well as how difficult it is for the different groups to recover from these events."), /*#__PURE__*/_reactDefault.default.createElement("h2", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 16,
-          columnNumber: 13
-        }
-      }, "Post-Covid Unemployment: Economic Turmoil at it’s Finest"), /*#__PURE__*/_reactDefault.default.createElement("p", {
-        __self: undefined,
-        __source: {
-          fileName: _jsxFileName,
           lineNumber: 17,
           columnNumber: 13
         }
-      }, "When Covid-19 started to hit the U.S., many businesses were forced to close their doors and lay off workers to prevent the company from going under. This caused a massive spike in unemployment across the country that affected almost everyone. The unemployment rate for people with less than a highschool diploma of education peaked at 21%, about 3.9 times higher than the average unemployment rate before the pandemic started. The people who had a highschool education, but no college education had their unemployment rates peak at about 17.3%, which was about 4.7 times higher than the average rate before the pandemic. Those that had some college education or an associates degree had their unemployment rate peak at 15%, about 5 times higher than the average rate before the pandemic. Finally, those with a bachelor's degree or higher, their unemployment rate peaked at 8.4%, also about 4 times higher than their average unemployment rate before the pandemic. What we find from these statistics is that people in the middle, those with a highschool education, but no college education and those with some college education or an associates degree were hit the hardest by the pandemic in terms of unemployment. People in the less than a highschool diploma of education and bachelor's degree or higher groups were affected the least by unemployment, but the increase was still substantial. As for why this trend occurred, we are unsure, and recommend further research to be done into why the two middle groups had a higher increase in their unemployment rates. As for the overall conclusion, we can safely say that no one group was safe from the effects of Covid-19 on unemployment."), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+      }, "Post-Covid Unemployment: Economic Turmoil at it’s Finest"), /*#__PURE__*/_reactDefault.default.createElement(_visualizationsNaitonalAndWALineChartDefault.default, {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 18,
+          columnNumber: 13
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 19,
           columnNumber: 13
         }
-      }, "Education in the U.S:"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+      }, "When Covid-19 started to hit the U.S., many businesses were forced to close their doors and lay off workers to prevent the company from going under. This caused a massive spike in unemployment across the country that affected almost everyone. The unemployment rate for people with less than a highschool diploma of education peaked at 21%, about 3.9 times higher than the average unemployment rate before the pandemic started. The people who had a highschool education, but no college education had their unemployment rates peak at about 17.3%, which was about 4.7 times higher than the average rate before the pandemic. Those that had some college education or an associates degree had their unemployment rate peak at 15%, about 5 times higher than the average rate before the pandemic."), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 20,
+          columnNumber: 13
+        }
+      }, "Finally, those with a bachelor's degree or higher, their unemployment rate peaked at 8.4%, also about 4 times higher than their average unemployment rate before the pandemic. What we find from these statistics is that people in the middle, those with a highschool education, but no college education and those with some college education or an associates degree were hit the hardest by the pandemic in terms of unemployment. People in the less than a highschool diploma of education and bachelor's degree or higher groups were affected the least by unemployment, but the increase was still substantial. As for why this trend occurred, we are unsure, and recommend further research to be done into why the two middle groups had a higher increase in their unemployment rates. As for the overall conclusion, we can safely say that no one group was safe from the effects of Covid-19 on unemployment."), /*#__PURE__*/_reactDefault.default.createElement(_visualizationsUnemploymentRateLineChartDegreeDefault.default, {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 21,
           columnNumber: 13
         }
-      }, "Pre and Post Covid Unemployment Rates:"), /*#__PURE__*/_reactDefault.default.createElement(_visualizationsNaitonalAndWALineChartDefault.default, {
+      }), /*#__PURE__*/_reactDefault.default.createElement("h2", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 23,
           columnNumber: 13
         }
-      }), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+      }, "Educational Disparity in the U.S.: Come So Far, and So Far to Go"), /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 25,
+          lineNumber: 24,
+          columnNumber: 13
+        }
+      }, "According to ", /*#__PURE__*/_reactDefault.default.createElement("a", {
+        href: "https://educationdata.org/",
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 24,
+          columnNumber: 29
+        }
+      }, "educationdata.org"), ", among those who are 18-24 years old, 14% of Women and 17% of Men have No Diploma, 27% of Women and 32% of Men have a highschool diploma, and 59% of Women and 50% of Men have a Postsecondary degree. For those that graduated high school, the racial and ethnicity gaps overall have become better between 2000 and 2019, although some are not where they should be. The Latino/Hispanic community for instance, is the community that still shows the biggest disparity compared to any other race. In 2000, the rate of highschool graduates for the Latino/Hispanic community was 63%, but in 2019, that number reached 86%. This number is 5% lower than the next closest community (The Black community at 91%). What this means for our data is that different communities will be affected differently based on the degree level they have attained. For example, if one race/ethnicity tends to fall under the attainment of a specific degree, and another race/ethnicity tends to fall under the attainment of another degree, then the disparities between these communities will be more heavily felt."), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 27,
+          columnNumber: 13
+        }
+      }, "Pre and Post Covid Unemployment Rates:"), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 28,
+          columnNumber: 13
+        }
+      }, "place holder for rayna's graph"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 30,
           columnNumber: 13
         }
       }, "The Long Road Ahead, and The Decisions we Need to Make"), /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26,
+          lineNumber: 31,
           columnNumber: 13
         }
       }, "COVID-19's global impact, both in terms of lives lost and economic ruin, is expected to leave a devastating impact for years to come. The best path forward is to ensure that we learn from the lessons that were acquired during this crisis so that we can better prepare for the next one. And given the continuous history of economic and educational inequality that continues to produce unequal outcomes affecting practically every element of life in the United States, the negative socio-economic impact of COVID-19 outlined in this report should come as no surprise. We must work tirelessly to address the long-standing inequality in economic, educational, and health outcomes if we are to shield those who are most vulnerable from experiencing the same needlessly heavy burden during the next economic or public health crisis."), /*#__PURE__*/_reactDefault.default.createElement("br", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 27,
+          lineNumber: 32,
           columnNumber: 13
         }
       }))
@@ -26399,7 +26437,7 @@ try {
   window.$RefreshSig$ = prevRefreshSig;
 }
 
-},{"react":"3b2NM","./hooks/useFetch":"5YU3r","./visualizations/UnemploymentRateLineChart":"2rVmB","./visualizations/NaitonalAndWALineChart":"5VnMN","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"5YU3r":[function(require,module,exports) {
+},{"react":"3b2NM","./hooks/useFetch":"5YU3r","./visualizations/UnemploymentRateLineChart":"2rVmB","./visualizations/NaitonalAndWALineChart":"5VnMN","./visualizations/UnemploymentRateLineChartDegree":"1tjcP","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"5YU3r":[function(require,module,exports) {
 var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27066,9 +27104,9 @@ try {
       // .duration(1000)
       // .attr('fill', "red")
       // })
-      // x-axis lable
+      // x-axis label : Year
       svg.append("text").attr("x", width / 2).attr("y", height + margin.bottom).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Year');
-      // y-axis lable
+      // y-axis label : Unemployment Rate (National Rate)
       svg.append("text").attr("x", 0).attr("y", 0).attr('transform', `translate(-40, ${height / 2}) rotate(-90)`).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Unemployment Rate (National Rate)');
     }
     return (
@@ -43037,12 +43075,7 @@ try {
         bottom: 40,
         left: 60
       }, // size
-      width = 800 - margin.left - margin.right, height = 500 - margin.top - margin.bottom, tooltip = {
-        width: 100,
-        height: 100,
-        x: 10,
-        y: -30
-      };
+      width = 800 - margin.left - margin.right, height = 500 - margin.top - margin.bottom;
       const svg = _d.// create the svg box for the viz
       select("#unemp-national-WA-line").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", `translate(${margin.left}, ${margin.top})`);
       data.forEach(function (d) {
@@ -43181,9 +43214,9 @@ try {
       .style("fill", "red")
       //.style("font-weight", "bold")
       .text("Washington");*/
-      // x-axis label
+      // x-axis label : Year
       svg.append("text").attr("x", width / 2).attr("y", height + margin.bottom).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Year');
-      // y-axis label
+      // y-axis label : Unemployment Rate (National Rate & WA)
       svg.append("text").attr("x", 0).attr("y", 0).attr('transform', `translate(-40, ${height / 2}) rotate(-90)`).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Unemployment Rate (National Rate & WA)');
       // WA legend
       svg.append("circle").attr("cx", width / 2 + 100).attr("cy", 130).attr("r", 6).style("fill", "red");
@@ -43197,30 +43230,23 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 253,
+          lineNumber: 252,
           columnNumber: 9
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 254,
+          lineNumber: 253,
           columnNumber: 13
         }
-      }, loading && "Loading national rate data!"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 255,
-          columnNumber: 13
-        }
-      }, "Average Unemployment Rate National vs. Washington (2019-2021)"), /*#__PURE__*/_reactDefault.default.createElement("div", {
+      }, loading && "Loading national rate data!"), /*#__PURE__*/_reactDefault.default.createElement("div", {
         id: "unemp-national-WA-line",
         className: "viz",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 256,
+          lineNumber: 255,
           columnNumber: 13
         }
       }))
@@ -43239,6 +43265,175 @@ try {
   window.$RefreshSig$ = prevRefreshSig;
 }
 
-},{"react":"3b2NM","../hooks/useFetch":"5YU3r","d3-scale":"2UZ4X","d3-array":"7CLUA","d3":"3auhl","d3-collection":"3Ea9u","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}]},["1j6wU","3Imd1","5rkFb"], "5rkFb", "parcelRequiref024")
+},{"react":"3b2NM","../hooks/useFetch":"5YU3r","d3-scale":"2UZ4X","d3-array":"7CLUA","d3":"3auhl","d3-collection":"3Ea9u","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"1tjcP":[function(require,module,exports) {
+var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require("react");
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _hooksUseFetch = require("../hooks/useFetch");
+  var _d3Scale = require("d3-scale");
+  require("d3-array");
+  var _d = require("d3");
+  var _jsxFileName = "/Users/akolyvongdala/Desktop/INFO474-Final-Project/src/visualizations/UnemploymentRateLineChartDegree.js", _s = $RefreshSig$();
+  function UnemploymentRateDegreeLine() {
+    _s();
+    // ** after mergeing data with main must change this to main! **
+    const [data, loading] = _hooksUseFetch.useFetch("https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv");
+    if (loading === true) {
+      // Prevents extra appending
+      const margin = {
+        top: 20,
+        right: 20,
+        bottom: 40,
+        left: 60
+      }, // size
+      width = 800 - margin.left - margin.right, height = 500 - margin.top - margin.bottom;
+      const svg = _d.// create the svg box for the viz and appending it to line-chart div
+      select("#unemployment-rate-degree-line").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", `translate(${margin.left}, ${margin.top})`);
+      const timeParse = _d.timeParse(`%b-%y`);
+      let formatData = data.map(function (d) {
+        // parse values to int so that d3 can process them
+        d.Month = timeParse(d.Month);
+        d.K12LESS = +d.K12LESS;
+        d.HIGHSCHOOL = +d.HIGHSCHOOL;
+        d.ASSOCIATE = +d.ASSOCIATE;
+        d.BACHELOR = +d.BACHELOR;
+        return d;
+      });
+      // List of groups (here I have one group per column)
+      var allGroup = ["K12LESS", "HIGHSCHOOL", "ASSOCIATE", "BACHELOR"];
+      // Reformat the data: we need an array of arrays of {x, y} tuples
+      var dataReady = allGroup.map(function (grpName) {
+        // .map allows to do something for each element of the list
+        return {
+          name: grpName,
+          values: data.map(function (d) {
+            return {
+              time: d.Month,
+              value: +d[grpName]
+            };
+          })
+        };
+      });
+      var myColor = _d.scaleOrdinal().domain(allGroup).range(_d.schemeSet2);
+      const xScale = _d3Scale.scaleTime().// x-axis for MONTH - YEAR
+      domain([_d.min(formatData, d => d.Month), _d.max(formatData, d => d.Month)]).nice().range([0, width]);
+      svg.append("g").attr("transform", `translate(0, ${height})`).call(_d.axisBottom(xScale));
+      const yScale = _d3Scale.scaleLinear().// y axis for HIGH SCHOOL
+      domain([0, 25]).range([height, 0]);
+      svg.append("g").call(_d.axisLeft(yScale));
+      // Add the lines
+      var line = _d.line().x(function (d) {
+        return xScale(+d.time);
+      }).y(function (d) {
+        return yScale(+d.value);
+      });
+      svg.selectAll("myLines").data(dataReady).enter().append("path").attr("id", function (d) {
+        return d.name;
+      }).attr("d", function (d) {
+        return line(d.values);
+      }).attr("stroke", function (d) {
+        return myColor(d.name);
+      }).style("stroke-width", 4).style("fill", "none");
+      // Add a legend (interactive)
+      svg.selectAll("myLegend").data(dataReady).enter().append('g').append("text").attr("x", function (d, i) {
+        return 50 + i * 120;
+      }).attr("y", 30).attr("id", function (d) {
+        return d.name + "-text";
+      }).text(function (d) {
+        return d.name;
+      }).style("fill", function (d) {
+        return myColor(d.name);
+      }).style("font-size", 15);
+      // .on("click", function(e, d) {
+      // console.log(d)
+      // // is the element currently visible ?
+      // currentOpacity = d3.selectAll("#" + d.name).style("opacity")
+      // // Change the opacity: from 0 to 1 or from 1 to 0
+      // d3.selectAll("#" + d.name).transition().style("opacity", currentOpacity == 1 ? 0:1)
+      // });
+      // manually add add in event listener bc its not working on the legend for some reason
+      svg.select("#K12LESS-text").on("click", function (e, d) {
+        // is the element currently visible ?
+        currentOpacity = _d.select("#K12LESS").style("opacity");
+        // Change the opacity: from 0 to 1 or from 1 to 0
+        _d.select("#K12LESS").transition().style("opacity", currentOpacity == 1 ? 0 : 1);
+      });
+      svg.select("#HIGHSCHOOL-text").on("click", function (e, d) {
+        // is the element currently visible ?
+        currentOpacity = _d.select("#HIGHSCHOOL").style("opacity");
+        // Change the opacity: from 0 to 1 or from 1 to 0
+        _d.select("#HIGHSCHOOL").transition().style("opacity", currentOpacity == 1 ? 0 : 1);
+      });
+      svg.select("#ASSOCIATE-text").on("click", function (e, d) {
+        // is the element currently visible ?
+        currentOpacity = _d.select("#ASSOCIATE").style("opacity");
+        // Change the opacity: from 0 to 1 or from 1 to 0
+        _d.select("#ASSOCIATE").transition().style("opacity", currentOpacity == 1 ? 0 : 1);
+      });
+      svg.select("#BACHELOR-text").on("click", function (e, d) {
+        // is the element currently visible ?
+        currentOpacity = _d.select("#BACHELOR").style("opacity");
+        // Change the opacity: from 0 to 1 or from 1 to 0
+        _d.select("#BACHELOR").transition().style("opacity", currentOpacity == 1 ? 0 : 1);
+      });
+      // x-axis label : Year
+      svg.append("text").attr("x", width / 2).attr("y", height + margin.bottom).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Year');
+      // y-axis label : Unemployment Rate
+      svg.append("text").attr("x", 0).attr("y", 0).attr('transform', `translate(-40, ${height / 2}) rotate(-90)`).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Unemployment Rate');
+    }
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement("div", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 164,
+          columnNumber: 9
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 165,
+          columnNumber: 13
+        }
+      }, loading && "Loading national rate data!"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 166,
+          columnNumber: 13
+        }
+      }, "Unemployment Rates by Degrees"), /*#__PURE__*/_reactDefault.default.createElement("div", {
+        id: "unemployment-rate-degree-line",
+        className: "viz",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 167,
+          columnNumber: 13
+        }
+      }))
+    );
+  }
+  exports.default = UnemploymentRateDegreeLine;
+  _s(UnemploymentRateDegreeLine, "Jm65JCcgUFoenM4DufkEA80vRVI=", false, function () {
+    return [_hooksUseFetch.useFetch];
+  });
+  _c = UnemploymentRateDegreeLine;
+  var _c;
+  $RefreshReg$(_c, "UnemploymentRateDegreeLine");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+
+},{"react":"3b2NM","../hooks/useFetch":"5YU3r","d3-scale":"2UZ4X","d3-array":"7CLUA","d3":"3auhl","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}]},["1j6wU","3Imd1","5rkFb"], "5rkFb", "parcelRequiref024")
 
 //# sourceMappingURL=index.3fafb3e2.js.map

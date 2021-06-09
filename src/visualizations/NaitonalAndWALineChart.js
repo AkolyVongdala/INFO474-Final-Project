@@ -8,7 +8,7 @@ import { nest } from 'd3-collection';
 //Line Chart #3: unemployment rate National vs. Washington 2019 - 2021
 export default function NationalAndWALine() {
     const [data, loading] = useFetch(
-        "https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/DegreeLineChart_Jisu2/data/Info474_FinalData.csv"
+        "https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv"
     );
 
     if (loading === true) {
@@ -251,7 +251,7 @@ export default function NationalAndWALine() {
     return (
         <div>
             <p>{loading && "Loading national rate data!"}</p>
-            <h2>Average Unemployment Rate National vs. Washington (2019-2021)</h2>
+            {/* <h2>Average Unemployment Rate National vs. Washington (2019-2021)</h2> */}
             <div id="unemp-national-WA-line" className="viz">
             </div>
         </div>

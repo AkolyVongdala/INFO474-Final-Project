@@ -15,7 +15,7 @@ import { text } from "d3";
 export default function UnemploymentRateDegreeLine() {
     // ** after mergeing data with main must change this to main! **
     const [data, loading] = useFetch(
-        "https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/DegreeLineChart_Jisu2/data/Info474_FinalData.csv"
+        "https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv"
     );
 
     if (loading === true) { // Prevents extra appending

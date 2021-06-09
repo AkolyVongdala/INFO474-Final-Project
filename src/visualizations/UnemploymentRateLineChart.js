@@ -9,7 +9,7 @@ import { schemeBrBG } from "d3";
 // Chart #1: unemployment rate up until 2010 - 2021
 export default function UnemploymentRateLine() {
     const [data, loading] = useFetch(
-        "https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/DegreeLineChart_Jisu2/data/Info474_FinalData.csv"
+        "https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv"
     );
 
     // define state for our tooltip display status
