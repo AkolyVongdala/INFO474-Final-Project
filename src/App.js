@@ -2,6 +2,7 @@ import React from "react";
 import { useFetch } from "./hooks/useFetch";
 import UnemploymentRateLine from "./visualizations/UnemploymentRateLineChart";
 import NationalAndWALine from "./visualizations/NaitonalAndWALineChart"
+import DegreeUnempLine from "./visualizations/UnemploymentRateLineChartDegree"
 
 const App = () => {
     return (
@@ -25,6 +26,8 @@ const App = () => {
             <h2>The Long Road Ahead, and The Decisions we Need to Make</h2>
             <p>COVID-19's global impact, both in terms of lives lost and economic ruin, is expected to leave a devastating impact for years to come. The best path forward is to ensure that we learn from the lessons that were acquired during this crisis so that we can better prepare for the next one. And given the continuous history of economic and educational inequality that continues to produce unequal outcomes affecting practically every element of life in the United States, the negative socio-economic impact of COVID-19 outlined in this report should come as no surprise. We must work tirelessly to address the long-standing inequality in economic, educational, and health outcomes if we are to shield those who are most vulnerable from experiencing the same needlessly heavy burden during the next economic or public health crisis.</p>
             <br></br>
+
+            <DegreeUnempLine />
         </div>
     );
     

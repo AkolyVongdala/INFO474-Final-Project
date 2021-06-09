@@ -1,49 +1,4 @@
 .viz {
     text-align: center;
 }
-
-body {
-    height: 100%;
-    width: 100%;
-    margin: 0 auto;
-    max-width: 50em;
-    font-family: "Helvetica", "Arial", sans-serif;
-    line-height: 1.5;
-    color: #555;
-}
-
-/* p {
-  margin: 0%;
-} */
-
-.author {
-  color: #326891;
-  font-weight: 500;
-  margin-bottom: 2rem;
-  margin-top: 0%;
-}
-
-
-h1, h2 {
-    margin-top: 1em; 
-    padding-top: 1em; 
-    margin-bottom: 5px;
-    padding-bottom: 0%;
-    /* padding: 4em 1em; */
-    color: #333;
-}
-
-code,
-pre {
-  background: #eee;
-}
-
-code {
-  padding: 2px 4px;
-  vertical-align: text-bottom;
-}
-
-pre {
-  padding: 1em;
-}
 /*# sourceMappingURL=index.0f132b6c.css.map */

@@ -1054,7 +1054,7 @@ try {
   var _reactDomDefault = _parcelHelpers.interopDefault(_reactDom);
   var _App = require("./App");
   var _AppDefault = _parcelHelpers.interopDefault(_App);
-  var _jsxFileName = "/Users/akolyvongdala/Desktop/INFO474-Final-Project/src/index.js";
+  var _jsxFileName = "/Users/jisukim/INFO474-Final-Project/src/index.js";
   _reactDomDefault.default.render(/*#__PURE__*/_reactDefault.default.createElement(_AppDefault.default, {
     __self: undefined,
     __source: {
@@ -26277,21 +26277,23 @@ try {
   var _visualizationsUnemploymentRateLineChartDefault = _parcelHelpers.interopDefault(_visualizationsUnemploymentRateLineChart);
   var _visualizationsNaitonalAndWALineChart = require("./visualizations/NaitonalAndWALineChart");
   var _visualizationsNaitonalAndWALineChartDefault = _parcelHelpers.interopDefault(_visualizationsNaitonalAndWALineChart);
-  var _jsxFileName = "/Users/akolyvongdala/Desktop/INFO474-Final-Project/src/App.js";
+  var _visualizationsUnemploymentRateLineChartDegree = require("./visualizations/UnemploymentRateLineChartDegree");
+  var _visualizationsUnemploymentRateLineChartDegreeDefault = _parcelHelpers.interopDefault(_visualizationsUnemploymentRateLineChartDegree);
+  var _jsxFileName = "/Users/jisukim/INFO474-Final-Project/src/App.js";
   const App = () => {
     return (
       /*#__PURE__*/_reactDefault.default.createElement("div", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 8,
+          lineNumber: 9,
           columnNumber: 9
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("h1", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 9,
+          lineNumber: 10,
           columnNumber: 13
         }
       }, "Covid-19: The Bug that Paralyzed our World"), /*#__PURE__*/_reactDefault.default.createElement("p", {
@@ -26299,91 +26301,98 @@ try {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 10,
+          lineNumber: 11,
           columnNumber: 13
         }
       }, "University of Washington, INFO 474 Final Project ", /*#__PURE__*/_reactDefault.default.createElement("br", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 10,
+          lineNumber: 11,
           columnNumber: 84
         }
       }), "By Alex Honeycutt, Jisu Kim, Kayla Lee, Rayna Tilley, and Akoly Vongdala"), /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 12,
+          lineNumber: 13,
           columnNumber: 13
         }
       }, "On January 21st, 2020, the first confirmed case of Covid -19 was found in the United States. Less than two months later on March 11th, 2020, the Covid-19 outbreak was declared a pandemic by the World Health Organization (WHO). Shortly after, the United States declared a state of emergency and multiple states started to enact stay-at-home orders. This resulted in most, if not all, non-essential businesses to shut down for an unknown period of time. After weeks, and eventually months of waiting, businesses had to start laying off and firing employees to ensure their survival in the long term. This resulted in one of the biggest unemployment spikes our country has seen in the past two decades. What we hope to show in our article is how educational disparities have affected unemployment rates both nationally, and within Washington state as the Covid-19 pandemic first hit, and how people with different levels of education have recovered."), /*#__PURE__*/_reactDefault.default.createElement(_visualizationsUnemploymentRateLineChartDefault.default, {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 13,
+          lineNumber: 14,
           columnNumber: 13
         }
       }), /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 14,
+          lineNumber: 15,
           columnNumber: 13
         }
       }, "In the years leading up to the Covid-19 pandemic, unemployment rates were steadily decreasing across all education levels until they started to level off around January 1st, 2018. Those with a lower level of education tended to have a higher level of unemployment than those with a higher level of education. Between January 1st, 2019 and January 1st, 2020, people with less than a highschool diploma of education had an average unemployment rate of 5.41%. People with a highschool education, but no college education had a 3.67% average unemployment rate. Those with some college education or an associates degree had an average unemployment rate of 3.01%. Finally, people with a bachelor's degree or higher had an average unemployment rate of 2.10%. Even before the Covid-19 pandemic, we could see the disparities between those with a relatively high level of education and those who weren’t able to achieve that higher level. What the Covid-19 pandemic showed us is how large that disparity becomes when a lot of the businesses have to shut down, as well as how difficult it is for the different groups to recover from these events."), /*#__PURE__*/_reactDefault.default.createElement("h2", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 16,
+          lineNumber: 17,
           columnNumber: 13
         }
       }, "Post-Covid Unemployment: Economic Turmoil at it’s Finest"), /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 17,
+          lineNumber: 18,
           columnNumber: 13
         }
       }, "When Covid-19 started to hit the U.S., many businesses were forced to close their doors and lay off workers to prevent the company from going under. This caused a massive spike in unemployment across the country that affected almost everyone. The unemployment rate for people with less than a highschool diploma of education peaked at 21%, about 3.9 times higher than the average unemployment rate before the pandemic started. The people who had a highschool education, but no college education had their unemployment rates peak at about 17.3%, which was about 4.7 times higher than the average rate before the pandemic. Those that had some college education or an associates degree had their unemployment rate peak at 15%, about 5 times higher than the average rate before the pandemic. Finally, those with a bachelor's degree or higher, their unemployment rate peaked at 8.4%, also about 4 times higher than their average unemployment rate before the pandemic. What we find from these statistics is that people in the middle, those with a highschool education, but no college education and those with some college education or an associates degree were hit the hardest by the pandemic in terms of unemployment. People in the less than a highschool diploma of education and bachelor's degree or higher groups were affected the least by unemployment, but the increase was still substantial. As for why this trend occurred, we are unsure, and recommend further research to be done into why the two middle groups had a higher increase in their unemployment rates. As for the overall conclusion, we can safely say that no one group was safe from the effects of Covid-19 on unemployment."), /*#__PURE__*/_reactDefault.default.createElement("h2", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 19,
+          lineNumber: 20,
           columnNumber: 13
         }
       }, "Education in the U.S:"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21,
+          lineNumber: 22,
           columnNumber: 13
         }
       }, "Pre and Post Covid Unemployment Rates:"), /*#__PURE__*/_reactDefault.default.createElement(_visualizationsNaitonalAndWALineChartDefault.default, {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23,
+          lineNumber: 24,
           columnNumber: 13
         }
       }), /*#__PURE__*/_reactDefault.default.createElement("h2", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 25,
+          lineNumber: 26,
           columnNumber: 13
         }
       }, "The Long Road Ahead, and The Decisions we Need to Make"), /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26,
+          lineNumber: 27,
           columnNumber: 13
         }
       }, "COVID-19's global impact, both in terms of lives lost and economic ruin, is expected to leave a devastating impact for years to come. The best path forward is to ensure that we learn from the lessons that were acquired during this crisis so that we can better prepare for the next one. And given the continuous history of economic and educational inequality that continues to produce unequal outcomes affecting practically every element of life in the United States, the negative socio-economic impact of COVID-19 outlined in this report should come as no surprise. We must work tirelessly to address the long-standing inequality in economic, educational, and health outcomes if we are to shield those who are most vulnerable from experiencing the same needlessly heavy burden during the next economic or public health crisis."), /*#__PURE__*/_reactDefault.default.createElement("br", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 27,
+          lineNumber: 28,
+          columnNumber: 13
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement(_visualizationsUnemploymentRateLineChartDegreeDefault.default, {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 30,
           columnNumber: 13
         }
       }))
@@ -26399,7 +26408,206 @@ try {
   window.$RefreshSig$ = prevRefreshSig;
 }
 
-},{"react":"3b2NM","./hooks/useFetch":"5YU3r","./visualizations/UnemploymentRateLineChart":"2rVmB","./visualizations/NaitonalAndWALineChart":"5VnMN","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"5YU3r":[function(require,module,exports) {
+},{"react":"3b2NM","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","./hooks/useFetch":"5YU3r","./visualizations/UnemploymentRateLineChart":"2rVmB","./visualizations/NaitonalAndWALineChart":"5VnMN","./visualizations/UnemploymentRateLineChartDegree":"1tjcP"}],"5gA8y":[function(require,module,exports) {
+"use strict";
+
+exports.interopDefault = function (a) {
+  return a && a.__esModule ? a : {
+    default: a
+  };
+};
+
+exports.defineInteropFlag = function (a) {
+  Object.defineProperty(a, '__esModule', {
+    value: true
+  });
+};
+
+exports.exportAll = function (source, dest) {
+  Object.keys(source).forEach(function (key) {
+    if (key === 'default' || key === '__esModule') {
+      return;
+    } // Skip duplicate re-exports when they have the same value.
+
+
+    if (key in dest && dest[key] === source[key]) {
+      return;
+    }
+
+    Object.defineProperty(dest, key, {
+      enumerable: true,
+      get: function () {
+        return source[key];
+      }
+    });
+  });
+  return dest;
+};
+
+exports.export = function (dest, destName, get) {
+  Object.defineProperty(dest, destName, {
+    enumerable: true,
+    get: get
+  });
+};
+},{}],"4Jj4f":[function(require,module,exports) {
+"use strict";
+var Refresh = require('react-refresh/runtime');
+function debounce(func, delay) {
+  if ("development" === 'test') {
+    return function (args) {
+      func.call(null, args);
+    };
+  } else {
+    var timeout = undefined;
+    return function (args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(function () {
+        timeout = undefined;
+        func.call(null, args);
+      }, delay);
+    };
+  }
+}
+var enqueueUpdate = debounce(function () {
+  Refresh.performReactRefresh();
+}, 30);
+// Everthing below is either adapted or copied from
+// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
+// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
+module.exports.prelude = function (module) {
+  window.$RefreshReg$ = function (type, id) {
+    Refresh.register(type, module.id + ' ' + id);
+  };
+  window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
+};
+module.exports.postlude = function (module) {
+  if (isReactRefreshBoundary(module.exports)) {
+    registerExportsForReactRefresh(module);
+    if (module.hot) {
+      module.hot.dispose(function (data) {
+        if (Refresh.hasUnrecoverableErrors()) {
+          window.location.reload();
+        }
+        data.prevExports = module.exports;
+      });
+      module.hot.accept(function (getParents) {
+        var prevExports = module.hot.data.prevExports;
+        var nextExports = module.exports;
+        // Since we just executed the code for it, it's possible
+        // that the new exports make it ineligible for being a boundary.
+        var isNoLongerABoundary = !isReactRefreshBoundary(nextExports);
+        // It can also become ineligible if its exports are incompatible
+        // with the previous exports.
+        // For example, if you add/remove/change exports, we'll want
+        // to re-execute the importing modules, and force those components
+        // to re-render. Similarly, if you convert a class component
+        // to a function, we want to invalidate the boundary.
+        var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
+        if (isNoLongerABoundary || didInvalidate) {
+          // We'll be conservative. The only case in which we won't do a full
+          // reload is if all parent modules are also refresh boundaries.
+          // In that case we'll add them to the current queue.
+          var parents = getParents();
+          if (parents.length === 0) {
+            // Looks like we bubbled to the root. Can't recover from that.
+            window.location.reload();
+            return;
+          }
+          return parents;
+        }
+        enqueueUpdate();
+      });
+    }
+  }
+};
+function isReactRefreshBoundary(exports) {
+  if (Refresh.isLikelyComponentType(exports)) {
+    return true;
+  }
+  if (exports == null || typeof exports !== 'object') {
+    // Exit if we can't iterate over exports.
+    return false;
+  }
+  var hasExports = false;
+  var areAllExportsComponents = true;
+  let isESM = ('__esModule' in exports);
+  for (var key in exports) {
+    hasExports = true;
+    if (key === '__esModule') {
+      continue;
+    }
+    var desc = Object.getOwnPropertyDescriptor(exports, key);
+    if (desc && desc.get && !isESM) {
+      // Don't invoke getters for CJS as they may have side effects.
+      return false;
+    }
+    var exportValue = exports[key];
+    if (!Refresh.isLikelyComponentType(exportValue)) {
+      areAllExportsComponents = false;
+    }
+  }
+  return hasExports && areAllExportsComponents;
+}
+function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
+  var prevSignature = getRefreshBoundarySignature(prevExports);
+  var nextSignature = getRefreshBoundarySignature(nextExports);
+  if (prevSignature.length !== nextSignature.length) {
+    return true;
+  }
+  for (var i = 0; i < nextSignature.length; i++) {
+    if (prevSignature[i] !== nextSignature[i]) {
+      return true;
+    }
+  }
+  return false;
+}
+// When this signature changes, it's unsafe to stop at this refresh boundary.
+function getRefreshBoundarySignature(exports) {
+  var signature = [];
+  signature.push(Refresh.getFamilyByType(exports));
+  if (exports == null || typeof exports !== 'object') {
+    // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return signature;
+  }
+  let isESM = ('__esModule' in exports);
+  for (var key in exports) {
+    if (key === '__esModule') {
+      continue;
+    }
+    var desc = Object.getOwnPropertyDescriptor(exports, key);
+    if (desc && desc.get && !isESM) {
+      // Don't invoke getters for CJS as they may have side effects.
+      continue;
+    }
+    var exportValue = exports[key];
+    signature.push(key);
+    signature.push(Refresh.getFamilyByType(exportValue));
+  }
+  return signature;
+}
+function registerExportsForReactRefresh(module) {
+  var exports = module.exports, id = module.id;
+  Refresh.register(exports, id + ' %exports%');
+  if (exports == null || typeof exports !== 'object') {
+    // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return;
+  }
+  let isESM = ('__esModule' in exports);
+  for (var key in exports) {
+    var desc = Object.getOwnPropertyDescriptor(exports, key);
+    if (desc && desc.get && !isESM) {
+      // Don't invoke getters for CJS as they may have side effects.
+      continue;
+    }
+    var exportValue = exports[key];
+    Refresh.register(exportValue, id + ' %exports% ' + key);
+  }
+}
+
+},{"react-refresh/runtime":"592mh"}],"5YU3r":[function(require,module,exports) {
 var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -26699,206 +26907,7 @@ var define;
   });
 });
 
-},{}],"5gA8y":[function(require,module,exports) {
-"use strict";
-
-exports.interopDefault = function (a) {
-  return a && a.__esModule ? a : {
-    default: a
-  };
-};
-
-exports.defineInteropFlag = function (a) {
-  Object.defineProperty(a, '__esModule', {
-    value: true
-  });
-};
-
-exports.exportAll = function (source, dest) {
-  Object.keys(source).forEach(function (key) {
-    if (key === 'default' || key === '__esModule') {
-      return;
-    } // Skip duplicate re-exports when they have the same value.
-
-
-    if (key in dest && dest[key] === source[key]) {
-      return;
-    }
-
-    Object.defineProperty(dest, key, {
-      enumerable: true,
-      get: function () {
-        return source[key];
-      }
-    });
-  });
-  return dest;
-};
-
-exports.export = function (dest, destName, get) {
-  Object.defineProperty(dest, destName, {
-    enumerable: true,
-    get: get
-  });
-};
-},{}],"4Jj4f":[function(require,module,exports) {
-"use strict";
-var Refresh = require('react-refresh/runtime');
-function debounce(func, delay) {
-  if ("development" === 'test') {
-    return function (args) {
-      func.call(null, args);
-    };
-  } else {
-    var timeout = undefined;
-    return function (args) {
-      clearTimeout(timeout);
-      timeout = setTimeout(function () {
-        timeout = undefined;
-        func.call(null, args);
-      }, delay);
-    };
-  }
-}
-var enqueueUpdate = debounce(function () {
-  Refresh.performReactRefresh();
-}, 30);
-// Everthing below is either adapted or copied from
-// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
-// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
-module.exports.prelude = function (module) {
-  window.$RefreshReg$ = function (type, id) {
-    Refresh.register(type, module.id + ' ' + id);
-  };
-  window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
-};
-module.exports.postlude = function (module) {
-  if (isReactRefreshBoundary(module.exports)) {
-    registerExportsForReactRefresh(module);
-    if (module.hot) {
-      module.hot.dispose(function (data) {
-        if (Refresh.hasUnrecoverableErrors()) {
-          window.location.reload();
-        }
-        data.prevExports = module.exports;
-      });
-      module.hot.accept(function (getParents) {
-        var prevExports = module.hot.data.prevExports;
-        var nextExports = module.exports;
-        // Since we just executed the code for it, it's possible
-        // that the new exports make it ineligible for being a boundary.
-        var isNoLongerABoundary = !isReactRefreshBoundary(nextExports);
-        // It can also become ineligible if its exports are incompatible
-        // with the previous exports.
-        // For example, if you add/remove/change exports, we'll want
-        // to re-execute the importing modules, and force those components
-        // to re-render. Similarly, if you convert a class component
-        // to a function, we want to invalidate the boundary.
-        var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
-        if (isNoLongerABoundary || didInvalidate) {
-          // We'll be conservative. The only case in which we won't do a full
-          // reload is if all parent modules are also refresh boundaries.
-          // In that case we'll add them to the current queue.
-          var parents = getParents();
-          if (parents.length === 0) {
-            // Looks like we bubbled to the root. Can't recover from that.
-            window.location.reload();
-            return;
-          }
-          return parents;
-        }
-        enqueueUpdate();
-      });
-    }
-  }
-};
-function isReactRefreshBoundary(exports) {
-  if (Refresh.isLikelyComponentType(exports)) {
-    return true;
-  }
-  if (exports == null || typeof exports !== 'object') {
-    // Exit if we can't iterate over exports.
-    return false;
-  }
-  var hasExports = false;
-  var areAllExportsComponents = true;
-  let isESM = ('__esModule' in exports);
-  for (var key in exports) {
-    hasExports = true;
-    if (key === '__esModule') {
-      continue;
-    }
-    var desc = Object.getOwnPropertyDescriptor(exports, key);
-    if (desc && desc.get && !isESM) {
-      // Don't invoke getters for CJS as they may have side effects.
-      return false;
-    }
-    var exportValue = exports[key];
-    if (!Refresh.isLikelyComponentType(exportValue)) {
-      areAllExportsComponents = false;
-    }
-  }
-  return hasExports && areAllExportsComponents;
-}
-function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
-  var prevSignature = getRefreshBoundarySignature(prevExports);
-  var nextSignature = getRefreshBoundarySignature(nextExports);
-  if (prevSignature.length !== nextSignature.length) {
-    return true;
-  }
-  for (var i = 0; i < nextSignature.length; i++) {
-    if (prevSignature[i] !== nextSignature[i]) {
-      return true;
-    }
-  }
-  return false;
-}
-// When this signature changes, it's unsafe to stop at this refresh boundary.
-function getRefreshBoundarySignature(exports) {
-  var signature = [];
-  signature.push(Refresh.getFamilyByType(exports));
-  if (exports == null || typeof exports !== 'object') {
-    // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return signature;
-  }
-  let isESM = ('__esModule' in exports);
-  for (var key in exports) {
-    if (key === '__esModule') {
-      continue;
-    }
-    var desc = Object.getOwnPropertyDescriptor(exports, key);
-    if (desc && desc.get && !isESM) {
-      // Don't invoke getters for CJS as they may have side effects.
-      continue;
-    }
-    var exportValue = exports[key];
-    signature.push(key);
-    signature.push(Refresh.getFamilyByType(exportValue));
-  }
-  return signature;
-}
-function registerExportsForReactRefresh(module) {
-  var exports = module.exports, id = module.id;
-  Refresh.register(exports, id + ' %exports%');
-  if (exports == null || typeof exports !== 'object') {
-    // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return;
-  }
-  let isESM = ('__esModule' in exports);
-  for (var key in exports) {
-    var desc = Object.getOwnPropertyDescriptor(exports, key);
-    if (desc && desc.get && !isESM) {
-      // Don't invoke getters for CJS as they may have side effects.
-      continue;
-    }
-    var exportValue = exports[key];
-    Refresh.register(exportValue, id + ' %exports% ' + key);
-  }
-}
-
-},{"react-refresh/runtime":"592mh"}],"2rVmB":[function(require,module,exports) {
+},{}],"2rVmB":[function(require,module,exports) {
 var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -26913,7 +26922,7 @@ try {
   var _d3Array = require("d3-array");
   var _d = require("d3");
   var _d3Collection = require('d3-collection');
-  var _jsxFileName = "/Users/akolyvongdala/Desktop/INFO474-Final-Project/src/visualizations/UnemploymentRateLineChart.js", _s = $RefreshSig$();
+  var _jsxFileName = "/Users/jisukim/INFO474-Final-Project/src/visualizations/UnemploymentRateLineChart.js", _s = $RefreshSig$();
   function UnemploymentRateLine() {
     _s();
     const [data, loading] = _hooksUseFetch.useFetch("https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv");
@@ -43026,7 +43035,7 @@ try {
   var _d3Array = require("d3-array");
   var _d = require("d3");
   var _d3Collection = require('d3-collection');
-  var _jsxFileName = "/Users/akolyvongdala/Desktop/INFO474-Final-Project/src/visualizations/NaitonalAndWALineChart.js", _s = $RefreshSig$();
+  var _jsxFileName = "/Users/jisukim/INFO474-Final-Project/src/visualizations/NaitonalAndWALineChart.js", _s = $RefreshSig$();
   function NationalAndWALine() {
     _s();
     const [data, loading] = _hooksUseFetch.useFetch("https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv");
@@ -43233,6 +43242,175 @@ try {
   _c = NationalAndWALine;
   var _c;
   $RefreshReg$(_c, "NationalAndWALine");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+
+},{"react":"3b2NM","../hooks/useFetch":"5YU3r","d3-scale":"2UZ4X","d3-array":"7CLUA","d3":"3auhl","d3-collection":"3Ea9u","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"1tjcP":[function(require,module,exports) {
+var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require("react");
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _hooksUseFetch = require("../hooks/useFetch");
+  var _d3Scale = require("d3-scale");
+  require("d3-array");
+  var _d = require("d3");
+  require('d3-collection');
+  var _jsxFileName = "/Users/jisukim/INFO474-Final-Project/src/visualizations/UnemploymentRateLineChartDegree.js", _s = $RefreshSig$();
+  function DegreeUnempLine() {
+    _s();
+    const [data, loading] = _hooksUseFetch.useFetch("https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv");
+    if (loading === true) {
+      // Prevents extra appending
+      // defining constants like height, width, and margin
+      const margin = {
+        top: 20,
+        right: 20,
+        bottom: 50,
+        left: 65
+      }, // size
+      width = 1000 - margin.left - margin.right, height = 550 - margin.top - margin.bottom;
+      let formatData = data.map(function (d) {
+        // parse values to int so that d3 can process them
+        d.EUR_Year = +d.EUR_Year;
+        d.Less_than_a_high_school_diploma = +d.Less_than_a_high_school_diploma;
+        d.High_school_graduates_no_college = +d.High_school_graduates_no_college;
+        d.Some_college_or_associate_degree = +d.Some_college_or_associate_degree;
+        d.Bachelor_s_degree_and_higher = +d.Bachelor_s_degree_and_higher;
+        return d;
+      });
+      const svg = _d.// create the svg box for the viz and appending it to line-chart div
+      select("#line-chart").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", `translate(${margin.left}, ${margin.top})`);
+      // List of groups (here I have one group per column)
+      var allGroup = ["Less_than_a_high_school_diploma", "High_school_graduates_no_college", "Some_college_or_associate_degree", "Bachelor_s_degree_and_higher"];
+      // Reformat the data: we need an array of arrays of {x, y} tuples
+      var dataReady = allGroup.map(function (grpName) {
+        // .map allows to do something for each element of the list
+        return {
+          name: grpName,
+          values: data.map(function (d) {
+            return {
+              time: d.EUR_Year,
+              value: +d[grpName]
+            };
+          })
+        };
+      });
+      var myColor = _d.scaleOrdinal().domain(allGroup).range(_d.schemeSet2);
+      const xScale = _d3Scale.scaleTime().// x-axis for MONTH - YEAR
+      domain([_d.min(formatData, d => d.EUR_Year), _d.max(formatData, d => d.EUR_Year)]).nice().range([0, width]);
+      svg.append("g").attr("transform", `translate(0, ${height})`).call(_d.axisBottom(xScale));
+      const yScale = _d3Scale.scaleLinear().// y axis for HIGH SCHOOL
+      domain([0, 25]).range([height, 0]);
+      svg.append("g").call(_d.axisLeft(yScale));
+      // Add the lines
+      var line = _d.line().x(function (d) {
+        return xScale(+d.time);
+      }).y(function (d) {
+        return yScale(+d.value);
+      });
+      svg.selectAll("myLines").data(dataReady).enter().append("path").attr("id", function (d) {
+        return d.name;
+      }).attr("d", function (d) {
+        return line(d.values);
+      }).attr("stroke", function (d) {
+        return myColor(d.name);
+      }).style("stroke-width", 4).style("fill", "none");
+      // Add a legend (interactive)
+      svg.selectAll("myLegend").data(dataReady).enter().append('g').append("text").attr("x", function (d, i) {
+        return 50 + i * 120;
+      }).attr("y", 30).attr("id", function (d) {
+        return d.name + "-text";
+      }).text(function (d) {
+        return d.name;
+      }).style("fill", function (d) {
+        return myColor(d.name);
+      }).style("font-size", 15);
+      // .on("click", function(e, d) {
+      // console.log(d)
+      // // is the element currently visible ?
+      // currentOpacity = d3.selectAll("#" + d.name).style("opacity")
+      // // Change the opacity: from 0 to 1 or from 1 to 0
+      // d3.selectAll("#" + d.name).transition().style("opacity", currentOpacity == 1 ? 0:1)
+      // });
+      // manually add add in event listener bc its not working on the legend for some reason
+      svg.select("#K12LESS-text").on("click", function (e, d) {
+        // is the element currently visible ?
+        currentOpacity = _d.select("#Less_than_a_high_school_diploma").style("opacity");
+        // Change the opacity: from 0 to 1 or from 1 to 0
+        _d.select("#Less_than_a_high_school_diploma").transition().style("opacity", currentOpacity == 1 ? 0 : 1);
+      });
+      svg.select("#HIGHSCHOOL-text").on("click", function (e, d) {
+        // is the element currently visible ?
+        currentOpacity = _d.select("#High_school_graduates_no_college").style("opacity");
+        // Change the opacity: from 0 to 1 or from 1 to 0
+        _d.select("#High_school_graduates_no_college").transition().style("opacity", currentOpacity == 1 ? 0 : 1);
+      });
+      svg.select("#ASSOCIATE-text").on("click", function (e, d) {
+        // is the element currently visible ?
+        currentOpacity = _d.select("#Some_college_or_associate_degree").style("opacity");
+        // Change the opacity: from 0 to 1 or from 1 to 0
+        _d.select("#Some_college_or_associate_degree").transition().style("opacity", currentOpacity == 1 ? 0 : 1);
+      });
+      svg.select("#BACHELOR-text").on("click", function (e, d) {
+        // is the element currently visible ?
+        currentOpacity = _d.select("#Bachelor_s_degree_and_higher").style("opacity");
+        // Change the opacity: from 0 to 1 or from 1 to 0
+        _d.select("#Bachelor_s_degree_and_higher").transition().style("opacity", currentOpacity == 1 ? 0 : 1);
+      });
+      // x-axis lable : Year
+      svg.append("text").attr("x", width / 2).attr("y", height + margin.bottom).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Year');
+      // y-axis lable : Year
+      svg.append("text").attr("x", 0).attr("y", 0).attr('transform', `translate(-50, ${height / 2}) rotate(-90)`).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Unemployment Rate (%)');
+    }
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement("div", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 153,
+          columnNumber: 9
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 154,
+          columnNumber: 13
+        }
+      }, loading && "Loading national rate data!"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 155,
+          columnNumber: 13
+        }
+      }, "Educational Disparities Throughout the Years 2001 to 2021"), /*#__PURE__*/_reactDefault.default.createElement("div", {
+        id: "#unemp-degree-line",
+        className: "viz",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 156,
+          columnNumber: 13
+        }
+      }))
+    );
+  }
+  exports.default = DegreeUnempLine;
+  _s(DegreeUnempLine, "Jm65JCcgUFoenM4DufkEA80vRVI=", false, function () {
+    return [_hooksUseFetch.useFetch];
+  });
+  _c = DegreeUnempLine;
+  var _c;
+  $RefreshReg$(_c, "DegreeUnempLine");
   helpers.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;

@@ -11,7 +11,11 @@ export default function DegreeUnempLine() {
         "https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv"
     );
 
-    const timeParse = d3.timeParse(`%b-%y`);
+if (loading === true) { // Prevents extra appending
+    // defining constants like height, width, and margin 
+    const margin = { top: 20, right: 20, bottom: 50, left: 65 }, //size
+        width = 1000 - margin.left - margin.right,
+        height = 550 - margin.top - margin.bottom;
 
     let formatData = data.map(function (d) { //parse values to int so that d3 can process them
         d.EUR_Year = +d.EUR_Year;
@@ -22,13 +26,6 @@ export default function DegreeUnempLine() {
 
         return d;
     });
-
-    // defining constants like height, width, and margin 
-    const margin = { top: 20, right: 20, bottom: 50, left: 65 }, //size
-        width = 1000 - margin.left - margin.right,
-        height = 550 - margin.top - margin.bottom;
-
-if (loading === true) { // Prevents extra appending
 
     const svg = d3 // create the svg box for the viz and appending it to line-chart div
         .select("#line-chart")
@@ -56,7 +53,7 @@ if (loading === true) { // Prevents extra appending
       .range(d3.schemeSet2);
 
     const xScale = scaleTime() //  x-axis for MONTH - YEAR
-        .domain([d3.min(formatData, d => d.Month), d3.max(formatData, d => d.EUR_Year)]).nice()
+        .domain([d3.min(formatData, d => d.EUR_Year), d3.max(formatData, d => d.EUR_Year)]).nice()
         .range([0, width])
     svg.append("g")
         .attr("transform", `translate(0, ${height})`)
@@ -105,30 +102,30 @@ if (loading === true) { // Prevents extra appending
     // manually add add in event listener bc its not working on the legend for some reason
     svg.select("#K12LESS-text").on("click", function(e, d) {
         // is the element currently visible ?
-        currentOpacity = d3.select("#K12LESS").style("opacity")
+        currentOpacity = d3.select("#Less_than_a_high_school_diploma").style("opacity")
         // Change the opacity: from 0 to 1 or from 1 to 0
-        d3.select("#K12LESS").transition().style("opacity", currentOpacity == 1 ? 0:1)
+        d3.select("#Less_than_a_high_school_diploma").transition().style("opacity", currentOpacity == 1 ? 0:1)
     });
 
     svg.select("#HIGHSCHOOL-text").on("click", function(e, d) {
         // is the element currently visible ?
-        currentOpacity = d3.select("#HIGHSCHOOL").style("opacity")
+        currentOpacity = d3.select("#High_school_graduates_no_college").style("opacity")
         // Change the opacity: from 0 to 1 or from 1 to 0
-        d3.select("#HIGHSCHOOL").transition().style("opacity", currentOpacity == 1 ? 0:1)
+        d3.select("#High_school_graduates_no_college").transition().style("opacity", currentOpacity == 1 ? 0:1)
     });
 
     svg.select("#ASSOCIATE-text").on("click", function(e, d) {
         // is the element currently visible ?
-        currentOpacity = d3.select("#ASSOCIATE").style("opacity")
+        currentOpacity = d3.select("#Some_college_or_associate_degree").style("opacity")
         // Change the opacity: from 0 to 1 or from 1 to 0
-        d3.select("#ASSOCIATE").transition().style("opacity", currentOpacity == 1 ? 0:1)
+        d3.select("#Some_college_or_associate_degree").transition().style("opacity", currentOpacity == 1 ? 0:1)
     });
 
     svg.select("#BACHELOR-text").on("click", function(e, d) {
         // is the element currently visible ?
-        currentOpacity = d3.select("#BACHELOR").style("opacity")
+        currentOpacity = d3.select("#Bachelor_s_degree_and_higher").style("opacity")
         // Change the opacity: from 0 to 1 or from 1 to 0
-        d3.select("#BACHELOR").transition().style("opacity", currentOpacity == 1 ? 0:1)
+        d3.select("#Bachelor_s_degree_and_higher").transition().style("opacity", currentOpacity == 1 ? 0:1)
     });
 
     // x-axis lable : Year
