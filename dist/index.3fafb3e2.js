@@ -27001,7 +27001,7 @@ try {
         bottom: 40,
         left: 60
       }, // size
-      width = 1000 - margin.left - margin.right, height = 500 - margin.top - margin.bottom;
+      width = 800 - margin.left - margin.right, height = 500 - margin.top - margin.bottom;
       const svg = _d.// create the svg box for the viz
       select("#unemployment-rate-line").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", `translate(${margin.left}, ${margin.top})`);
       data.forEach(function (d) {
@@ -43037,7 +43037,7 @@ try {
         bottom: 40,
         left: 60
       }, // size
-      width = 1000 - margin.left - margin.right, height = 500 - margin.top - margin.bottom, tooltip = {
+      width = 800 - margin.left - margin.right, height = 500 - margin.top - margin.bottom, tooltip = {
         width: 100,
         height: 100,
         x: 10,
@@ -43186,11 +43186,11 @@ try {
       // y-axis label
       svg.append("text").attr("x", 0).attr("y", 0).attr('transform', `translate(-40, ${height / 2}) rotate(-90)`).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Unemployment Rate (National Rate & WA)');
       // WA legend
-      svg.append("circle").attr("cx", width / 2 + 400).attr("cy", 130).attr("r", 6).style("fill", "red");
-      svg.append("text").attr("x", (width + 20) / 2 + 400).attr("y", 130).text("Washington").style("font-size", "15px").attr("alignment-baseline", "middle");
+      svg.append("circle").attr("cx", width / 2 + 100).attr("cy", 130).attr("r", 6).style("fill", "red");
+      svg.append("text").attr("x", (width + 20) / 2 + 100).attr("y", 130).text("Washington").style("font-size", "15px").attr("alignment-baseline", "middle");
       // National legend
-      svg.append("circle").attr("cx", width / 2 + 400).attr("cy", 160).attr("r", 6).style("fill", "black");
-      svg.append("text").attr("x", (width + 20) / 2 + 400).attr("y", 160).text("National").style("font-size", "15px").attr("alignment-baseline", "middle");
+      svg.append("circle").attr("cx", width / 2 + 100).attr("cy", 160).attr("r", 6).style("fill", "black");
+      svg.append("text").attr("x", (width + 20) / 2 + 100).attr("y", 160).text("National").style("font-size", "15px").attr("alignment-baseline", "middle");
     }
     return (
       /*#__PURE__*/_reactDefault.default.createElement("div", {
