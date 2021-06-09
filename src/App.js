@@ -2,6 +2,7 @@ import React from "react";
 import { useFetch } from "./hooks/useFetch";
 import UnemploymentRateLine from "./visualizations/UnemploymentRateLineChart";
 import NationalAndWALine from "./visualizations/NaitonalAndWALineChart"
+import UnemploymentRateDegreeLine from "./visualizations/UnemploymentRateLineChartDegree";
 
 const App = () => {
     return (
@@ -17,6 +18,7 @@ const App = () => {
             <p>When Covid-19 started to hit the U.S., many businesses were forced to close their doors and lay off workers to prevent the company from going under. This caused a massive spike in unemployment across the country that affected almost everyone. The unemployment rate for people with less than a highschool diploma of education peaked at 21%, about 3.9 times higher than the average unemployment rate before the pandemic started. The people who had a highschool education, but no college education had their unemployment rates peak at about 17.3%, which was about 4.7 times higher than the average rate before the pandemic. Those that had some college education or an associates degree had their unemployment rate peak at 15%, about 5 times higher than the average rate before the pandemic. Finally, those with a bachelor's degree or higher, their unemployment rate peaked at 8.4%, also about 4 times higher than their average unemployment rate before the pandemic. What we find from these statistics is that people in the middle, those with a highschool education, but no college education and those with some college education or an associates degree were hit the hardest by the pandemic in terms of unemployment. People in the less than a highschool diploma of education and bachelor's degree or higher groups were affected the least by unemployment, but the increase was still substantial. As for why this trend occurred, we are unsure, and recommend further research to be done into why the two middle groups had a higher increase in their unemployment rates. As for the overall conclusion, we can safely say that no one group was safe from the effects of Covid-19 on unemployment.</p>
 
             <h2>Education in the U.S:</h2>
+            <UnemploymentRateDegreeLine />
 
             <h2>Pre and Post Covid Unemployment Rates:</h2>
 
