@@ -24,8 +24,6 @@ const App = () => {
             <h2>Educational Disparity in the U.S.: Come So Far, and So Far to Go</h2>
             <p>According to <a href="https://educationdata.org/">educationdata.org</a>, among those who are 18-24 years old, 14% of Women and 17% of Men have No Diploma, 27% of Women and 32% of Men have a highschool diploma, and 59% of Women and 50% of Men have a Postsecondary degree. For those that graduated high school, the racial and ethnicity gaps overall have become better between 2000 and 2019, although some are not where they should be. The Latino/Hispanic community for instance, is the community that still shows the biggest disparity compared to any other race. In 2000, the rate of highschool graduates for the Latino/Hispanic community was 63%, but in 2019, that number reached 86%. This number is 5% lower than the next closest community (The Black community at 91%). What this means for our data is that different communities will be affected differently based on the degree level they have attained. For example, if one race/ethnicity tends to fall under the attainment of a specific degree, and another race/ethnicity tends to fall under the attainment of another degree, then the disparities between these communities will be more heavily felt.</p>
             
-
-            <h2>Pre and Post Covid Unemployment Rates:</h2>
             <UnemploymentByEducation></UnemploymentByEducation>
 
             <h2>The Long Road Ahead, and The Decisions we Need to Make</h2>
