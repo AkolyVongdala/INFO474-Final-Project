@@ -252,6 +252,7 @@ export default function NationalAndWALine() {
         <div>
             <p>{loading && "Loading national rate data!"}</p>
             {/* <h2>Average Unemployment Rate National vs. Washington (2019-2021)</h2> */}
+            <p>Hover function enable with SVG title</p>
             <div id="unemp-national-WA-line" className="viz">
             </div>
         </div>
