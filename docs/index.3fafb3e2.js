@@ -1054,7 +1054,7 @@ try {
   var _reactDomDefault = _parcelHelpers.interopDefault(_reactDom);
   var _App = require("./App");
   var _AppDefault = _parcelHelpers.interopDefault(_App);
-  var _jsxFileName = "/Users/akolyvongdala/Desktop/INFO474-Final-Project/src/index.js";
+  var _jsxFileName = "/mnt/d/Desktop/INFO_474/INFO474-Final-Project/src/index.js";
   _reactDomDefault.default.render(/*#__PURE__*/_reactDefault.default.createElement(_AppDefault.default, {
     __self: undefined,
     __source: {
@@ -26272,10 +26272,13 @@ try {
   _parcelHelpers.defineInteropFlag(exports);
   var _react = require("react");
   var _reactDefault = _parcelHelpers.interopDefault(_react);
-  require("./hooks/useFetch");
   var _visualizationsUnemploymentRateLineChart = require("./visualizations/UnemploymentRateLineChart");
   var _visualizationsUnemploymentRateLineChartDefault = _parcelHelpers.interopDefault(_visualizationsUnemploymentRateLineChart);
-  var _jsxFileName = "/Users/akolyvongdala/Desktop/INFO474-Final-Project/src/App.js";
+  var _visualizationsUnemploymentByEducation = require("./visualizations/UnemploymentByEducation");
+  var _visualizationsUnemploymentByEducationDefault = _parcelHelpers.interopDefault(_visualizationsUnemploymentByEducation);
+  var _visualizationsNaitonalAndWALineChart = require("./visualizations/NaitonalAndWALineChart");
+  var _visualizationsNaitonalAndWALineChartDefault = _parcelHelpers.interopDefault(_visualizationsNaitonalAndWALineChart);
+  var _jsxFileName = "/mnt/d/Desktop/INFO_474/INFO474-Final-Project/src/App.js";
   const viewHeight = 500;
   const viewWidth = 500;
   const App = () => {
@@ -26284,21 +26287,35 @@ try {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 11,
+          lineNumber: 12,
           columnNumber: 9
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("h1", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 12,
+          lineNumber: 13,
           columnNumber: 13
         }
       }, "Covid-19: The Bug that Paralyzed our World"), /*#__PURE__*/_reactDefault.default.createElement(_visualizationsUnemploymentRateLineChartDefault.default, {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 14,
+          lineNumber: 15,
+          columnNumber: 13
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement(_visualizationsUnemploymentByEducationDefault.default, {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 16,
+          columnNumber: 13
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement(_visualizationsNaitonalAndWALineChartDefault.default, {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 17,
           columnNumber: 13
         }
       }))
@@ -26314,206 +26331,227 @@ try {
   window.$RefreshSig$ = prevRefreshSig;
 }
 
-},{"react":"3b2NM","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","./hooks/useFetch":"5YU3r","./visualizations/UnemploymentRateLineChart":"2rVmB"}],"5gA8y":[function(require,module,exports) {
-"use strict";
-
-exports.interopDefault = function (a) {
-  return a && a.__esModule ? a : {
-    default: a
-  };
-};
-
-exports.defineInteropFlag = function (a) {
-  Object.defineProperty(a, '__esModule', {
-    value: true
-  });
-};
-
-exports.exportAll = function (source, dest) {
-  Object.keys(source).forEach(function (key) {
-    if (key === 'default' || key === '__esModule') {
-      return;
-    } // Skip duplicate re-exports when they have the same value.
-
-
-    if (key in dest && dest[key] === source[key]) {
-      return;
-    }
-
-    Object.defineProperty(dest, key, {
-      enumerable: true,
-      get: function () {
-        return source[key];
-      }
+},{"react":"3b2NM","./visualizations/UnemploymentRateLineChart":"2rVmB","./visualizations/UnemploymentByEducation":"7DkA0","./visualizations/NaitonalAndWALineChart":"5VnMN","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"2rVmB":[function(require,module,exports) {
+var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require("react");
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _hooksUseFetch = require("../hooks/useFetch");
+  var _d3Scale = require("d3-scale");
+  var _d3Array = require("d3-array");
+  var _d = require("d3");
+  var _d3Collection = require('d3-collection');
+  var _jsxFileName = "/mnt/d/Desktop/INFO_474/INFO474-Final-Project/src/visualizations/UnemploymentRateLineChart.js", _s = $RefreshSig$();
+  function UnemploymentRateLine() {
+    _s();
+    const [data, loading] = _hooksUseFetch.useFetch("https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv");
+    // define state for our tooltip display status
+    const [showTooltip, setShowTooltip] = _react.useState(false);
+    // define state for tooltip position
+    const [tooltipPos, setTooltipPos] = _react.useState({
+      x: 0,
+      y: 0
     });
-  });
-  return dest;
-};
-
-exports.export = function (dest, destName, get) {
-  Object.defineProperty(dest, destName, {
-    enumerable: true,
-    get: get
-  });
-};
-},{}],"4Jj4f":[function(require,module,exports) {
-"use strict";
-var Refresh = require('react-refresh/runtime');
-function debounce(func, delay) {
-  if ("development" === 'test') {
-    return function (args) {
-      func.call(null, args);
-    };
-  } else {
-    var timeout = undefined;
-    return function (args) {
-      clearTimeout(timeout);
-      timeout = setTimeout(function () {
-        timeout = undefined;
-        func.call(null, args);
-      }, delay);
-    };
-  }
-}
-var enqueueUpdate = debounce(function () {
-  Refresh.performReactRefresh();
-}, 30);
-// Everthing below is either adapted or copied from
-// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
-// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
-module.exports.prelude = function (module) {
-  window.$RefreshReg$ = function (type, id) {
-    Refresh.register(type, module.id + ' ' + id);
-  };
-  window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
-};
-module.exports.postlude = function (module) {
-  if (isReactRefreshBoundary(module.exports)) {
-    registerExportsForReactRefresh(module);
-    if (module.hot) {
-      module.hot.dispose(function (data) {
-        if (Refresh.hasUnrecoverableErrors()) {
-          window.location.reload();
-        }
-        data.prevExports = module.exports;
+    // define state for our tooltip content
+    const [tooltipContent, setTooltipContent] = _react.useState("");
+    /*******************************************
+    * Tooltip code
+    *******************************************/
+    // first, create a container for our tooltip
+    const tooltip = /*#__PURE__*/_reactDefault.default.createElement("div", {
+      style: {
+        width: "5rem",
+        height: "5rem",
+        position: "absolute",
+        // if showtooltip is true, display the tooltip otherwise set display to none
+        display: `${showTooltip ? "inline" : "none"}`,
+        backgroundColor: "white",
+        // set left and top (which you can think of as the "x" and "y" of our tooltip div)
+        // to match the current state
+        left: `${tooltipPos.x}px`,
+        top: `${tooltipPos.y}px`
+      },
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 26,
+        columnNumber: 26
+      }
+    }, /*#__PURE__*/_reactDefault.default.createElement("span", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 40,
+        columnNumber: 13
+      }
+    }, "Year: ", tooltipContent.x), /*#__PURE__*/_reactDefault.default.createElement("br", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 41,
+        columnNumber: 13
+      }
+    }), /*#__PURE__*/_reactDefault.default.createElement("span", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 42,
+        columnNumber: 13
+      }
+    }, "Unemployment Rate: ", _d.format(".2s")(tooltipContent.y)));
+    // called when our mouse enters a circle
+    const onPointHover = e => {
+      // set new position of tooltip
+      // set the tooltip slightly to the right of our mouse for better viewability
+      // set the tooltips y position to our mouse's y position
+      setTooltipPos({
+        x: e.pageX + 30,
+        y: e.pageY
       });
-      module.hot.accept(function (getParents) {
-        var prevExports = module.hot.data.prevExports;
-        var nextExports = module.exports;
-        // Since we just executed the code for it, it's possible
-        // that the new exports make it ineligible for being a boundary.
-        var isNoLongerABoundary = !isReactRefreshBoundary(nextExports);
-        // It can also become ineligible if its exports are incompatible
-        // with the previous exports.
-        // For example, if you add/remove/change exports, we'll want
-        // to re-execute the importing modules, and force those components
-        // to re-render. Similarly, if you convert a class component
-        // to a function, we want to invalidate the boundary.
-        var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
-        if (isNoLongerABoundary || didInvalidate) {
-          // We'll be conservative. The only case in which we won't do a full
-          // reload is if all parent modules are also refresh boundaries.
-          // In that case we'll add them to the current queue.
-          var parents = getParents();
-          if (parents.length === 0) {
-            // Looks like we bubbled to the root. Can't recover from that.
-            window.location.reload();
-            return;
-          }
-          return parents;
-        }
-        enqueueUpdate();
+      setShowTooltip(true);
+      // get the element our circle is hovering over
+      const circle = e.target;
+      // set our tooltip content
+      // get our new year and percentage from the circle's properties
+      setTooltipContent({
+        x: circle.getAttribute("year"),
+        y: circle.getAttribute("rate")
       });
+    };
+    // if the mouse exits the circle, hide the tooltip
+    const onPointLeave = () => {
+      setShowTooltip(false);
+    };
+    if (loading === true) {
+      const margin = {
+        top: 20,
+        right: 20,
+        bottom: 40,
+        left: 60
+      }, // size
+      width = 1000 - margin.left - margin.right, height = 500 - margin.top - margin.bottom;
+      const svg = _d.// create the svg box for the viz
+      select("#unemployment-rate-line").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", `translate(${margin.left}, ${margin.top})`);
+      data.forEach(function (d) {
+        // parse values to int so that d3 can process them
+        d.National_rate = +d.National_rate;
+        d.EUR_Year = +d.EUR_Year;
+      });
+      // group by year and then sum the national rate
+      var avgUnempRate = _d3Collection.nest().key(function (d) {
+        return d.EUR_Year;
+      }).rollup(function (d) {
+        return _d.mean(d, function (g) {
+          return g.National_rate;
+        });
+      }).entries(data);
+      // put national rate into array & put years into array
+      avgRate = [];
+      years = [];
+      avgUnempRate.forEach(function (row) {
+        avgRate.push(row.value);
+        years.push(row.key);
+      });
+      avgRate = avgRate.slice(10, 21);
+      // slice to only get data from 2010 - 2021
+      years = years.slice(10, 21);
+      avgUnempRate = avgUnempRate.slice(10, 21);
+      const xScale = _d3Scale.scaleBand().// years
+      rangeRound([0, width]).padding(1).domain(years.map(function (d) {
+        return d;
+      }));
+      svg.append("g").attr("transform", `translate(0, ${height})`).call(_d.axisBottom(xScale));
+      const yScale = _d3Scale.scaleLinear().// unemployment rate
+      domain([0, _d3Array.max(avgRate, function (d) {
+        return d;
+      })]).range([height, 0]);
+      svg.append("g").call(_d.axisLeft(yScale));
+      svg.append("path").// add the line to svg
+      datum(avgUnempRate).attr("fill", "none").attr("stroke", "black").attr("stroke-width", 1.5).attr("d", _d.line().x(function (d) {
+        return xScale(d.key);
+      }).y(function (d) {
+        return yScale(d.value);
+      }));
+      // adding a transparent circle
+      svg.selectAll("circle").data(avgUnempRate).enter().append("circle").attr("year", function (d) {
+        return d.key;
+      }).attr("rate", function (d) {
+        return d.value;
+      }).attr("cx", function (d) {
+        return xScale(d.key);
+      }).attr("cy", function (d) {
+        return yScale(d.value);
+      }).attr("r", 3).attr("stroke", "red").attr("fill", "red").on('mouseover', onPointHover).on('mouseout', onPointLeave);
+      // .on('mouseover', function(){
+      // d3.select(this)
+      // .transition()
+      // .duration(1000)
+      // .attr('fill', "steelblue")
+      // })
+      // .on('mouseout', function(){
+      // d3.select(this)
+      // .transition()
+      // .duration(1000)
+      // .attr('fill', "red")
+      // })
+      // x-axis lable
+      svg.append("text").attr("x", width / 2).attr("y", height + margin.bottom).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Year');
+      // y-axis lable
+      svg.append("text").attr("x", 0).attr("y", 0).attr('transform', `translate(-40, ${height / 2}) rotate(-90)`).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Unemployment Rate (National Rate)');
     }
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement("div", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 177,
+          columnNumber: 9
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 178,
+          columnNumber: 13
+        }
+      }, loading && "Loading national rate data!"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 179,
+          columnNumber: 13
+        }
+      }, "Year vs. Average Unemployment Rate (National Rate)"), /*#__PURE__*/_reactDefault.default.createElement("div", {
+        id: "unemployment-rate-line",
+        className: "viz",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 180,
+          columnNumber: 13
+        }
+      }, tooltip))
+    );
   }
-};
-function isReactRefreshBoundary(exports) {
-  if (Refresh.isLikelyComponentType(exports)) {
-    return true;
-  }
-  if (exports == null || typeof exports !== 'object') {
-    // Exit if we can't iterate over exports.
-    return false;
-  }
-  var hasExports = false;
-  var areAllExportsComponents = true;
-  let isESM = ('__esModule' in exports);
-  for (var key in exports) {
-    hasExports = true;
-    if (key === '__esModule') {
-      continue;
-    }
-    var desc = Object.getOwnPropertyDescriptor(exports, key);
-    if (desc && desc.get && !isESM) {
-      // Don't invoke getters for CJS as they may have side effects.
-      return false;
-    }
-    var exportValue = exports[key];
-    if (!Refresh.isLikelyComponentType(exportValue)) {
-      areAllExportsComponents = false;
-    }
-  }
-  return hasExports && areAllExportsComponents;
-}
-function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
-  var prevSignature = getRefreshBoundarySignature(prevExports);
-  var nextSignature = getRefreshBoundarySignature(nextExports);
-  if (prevSignature.length !== nextSignature.length) {
-    return true;
-  }
-  for (var i = 0; i < nextSignature.length; i++) {
-    if (prevSignature[i] !== nextSignature[i]) {
-      return true;
-    }
-  }
-  return false;
-}
-// When this signature changes, it's unsafe to stop at this refresh boundary.
-function getRefreshBoundarySignature(exports) {
-  var signature = [];
-  signature.push(Refresh.getFamilyByType(exports));
-  if (exports == null || typeof exports !== 'object') {
-    // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return signature;
-  }
-  let isESM = ('__esModule' in exports);
-  for (var key in exports) {
-    if (key === '__esModule') {
-      continue;
-    }
-    var desc = Object.getOwnPropertyDescriptor(exports, key);
-    if (desc && desc.get && !isESM) {
-      // Don't invoke getters for CJS as they may have side effects.
-      continue;
-    }
-    var exportValue = exports[key];
-    signature.push(key);
-    signature.push(Refresh.getFamilyByType(exportValue));
-  }
-  return signature;
-}
-function registerExportsForReactRefresh(module) {
-  var exports = module.exports, id = module.id;
-  Refresh.register(exports, id + ' %exports%');
-  if (exports == null || typeof exports !== 'object') {
-    // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return;
-  }
-  let isESM = ('__esModule' in exports);
-  for (var key in exports) {
-    var desc = Object.getOwnPropertyDescriptor(exports, key);
-    if (desc && desc.get && !isESM) {
-      // Don't invoke getters for CJS as they may have side effects.
-      continue;
-    }
-    var exportValue = exports[key];
-    Refresh.register(exportValue, id + ' %exports% ' + key);
-  }
+  exports.default = UnemploymentRateLine;
+  _s(UnemploymentRateLine, "5e2U15RFIH3+WNgI1IL0k6jaBoc=", false, function () {
+    return [_hooksUseFetch.useFetch];
+  });
+  _c = UnemploymentRateLine;
+  var _c;
+  $RefreshReg$(_c, "UnemploymentRateLine");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
 }
 
-},{"react-refresh/runtime":"592mh"}],"5YU3r":[function(require,module,exports) {
+},{"react":"3b2NM","../hooks/useFetch":"5YU3r","d3-scale":"2UZ4X","d3-array":"7CLUA","d3":"3auhl","d3-collection":"3Ea9u","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"5YU3r":[function(require,module,exports) {
 var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -26813,227 +26851,206 @@ var define;
   });
 });
 
-},{}],"2rVmB":[function(require,module,exports) {
-var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-helpers.prelude(module);
-try {
-  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
-  _parcelHelpers.defineInteropFlag(exports);
-  var _react = require("react");
-  var _reactDefault = _parcelHelpers.interopDefault(_react);
-  var _hooksUseFetch = require("../hooks/useFetch");
-  var _d3Scale = require("d3-scale");
-  var _d3Array = require("d3-array");
-  var _d = require("d3");
-  var _d3Collection = require('d3-collection');
-  var _jsxFileName = "/Users/akolyvongdala/Desktop/INFO474-Final-Project/src/visualizations/UnemploymentRateLineChart.js", _s = $RefreshSig$();
-  function UnemploymentRateLine() {
-    _s();
-    const [data, loading] = _hooksUseFetch.useFetch("https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv");
-    // define state for our tooltip display status
-    const [showTooltip, setShowTooltip] = _react.useState(false);
-    // define state for tooltip position
-    const [tooltipPos, setTooltipPos] = _react.useState({
-      x: 0,
-      y: 0
-    });
-    // define state for our tooltip content
-    const [tooltipContent, setTooltipContent] = _react.useState("");
-    /*******************************************
-    * Tooltip code
-    *******************************************/
-    // first, create a container for our tooltip
-    const tooltip = /*#__PURE__*/_reactDefault.default.createElement("div", {
-      style: {
-        width: "5rem",
-        height: "5rem",
-        position: "absolute",
-        // if showtooltip is true, display the tooltip otherwise set display to none
-        display: `${showTooltip ? "inline" : "none"}`,
-        backgroundColor: "white",
-        // set left and top (which you can think of as the "x" and "y" of our tooltip div)
-        // to match the current state
-        left: `${tooltipPos.x}px`,
-        top: `${tooltipPos.y}px`
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 26,
-        columnNumber: 26
-      }
-    }, /*#__PURE__*/_reactDefault.default.createElement("span", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 40,
-        columnNumber: 13
-      }
-    }, "Year: ", tooltipContent.x), /*#__PURE__*/_reactDefault.default.createElement("br", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 41,
-        columnNumber: 13
-      }
-    }), /*#__PURE__*/_reactDefault.default.createElement("span", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 42,
-        columnNumber: 13
-      }
-    }, "Unemployment Rate: ", _d.format(".2s")(tooltipContent.y)));
-    // called when our mouse enters a circle
-    const onPointHover = e => {
-      // set new position of tooltip
-      // set the tooltip slightly to the right of our mouse for better viewability
-      // set the tooltips y position to our mouse's y position
-      setTooltipPos({
-        x: e.pageX + 30,
-        y: e.pageY
-      });
-      setShowTooltip(true);
-      // get the element our circle is hovering over
-      const circle = e.target;
-      // set our tooltip content
-      // get our new year and percentage from the circle's properties
-      setTooltipContent({
-        x: circle.getAttribute("year"),
-        y: circle.getAttribute("rate")
-      });
-    };
-    // if the mouse exits the circle, hide the tooltip
-    const onPointLeave = () => {
-      setShowTooltip(false);
-    };
-    if (loading === true) {
-      const margin = {
-        top: 20,
-        right: 20,
-        bottom: 40,
-        left: 60
-      }, // size
-      width = 1000 - margin.left - margin.right, height = 500 - margin.top - margin.bottom;
-      const svg = _d.// create the svg box for the viz
-      select("#unemployment-rate-line").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", `translate(${margin.left}, ${margin.top})`);
-      data.forEach(function (d) {
-        // parse values to int so that d3 can process them
-        d.National_rate = +d.National_rate;
-        d.EUR_Year = +d.EUR_Year;
-      });
-      // group by year and then sum the national rate
-      var avgUnempRate = _d3Collection.nest().key(function (d) {
-        return d.EUR_Year;
-      }).rollup(function (d) {
-        return _d.mean(d, function (g) {
-          return g.National_rate;
-        });
-      }).entries(data);
-      // put national rate into array & put years into array
-      avgRate = [];
-      years = [];
-      avgUnempRate.forEach(function (row) {
-        avgRate.push(row.value);
-        years.push(row.key);
-      });
-      avgRate = avgRate.slice(10, 21);
-      // slice to only get data from 2010 - 2021
-      years = years.slice(10, 21);
-      avgUnempRate = avgUnempRate.slice(10, 21);
-      const xScale = _d3Scale.scaleBand().// years
-      rangeRound([0, width]).padding(1).domain(years.map(function (d) {
-        return d;
-      }));
-      svg.append("g").attr("transform", `translate(0, ${height})`).call(_d.axisBottom(xScale));
-      const yScale = _d3Scale.scaleLinear().// unemployment rate
-      domain([0, _d3Array.max(avgRate, function (d) {
-        return d;
-      })]).range([height, 0]);
-      svg.append("g").call(_d.axisLeft(yScale));
-      svg.append("path").// add the line to svg
-      datum(avgUnempRate).attr("fill", "none").attr("stroke", "black").attr("stroke-width", 1.5).attr("d", _d.line().x(function (d) {
-        return xScale(d.key);
-      }).y(function (d) {
-        return yScale(d.value);
-      }));
-      // adding a transparent circle
-      svg.selectAll("circle").data(avgUnempRate).enter().append("circle").attr("year", function (d) {
-        return d.key;
-      }).attr("rate", function (d) {
-        return d.value;
-      }).attr("cx", function (d) {
-        return xScale(d.key);
-      }).attr("cy", function (d) {
-        return yScale(d.value);
-      }).attr("r", 3).attr("stroke", "red").attr("fill", "red").on('mouseover', onPointHover).on('mouseout', onPointLeave);
-      // .on('mouseover', function(){
-      // d3.select(this)
-      // .transition()
-      // .duration(1000)
-      // .attr('fill', "steelblue")
-      // })
-      // .on('mouseout', function(){
-      // d3.select(this)
-      // .transition()
-      // .duration(1000)
-      // .attr('fill', "red")
-      // })
-      // x-axis lable
-      svg.append("text").attr("x", width / 2).attr("y", height + margin.bottom).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Year');
-      // y-axis lable
-      svg.append("text").attr("x", 0).attr("y", 0).attr('transform', `translate(-40, ${height / 2}) rotate(-90)`).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Unemployment Rate (National Rate)');
-    }
-    return (
-      /*#__PURE__*/_reactDefault.default.createElement("div", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 177,
-          columnNumber: 9
-        }
-      }, /*#__PURE__*/_reactDefault.default.createElement("p", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 178,
-          columnNumber: 13
-        }
-      }, loading && "Loading national rate data!"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 179,
-          columnNumber: 13
-        }
-      }, "Year vs. Average Unemployment Rate (National Rate)"), /*#__PURE__*/_reactDefault.default.createElement("div", {
-        id: "unemployment-rate-line",
-        className: "viz",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 180,
-          columnNumber: 13
-        }
-      }, tooltip))
-    );
-  }
-  exports.default = UnemploymentRateLine;
-  _s(UnemploymentRateLine, "5e2U15RFIH3+WNgI1IL0k6jaBoc=", false, function () {
-    return [_hooksUseFetch.useFetch];
+},{}],"5gA8y":[function(require,module,exports) {
+"use strict";
+
+exports.interopDefault = function (a) {
+  return a && a.__esModule ? a : {
+    default: a
+  };
+};
+
+exports.defineInteropFlag = function (a) {
+  Object.defineProperty(a, '__esModule', {
+    value: true
   });
-  _c = UnemploymentRateLine;
-  var _c;
-  $RefreshReg$(_c, "UnemploymentRateLine");
-  helpers.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
+};
+
+exports.exportAll = function (source, dest) {
+  Object.keys(source).forEach(function (key) {
+    if (key === 'default' || key === '__esModule') {
+      return;
+    } // Skip duplicate re-exports when they have the same value.
+
+
+    if (key in dest && dest[key] === source[key]) {
+      return;
+    }
+
+    Object.defineProperty(dest, key, {
+      enumerable: true,
+      get: function () {
+        return source[key];
+      }
+    });
+  });
+  return dest;
+};
+
+exports.export = function (dest, destName, get) {
+  Object.defineProperty(dest, destName, {
+    enumerable: true,
+    get: get
+  });
+};
+},{}],"4Jj4f":[function(require,module,exports) {
+"use strict";
+var Refresh = require('react-refresh/runtime');
+function debounce(func, delay) {
+  if ("development" === 'test') {
+    return function (args) {
+      func.call(null, args);
+    };
+  } else {
+    var timeout = undefined;
+    return function (args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(function () {
+        timeout = undefined;
+        func.call(null, args);
+      }, delay);
+    };
+  }
+}
+var enqueueUpdate = debounce(function () {
+  Refresh.performReactRefresh();
+}, 30);
+// Everthing below is either adapted or copied from
+// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
+// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
+module.exports.prelude = function (module) {
+  window.$RefreshReg$ = function (type, id) {
+    Refresh.register(type, module.id + ' ' + id);
+  };
+  window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
+};
+module.exports.postlude = function (module) {
+  if (isReactRefreshBoundary(module.exports)) {
+    registerExportsForReactRefresh(module);
+    if (module.hot) {
+      module.hot.dispose(function (data) {
+        if (Refresh.hasUnrecoverableErrors()) {
+          window.location.reload();
+        }
+        data.prevExports = module.exports;
+      });
+      module.hot.accept(function (getParents) {
+        var prevExports = module.hot.data.prevExports;
+        var nextExports = module.exports;
+        // Since we just executed the code for it, it's possible
+        // that the new exports make it ineligible for being a boundary.
+        var isNoLongerABoundary = !isReactRefreshBoundary(nextExports);
+        // It can also become ineligible if its exports are incompatible
+        // with the previous exports.
+        // For example, if you add/remove/change exports, we'll want
+        // to re-execute the importing modules, and force those components
+        // to re-render. Similarly, if you convert a class component
+        // to a function, we want to invalidate the boundary.
+        var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
+        if (isNoLongerABoundary || didInvalidate) {
+          // We'll be conservative. The only case in which we won't do a full
+          // reload is if all parent modules are also refresh boundaries.
+          // In that case we'll add them to the current queue.
+          var parents = getParents();
+          if (parents.length === 0) {
+            // Looks like we bubbled to the root. Can't recover from that.
+            window.location.reload();
+            return;
+          }
+          return parents;
+        }
+        enqueueUpdate();
+      });
+    }
+  }
+};
+function isReactRefreshBoundary(exports) {
+  if (Refresh.isLikelyComponentType(exports)) {
+    return true;
+  }
+  if (exports == null || typeof exports !== 'object') {
+    // Exit if we can't iterate over exports.
+    return false;
+  }
+  var hasExports = false;
+  var areAllExportsComponents = true;
+  let isESM = ('__esModule' in exports);
+  for (var key in exports) {
+    hasExports = true;
+    if (key === '__esModule') {
+      continue;
+    }
+    var desc = Object.getOwnPropertyDescriptor(exports, key);
+    if (desc && desc.get && !isESM) {
+      // Don't invoke getters for CJS as they may have side effects.
+      return false;
+    }
+    var exportValue = exports[key];
+    if (!Refresh.isLikelyComponentType(exportValue)) {
+      areAllExportsComponents = false;
+    }
+  }
+  return hasExports && areAllExportsComponents;
+}
+function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
+  var prevSignature = getRefreshBoundarySignature(prevExports);
+  var nextSignature = getRefreshBoundarySignature(nextExports);
+  if (prevSignature.length !== nextSignature.length) {
+    return true;
+  }
+  for (var i = 0; i < nextSignature.length; i++) {
+    if (prevSignature[i] !== nextSignature[i]) {
+      return true;
+    }
+  }
+  return false;
+}
+// When this signature changes, it's unsafe to stop at this refresh boundary.
+function getRefreshBoundarySignature(exports) {
+  var signature = [];
+  signature.push(Refresh.getFamilyByType(exports));
+  if (exports == null || typeof exports !== 'object') {
+    // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return signature;
+  }
+  let isESM = ('__esModule' in exports);
+  for (var key in exports) {
+    if (key === '__esModule') {
+      continue;
+    }
+    var desc = Object.getOwnPropertyDescriptor(exports, key);
+    if (desc && desc.get && !isESM) {
+      // Don't invoke getters for CJS as they may have side effects.
+      continue;
+    }
+    var exportValue = exports[key];
+    signature.push(key);
+    signature.push(Refresh.getFamilyByType(exportValue));
+  }
+  return signature;
+}
+function registerExportsForReactRefresh(module) {
+  var exports = module.exports, id = module.id;
+  Refresh.register(exports, id + ' %exports%');
+  if (exports == null || typeof exports !== 'object') {
+    // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return;
+  }
+  let isESM = ('__esModule' in exports);
+  for (var key in exports) {
+    var desc = Object.getOwnPropertyDescriptor(exports, key);
+    if (desc && desc.get && !isESM) {
+      // Don't invoke getters for CJS as they may have side effects.
+      continue;
+    }
+    var exportValue = exports[key];
+    Refresh.register(exportValue, id + ' %exports% ' + key);
+  }
 }
 
-},{"react":"3b2NM","../hooks/useFetch":"5YU3r","d3-scale":"2UZ4X","d3-array":"7CLUA","d3":"3auhl","d3-collection":"3Ea9u","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"2UZ4X":[function(require,module,exports) {
+},{"react-refresh/runtime":"592mh"}],"2UZ4X":[function(require,module,exports) {
 var define;
 // https://d3js.org/d3-scale/ v3.3.0 Copyright 2021 Mike Bostock
 (function (global, factory) {
@@ -42919,6 +42936,380 @@ var define;
   });
 });
 
-},{}]},["1j6wU","3Imd1","5rkFb"], "5rkFb", "parcelRequiref024")
+},{}],"7DkA0":[function(require,module,exports) {
+var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require("react");
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _hooksUseFetch = require("../hooks/useFetch");
+  require("d3-scale");
+  require("d3-array");
+  var _d = require("d3");
+  var _d3Collection = require('d3-collection');
+  var _jsxFileName = "/mnt/d/Desktop/INFO_474/INFO474-Final-Project/src/visualizations/UnemploymentByEducation.js", _s = $RefreshSig$();
+  function UnemploymentByEducation() {
+    _s();
+    const [data, loading] = _hooksUseFetch.useFetch("https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv");
+    var level = ['K12LESS'];
+    const edu_levels = ['K12LESS', 'HIGHSCHOOL', 'ASSOCIATE', 'BACHELOR'];
+    if (loading === true) {
+      const margin = {
+        top: 20,
+        right: 20,
+        bottom: 40,
+        left: 60
+      }, // size
+      width = 1000 - margin.left - margin.right, height = 500 - margin.top - margin.bottom;
+      const svg = _d.// create the svg box for the viz
+      select('#unemp-rate-education').append('svg').attr('width', width + margin.left + margin.right).attr('height', height + margin.top + margin.bottom).append('g').attr("transform", `translate(${margin.left}, ${margin.top})`);
+      data.forEach(function (d) {
+        // parse values to int so that d3 can process them
+        d.EUR_Year = +d.EUR_Year;
+        d.K12LESS = +d.K12LESS;
+        d.HIGHSCHOOL = +d.HIGHSCHOOL;
+        d.ASSOCIATE = +d.ASSOCIATE;
+        d.BACHELOR = +d.BACHELOR;
+      });
+      var avgLTAHSD = _d3Collection.nest().key(function (d) {
+        return d.EUR_Year;
+      }).rollup(function (d) {
+        return _d.mean(d, function (g) {
+          return g.K12LESS;
+        });
+      }).entries(data);
+      var avgHSGNC = _d3Collection.nest().key(function (d) {
+        return d.EUR_Year;
+      }).rollup(function (d) {
+        return _d.mean(d, function (g) {
+          return g.HIGHSCHOOL;
+        });
+      }).entries(data);
+      var avgSCOAD = _d3Collection.nest().key(function (d) {
+        return d.EUR_Year;
+      }).rollup(function (d) {
+        return _d.mean(d, function (g) {
+          return g.ASSOCIATE;
+        });
+      }).entries(data);
+      var avgBDAH = _d3Collection.nest().key(function (d) {
+        return d.EUR_Year;
+      }).rollup(function (d) {
+        return _d.mean(d, function (g) {
+          return g.BACHELOR;
+        });
+      }).entries(data);
+      years = [];
+      avgL = [];
+      avgH = [];
+      avgS = [];
+      avgB = [];
+      avgLTAHSD.forEach(function (row) {
+        avgL.push(row.value);
+        years.push(row.key);
+      });
+      avgHSGNC.forEach(function (row) {
+        avgH.push(row.value);
+        years.push(row.key);
+      });
+      avgSCOAD.forEach(function (row) {
+        avgS.push(row.value);
+        years.push(row.key);
+      });
+      avgBDAH.forEach(function (row) {
+        avgB.push(row.value);
+        years.push(row.key);
+      });
+      var x = _d.scaleBand().domain(years).range([0, width]).padding([0.2]);
+      svg.append("g").attr("transform", "translate(0," + height + ")").call(_d.axisBottom(x).tickSize(0));
+      var y = _d.scaleLinear().domain([0, 17]).range([height, 0]);
+      svg.append("g").call(_d.axisLeft(y));
+      const dataArray = [];
+      for (i = 0; i < years.length; i++) {
+        let newData = new Map();
+        newData['year'] = years[i];
+        newData['K12LESS'] = avgL[i];
+        newData['HIGHSCHOOL'] = avgH[i];
+        newData['ASSOCIATE'] = avgS[i];
+        newData['BACHELOR'] = avgB[i];
+        dataArray.push(newData);
+      }
+      console.log(dataArray);
+      let count = 0;
+      _d.select('.categories').selectAll('.checkbox').data(edu_levels).enter().append('div').attr('class', 'checkbox').append('label').html(function () {
+        var checkbox = '<input id="' + edu_levels[count] + '" type="checkbox" class="category">';
+        var label = edu_levels[count];
+        count++;
+        return checkbox + label;
+      });
+      function updateLevel(selectedLevel) {
+        level = [];
+        level = selectedLevel;
+        displayArray = [];
+        for (dA in dataArray) {
+          let newDisplay = new Map();
+          newDisplay['year'] = dA.get('year');
+          console.log(dA);
+          console.log(dA.get('year'));
+          for (l in level) {
+            newDisplay[l] = dA.get(l);
+            console.log(dA.get(l));
+          }
+          displayArray.push(newDisplay);
+        }
+        return displayArray;
+      }
+      function renderGraph(subgroups, displayArray, colors) {
+        var xSubgroup = _d.scaleBand().domain(subgroups).range([0, x.bandwidth()]).padding([0.05]);
+        var color = _d.scaleOrdinal().domain(subgroups).range(colors);
+        console.log(displayArray);
+        svg.append("g").selectAll("g").data(displayArray).enter().append("g").attr("transform", function (d) {
+          return "translate(" + x(d.year) + ",0)";
+        }).selectAll("rect").data(function (d) {
+          return subgroups.map(function (key) {
+            return {
+              key: key,
+              value: d[key]
+            };
+          });
+        }).enter().append("rect").attr("x", function (d) {
+          return xSubgroup(d.key);
+        }).attr("y", function (d) {
+          return y(d.value);
+        }).attr("width", xSubgroup.bandwidth()).attr("height", function (d) {
+          return height - y(d.value);
+        }).attr("fill", function (d) {
+          return color(d.key);
+        });
+      }
+      _d.select('.categories').selectAll('.category').on('change', function () {
+        var x = _d.select('.categories').selectAll('.category:checked');
+        // all the checkboxes that are checked
+        let checked = Object.values(x)[0][0];
+        let ids = [];
+        for (let id of checked) {
+          ids.push(id);
+        }
+        dA = updateLevel(ids);
+        colors = ['#e41a1c', '#377eb8', '#4daf4a', '#eda410'];
+        totalColors = dA.length - 1;
+        if (totalColors < 0) {
+          totalColors = 0;
+        }
+        renderGraph(level, dA, colors.slice(0, totalColors));
+      });
+    }
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement("div", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 193,
+          columnNumber: 9
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 194,
+          columnNumber: 13
+        }
+      }, loading && "Loading unemployment and education level data!"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 195,
+          columnNumber: 13
+        }
+      }, "Unemployment Rates for Different Education Levels Over the Years 2001-2021"), /*#__PURE__*/_reactDefault.default.createElement("div", {
+        className: "categories",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 196,
+          columnNumber: 13
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("div", {
+        id: "unemp-rate-education",
+        className: "viz",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 197,
+          columnNumber: 13
+        }
+      }))
+    );
+  }
+  exports.default = UnemploymentByEducation;
+  _s(UnemploymentByEducation, "Jm65JCcgUFoenM4DufkEA80vRVI=", false, function () {
+    return [_hooksUseFetch.useFetch];
+  });
+  _c = UnemploymentByEducation;
+  var _c;
+  $RefreshReg$(_c, "UnemploymentByEducation");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+
+},{"react":"3b2NM","../hooks/useFetch":"5YU3r","d3-scale":"2UZ4X","d3-array":"7CLUA","d3":"3auhl","d3-collection":"3Ea9u","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"5VnMN":[function(require,module,exports) {
+var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require("react");
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _hooksUseFetch = require("../hooks/useFetch");
+  var _d3Scale = require("d3-scale");
+  var _d3Array = require("d3-array");
+  var _d = require("d3");
+  var _d3Collection = require('d3-collection');
+  var _jsxFileName = "/mnt/d/Desktop/INFO_474/INFO474-Final-Project/src/visualizations/NaitonalAndWALineChart.js", _s = $RefreshSig$();
+  function NationalAndWALine() {
+    _s();
+    const [data, loading] = _hooksUseFetch.useFetch("https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv");
+    if (loading === true) {
+      const margin = {
+        top: 20,
+        right: 20,
+        bottom: 40,
+        left: 60
+      }, // size
+      width = 1000 - margin.left - margin.right, height = 500 - margin.top - margin.bottom, tooltip = {
+        width: 100,
+        height: 100,
+        x: 10,
+        y: -30
+      };
+      const svg = _d.// create the svg box for the viz
+      select("#unemp-national-WA-line").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", `translate(${margin.left}, ${margin.top})`);
+      data.forEach(function (d) {
+        // parse values to int so that d3 can process them
+        d.National_rate = +d.National_rate;
+        d.Washington = +d.Washington;
+        d.UR_Year = +d.UR_Year;
+      });
+      // filtering 2019-2021 rate
+      var filteredData = data.filter(function (d) {
+        return d.UR_Year >= 2019 && d.UR_Year <= 2021;
+      });
+      // group by year and then avg the national rate
+      var avgUnempRateNational = _d3Collection.nest().key(function (d) {
+        return d.UR_Year;
+      }).rollup(function (d) {
+        return _d.sum(d, function (g) {
+          return g.National_rate;
+        });
+      }).entries(filteredData);
+      // group by year and then avg the WA rate
+      var avgUnempRateWA = _d3Collection.nest().key(function (d) {
+        return d.UR_Year;
+      }).rollup(function (d) {
+        return _d.sum(d, function (g) {
+          return g.Washington;
+        });
+      }).entries(filteredData);
+      // put national rate into array & put years into array
+      avgRateNational = [];
+      avgRateWA = [];
+      years = [];
+      avgUnempRateNational.forEach(function (row) {
+        avgRateNational.push(row.value);
+        years.push(row.key);
+      });
+      avgUnempRateWA.forEach(function (row) {
+        avgRateWA.push(row.value);
+        years.push(row.key);
+      });
+      const xScale = _d3Scale.scaleBand().// years
+      rangeRound([0, width]).padding(1).domain(years.map(function (d) {
+        return d;
+      }));
+      svg.append("g").attr("transform", `translate(0, ${height})`).call(_d.axisBottom(xScale));
+      const yScale = _d3Scale.scaleLinear().// unemployment rate
+      domain([0, _d3Array.max(avgRateWA, function (d) {
+        return d;
+      })]).range([height, 0]);
+      svg.append("g").call(_d.axisLeft(yScale));
+      svg.append("path").// add the avg unemployeement National rate line to svg a
+      datum(avgUnempRateNational).attr("fill", "none").attr("stroke", "black").attr("stroke-width", 1.5).attr("d", _d.line().x(function (d) {
+        return xScale(d.key);
+      }).y(function (d) {
+        return yScale(d.value);
+      }));
+      svg.append("path").// add the avg unemployeement WA rate line to svg
+      datum(avgUnempRateWA).attr("fill", "none").attr("stroke", "red").attr("stroke-width", 1.5).attr("d", _d.line().x(function (d) {
+        return xScale(d.key);
+      }).y(function (d) {
+        return yScale(d.value);
+      }));
+      // National line label
+      svg.append("text").attr("transform", "translate(" + (width / 5 + 10) + "," + yScale(avgRateNational[0] - 3) + ")").attr("dy", ".4em").attr("text-anchor", "start").style("fill", "black").// .style("font-weight", "bold")
+      text("National");
+      // WA line label
+      svg.append("text").attr("transform", "translate(" + (width / 5 - 30) + "," + yScale(avgRateWA[0] - 2) + ")").attr("dy", ".4em").attr("text-anchor", "start").style("fill", "red").// .style("font-weight", "bold")
+      text("Washington");
+      // x-axis label
+      svg.append("text").attr("x", width / 2).attr("y", height + margin.bottom).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Year');
+      // y-axis label
+      svg.append("text").attr("x", 0).attr("y", 0).attr('transform', `translate(-40, ${height / 2}) rotate(-90)`).attr('fill', '#000').style('font-size', '20px').style('text-anchor', 'middle').text('Unemployment Rate (National Rate & WA)');
+    }
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement("div", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 145,
+          columnNumber: 9
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 146,
+          columnNumber: 13
+        }
+      }, loading && "Loading national rate data!"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 147,
+          columnNumber: 13
+        }
+      }, "Average Unemployment Rate National vs. Washington (2019-2021)"), /*#__PURE__*/_reactDefault.default.createElement("div", {
+        id: "unemp-national-WA-line",
+        className: "viz",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 148,
+          columnNumber: 13
+        }
+      }))
+    );
+  }
+  exports.default = NationalAndWALine;
+  _s(NationalAndWALine, "Jm65JCcgUFoenM4DufkEA80vRVI=", false, function () {
+    return [_hooksUseFetch.useFetch];
+  });
+  _c = NationalAndWALine;
+  var _c;
+  $RefreshReg$(_c, "NationalAndWALine");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+
+},{"react":"3b2NM","../hooks/useFetch":"5YU3r","d3-scale":"2UZ4X","d3-array":"7CLUA","d3":"3auhl","d3-collection":"3Ea9u","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}]},["1j6wU","3Imd1","5rkFb"], "5rkFb", "parcelRequiref024")
 
 //# sourceMappingURL=index.3fafb3e2.js.map

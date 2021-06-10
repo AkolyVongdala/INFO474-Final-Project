@@ -14,17 +14,13 @@ export default function UnemploymentByEducation() {
         "https://raw.githubusercontent.com/AkolyVongdala/INFO474-Final-Project/main/data/Info474_FinalData.csv"
     );
 
-    var level = ['Less_than_a_high_school_diploma'];
-    const edu_levels = ['Less_than_a_high_school_diploma', 'High_school_graduates_no_college', 'Some_college_or_associate_degree', 'Bachelor_s_degree_and_higher']
+    var level = ['K12LESS'];
+    const edu_levels = ['K12LESS', 'HIGHSCHOOL', 'ASSOCIATE', 'BACHELOR']
 
     if (loading === true) {
         const margin = { top: 20, right: 20, bottom: 40, left: 60 }, //size
             width = 1000 - margin.left - margin.right,
             height = 500 - margin.top - margin.bottom;
-
-        var x = d3.scaleBand().rangeRound([0, width], .05)
-        var y = d3.scaleLinear().range([height, 0]);
-
 
         const svg = d3 // create the svg box for the viz
             .select('#unemp-rate-education')
@@ -36,34 +32,34 @@ export default function UnemploymentByEducation() {
 
         data.forEach(function (d) { //parse values to int so that d3 can process them
             d.EUR_Year = +d.EUR_Year;
-            d.Less_than_a_high_school_diploma = +d.Less_than_a_high_school_diploma;
-            d.High_school_graduates_no_college = +d.High_school_graduates_no_college;
-            d.Some_college_or_associate_degree = +d.Some_college_or_associate_degree;
-            d.Bachelor_s_degree_and_higher = +d.Bachelor_s_degree_and_higher;
+            d.K12LESS = +d.K12LESS;
+            d.HIGHSCHOOL = +d.HIGHSCHOOL;
+            d.ASSOCIATE = +d.ASSOCIATE;
+            d.BACHELOR = +d.BACHELOR;
         });
 
         var avgLTAHSD = nest()
             .key(function(d) { return d.EUR_Year; })
             .rollup(function(d) {
-                return d3.mean(d, function(g) { return g.Less_than_a_high_school_diploma; });
+                return d3.mean(d, function(g) { return g.K12LESS; });
             }).entries(data);
 
         var avgHSGNC  = nest()
         .key(function(d) { return d.EUR_Year; })
         .rollup(function(d) {
-            return d3.mean(d, function(g) { return g.High_school_graduates_no_college; });
+            return d3.mean(d, function(g) { return g.HIGHSCHOOL; });
         }).entries(data);
 
         var avgSCOAD  = nest()
         .key(function(d) { return d.EUR_Year; })
         .rollup(function(d) {
-            return d3.mean(d, function(g) { return g.Some_college_or_associate_degree; });
+            return d3.mean(d, function(g) { return g.ASSOCIATE; });
         }).entries(data);
 
         var avgBDAH  = nest()
         .key(function(d) { return d.EUR_Year; })
         .rollup(function(d) {
-            return d3.mean(d, function(g) { return g.Bachelor_s_degree_and_higher; });
+            return d3.mean(d, function(g) { return g.BACHELOR; });
         }).entries(data);
 
         years = [];
@@ -92,20 +88,33 @@ export default function UnemploymentByEducation() {
             years.push(row.key);
         });
 
-
-        // stuck after this
-        const xScale = scaleBand() //years
-            .rangeRound([0, width]).padding(1)
-            .domain(years.map(function(d) { return d; }));
+        
+        var x = d3.scaleBand()
+            .domain(years)
+            .range([0, width])
+            .padding([0.2])
         svg.append("g")
-            .attr("transform", `translate(0, ${height})`)
-            .call(d3.axisBottom(xScale));
-
-        const yScale = scaleLinear() //unemployment rate for current level
-            .domain([0, 16])
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x).tickSize(0));
+        var y = d3.scaleLinear()
+            .domain([0, 17])
             .range([ height, 0 ]);
         svg.append("g")
-            .call(d3.axisLeft(yScale));
+            .call(d3.axisLeft(y));
+        
+        const dataArray = [];
+
+        for (i = 0; i < years.length; i++) {
+            let newData = new Map();
+            newData['year'] = years[i]
+            newData['K12LESS'] = avgL[i]
+            newData['HIGHSCHOOL'] = avgH[i]
+            newData['ASSOCIATE'] = avgS[i]
+            newData['BACHELOR'] = avgB[i]
+            dataArray.push(newData);
+        }
+
+        console.log(dataArray);
 
         let count = 0;
         d3.select('.categories').selectAll('.checkbox')
@@ -119,12 +128,50 @@ export default function UnemploymentByEducation() {
                 count++;
                 return checkbox + label;
             });
-
+        
         function updateLevel(selectedLevel) {
             level = [];
             level = selectedLevel;
+            displayArray = [];
+            for (dA in dataArray) {
+                let newDisplay = new Map();
+                newDisplay['year'] = dA['year'];
+                console.log(dA['year']);
+                for (l in level) {
+                    newDisplay[l] = dA[l];
+                    console.log(dA[l]);
+                }
+                displayArray.push(newDisplay);
+            }
+            return displayArray;
         }
 
+        function renderGraph(subgroups, displayArray, colors) {
+            var xSubgroup = d3.scaleBand()
+                .domain(subgroups)
+                .range([0, x.bandwidth()])
+                .padding([0.05])
+
+            var color = d3.scaleOrdinal()
+                .domain(subgroups)
+                .range(colors)
+            console.log(displayArray);
+            svg.append("g")
+                .selectAll("g")
+                .data(displayArray)
+                .enter()
+                .append("g")
+                    .attr("transform", function(d) { return "translate(" + x(d.year) + ",0)"; })
+                .selectAll("rect")
+                .data(function(d) { return subgroups.map(function(key) { return {key: key, value: d[key]}; }); })
+                .enter().append("rect")
+                .attr("x", function(d) { return xSubgroup(d.key); })
+                .attr("y", function(d) { return y(d.value); })
+                .attr("width", xSubgroup.bandwidth())
+                .attr("height", function(d) { return height - y(d.value); })
+                .attr("fill", function(d) { return color(d.key); });
+        }
+        
         d3.select('.categories').selectAll('.category').on('change', function() {
             var x = d3.select('.categories').selectAll('.category:checked'); // all the checkboxes that are checked
             let checked = Object.values(x)[0][0];
@@ -132,62 +179,15 @@ export default function UnemploymentByEducation() {
             for (let id of checked) {
                 ids.push(id);
             }
-            updateLevel(ids);
+            dA = updateLevel(ids);
+            colors = ['#e41a1c','#377eb8','#4daf4a','#eda410'];
+            totalColors = dA.length - 1;
+            if (totalColors < 0) {
+                totalColors = 0;
+            }
+            renderGraph(level, dA, colors.slice(0, totalColors));
         });
-    
-        // x.domain([0, d3.max(data, function(d) {
-        //     if (level === 'Less_than_a_high_school_diploma') {
-        //         return d.Less_than_a_high_school_diploma;
-        //     } else if (level === 'High_school_graduates_no_college') {
-        //         return d.High_school_graduates_no_college;
-        //     } else if (level === 'Some_college_or_associate_degree') {
-        //         return d.Some_college_or_associate_degree;
-        //     } else {
-        //         return d.Bachelor_s_degree_and_higher;
-        //     }
-        // })]);
-    
-        // y.domain(data.map(function(d) {
-        //     return d.EUR_Year;
-        // }));
-
-        var time_frame = svg.selectAll('.year').data(data);
-        time_frame.enter()
-            .append('g')
-            .attr('class', 'year')
-            .attr('transform', function(d) {
-                return 'translate(0, ' + y(d.year) + ')';
-            });
-        
-        // function getLevel() {
-        //     if (level === 'Less_than_a_high_school_diploma') {
-        //         return d.Less_than_a_high_school_diploma;
-        //     } else if (level === 'High_school_graduates_no_college') {
-        //         return d.High_school_graduates_no_college;
-        //     } else if (level === 'Some_college_or_associate_degree') {
-        //         return d.Some_college_or_associate_degree;
-        //     } else {
-        //         return d.Bachelor_s_degree_and_higher;
-        //     }
-        // }
-
-        // var rate = time_frame.selectAll('rect')
-        //     .data(function(d) {
-        //         return getGroup();
-        //     });
-
-        // rate.enter().append('rect');
-
-        // rate
-        //     .attr('x', 0)
-        //     .attr('y', function(d, index) { return y1(edu_levels[index]); })
-        //     .attr('id', function(d) { return d.edu; })
-        //     .style('fill', function(d) { return color(level); })
-        //     .text(function(d) { return getGroup() })
-
-        // rate.exit().transition().attr('width', 0).remove();
     }
-
     return (
         <div>
             <p>{loading && "Loading unemployment and education level data!"}</p>
