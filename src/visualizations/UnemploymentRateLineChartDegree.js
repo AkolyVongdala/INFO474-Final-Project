@@ -164,6 +164,7 @@ export default function UnemploymentRateDegreeLine() {
         <div>
             <p>{loading && "Loading national rate data!"}</p>
             <h2>Unemployment Rates by Degrees</h2>
+            <p>Legend filter enable</p>
             <div id="unemployment-rate-degree-line" className="viz" >
             </div>
         </div>

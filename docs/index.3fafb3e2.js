@@ -43409,13 +43409,20 @@ try {
           lineNumber: 166,
           columnNumber: 13
         }
-      }, "Unemployment Rates by Degrees"), /*#__PURE__*/_reactDefault.default.createElement("div", {
+      }, "Unemployment Rates by Degrees"), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 167,
+          columnNumber: 13
+        }
+      }, "Legend filter enable"), /*#__PURE__*/_reactDefault.default.createElement("div", {
         id: "unemployment-rate-degree-line",
         className: "viz",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 167,
+          lineNumber: 168,
           columnNumber: 13
         }
       }))
