@@ -19,7 +19,7 @@ export default function UnemploymentByEducation() {
 
     if (loading === true) {
         const margin = { top: 20, right: 20, bottom: 40, left: 60 }, //size
-            width = 1000 - margin.left - margin.right,
+            width = 800 - margin.left - margin.right,
             height = 500 - margin.top - margin.bottom;
 
         const svg = d3 // create the svg box for the viz
