@@ -102,7 +102,7 @@ export default function UnemploymentByEducation() {
         svg.append("g")
             .call(d3.axisLeft(y));
         
-        const dataArray = [];
+        var dataArray = [];
 
         for (i = 0; i < years.length; i++) {
             let newData = new Map();
@@ -111,9 +111,9 @@ export default function UnemploymentByEducation() {
             newData['HIGHSCHOOL'] = avgH[i]
             newData['ASSOCIATE'] = avgS[i]
             newData['BACHELOR'] = avgB[i]
+            console.log(newData)
             dataArray.push(newData);
         }
-
         console.log(dataArray);
 
         let count = 0;
@@ -132,14 +132,12 @@ export default function UnemploymentByEducation() {
         function updateLevel(selectedLevel) {
             level = [];
             level = selectedLevel;
-            displayArray = [];
+            var displayArray = [];
             for (dA in dataArray) {
                 let newDisplay = new Map();
                 newDisplay['year'] = dA['year'];
-                console.log(dA['year']);
                 for (l in level) {
                     newDisplay[l] = dA[l];
-                    console.log(dA[l]);
                 }
                 displayArray.push(newDisplay);
             }
@@ -155,7 +153,6 @@ export default function UnemploymentByEducation() {
             var color = d3.scaleOrdinal()
                 .domain(subgroups)
                 .range(colors)
-            console.log(displayArray);
             svg.append("g")
                 .selectAll("g")
                 .data(displayArray)
@@ -179,13 +176,14 @@ export default function UnemploymentByEducation() {
             for (let id of checked) {
                 ids.push(id);
             }
-            dA = updateLevel(ids);
-            colors = ['#e41a1c','#377eb8','#4daf4a','#eda410'];
-            totalColors = dA.length - 1;
+            var dA = updateLevel(ids);
+            var colors = ['#e41a1c','#377eb8','#4daf4a','#eda410'];
+            var totalColors = dA.length - 1;
             if (totalColors < 0) {
                 totalColors = 0;
             }
-            renderGraph(level, dA, colors.slice(0, totalColors));
+            renderGraph(edu_levels, dataArray, colors)
+            //renderGraph(level, dA, colors.slice(0, totalColors));
         });
     }
     return (

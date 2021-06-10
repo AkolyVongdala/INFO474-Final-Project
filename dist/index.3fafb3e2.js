@@ -43036,6 +43036,7 @@ try {
         newData['HIGHSCHOOL'] = avgH[i];
         newData['ASSOCIATE'] = avgS[i];
         newData['BACHELOR'] = avgB[i];
+        console.log(newData);
         dataArray.push(newData);
       }
       console.log(dataArray);
@@ -43053,10 +43054,8 @@ try {
         for (dA in dataArray) {
           let newDisplay = new Map();
           newDisplay['year'] = dA['year'];
-          console.log(dA['year']);
           for (l in level) {
             newDisplay[l] = dA[l];
-            console.log(dA[l]);
           }
           displayArray.push(newDisplay);
         }
@@ -43098,7 +43097,7 @@ try {
         if (totalColors < 0) {
           totalColors = 0;
         }
-        renderGraph(level, dA, colors.slice(0, totalColors));
+        renderGraph(edu_levels, dataArray, colors);
       });
     }
     return (
